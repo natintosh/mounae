@@ -1,20 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:mounae/providers/route_page_provider.dart';
-import 'package:mounae/routes/app_route_delegate.dart';
-import 'package:mounae/routes/app_route_information_parser.dart';
-import 'package:provider/provider.dart';
+import 'package:mounae/routes/routes.dart';
 
-class MounaeApp extends StatelessWidget {
+class MounaeApp extends StatefulWidget {
+  @override
+  _MounaeAppState createState() => _MounaeAppState();
+}
+
+class _MounaeAppState extends State<MounaeApp> {
+  static final GlobalKey<ScaffoldState> globalScaffoldKey =
+      GlobalKey<ScaffoldState>();
+
+  AppRouteDelegate _routeDelegate = AppRouteDelegate();
+  AppRouteInformationParser _informationParser = AppRouteInformationParser();
+  BackButtonDispatcher _buttonDispatcher = RootBackButtonDispatcher();
+
   @override
   Widget build(BuildContext context) {
-    return Provider<RoutePageProvider>(
-      create: (BuildContext context) {
-        return RoutePageProvider();
-      },
-      builder: (BuildContext context, Widget child) {
-        return MaterialApp.router(
-          routerDelegate: AppRouteDelegate(),
-          routeInformationParser: AppRouteInformationParser(),
+    _buttonDispatcher.takePriority();
+    return MaterialApp.router(
+      title: 'Mounae',
+      routerDelegate: _routeDelegate,
+      routeInformationParser: _informationParser,
+      backButtonDispatcher: _buttonDispatcher,
+      debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        return Scaffold(
+          key: globalScaffoldKey,
+          body: child,
         );
       },
     );

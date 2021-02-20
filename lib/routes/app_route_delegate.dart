@@ -1,20 +1,38 @@
-import 'package:flutter/material.dart';
-import 'package:mounae/pages/home_page.dart';
+part of 'routes.dart';
 
-class AppRouteDelegate extends RouterDelegate
-    with ChangeNotifier, PopNavigatorRouterDelegateMixin {
+class AppRouteDelegate extends RouterDelegate<AppRoutePath>
+    with ChangeNotifier, PopNavigatorRouterDelegateMixin<AppRoutePath> {
+  AppRoutePath _configuration = AppRoutePathSplashScreen();
+
+  @override
+  AppRoutePath get currentConfiguration => _configuration;
+
+  set currentConfiguration(AppRoutePath value) {
+    _configuration = value;
+    notifyListeners();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Navigator(
       key: navigatorKey,
       pages: [
-        HomePage(),
+        SplashPage(
+          key: ValueKey(SplashPage.KEY),
+          name: AppRoutePathSplashScreen.path,
+        ),
+        if (currentConfiguration is AppRoutePathOnBoarding)
+          OnBoardingPage(
+            key: ValueKey(OnBoardingPage.KEY),
+            name: AppRoutePathOnBoarding.path,
+          ),
       ],
       onPopPage: (route, result) {
-        if (!route.didPop(result)) {
-          return false;
+        bool success = route.didPop(result);
+        if (success) {
+          currentConfiguration = AppRoutePathSplashScreen();
         }
-        return true;
+        return success;
       },
     );
   }
@@ -23,7 +41,7 @@ class AppRouteDelegate extends RouterDelegate
   GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
 
   @override
-  Future<void> setNewRoutePath(configuration) async {
-    return;
+  Future<void> setNewRoutePath(AppRoutePath configuration) async {
+    currentConfiguration = configuration;
   }
 }
