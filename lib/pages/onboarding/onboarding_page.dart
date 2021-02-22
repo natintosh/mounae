@@ -1,48 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:mounae/routes/routes.dart';
+import 'package:mounae/utils/widget_view/widget_view.dart';
 
-class OnBoardingPage extends Page {
-  static const String KEY = '@OnBoarding';
-
-  final String name;
-  final Object arguments;
-
-  const OnBoardingPage({@required LocalKey key, this.name, this.arguments})
-      : assert(key != null),
-        super(key: key, name: name, arguments: arguments);
+class OnBoardingPage extends StatefulWidget {
+  static const String path = '/onboarding';
 
   @override
-  Route createRoute(BuildContext context) {
-    return MaterialPageRoute(
-      settings: this,
-      builder: (context) {
-        return OnBoardingScreen();
-      },
-    );
+  _OnBoardingPageState createState() => _OnBoardingPageState();
+}
+
+class _OnBoardingPageState extends State<OnBoardingPage> {
+  @override
+  Widget build(BuildContext context) {
+    return _OnBoardingScreenView(this);
   }
 }
 
-class OnBoardingScreen extends StatefulWidget {
-  @override
-  _OnBoardingScreenState createState() => _OnBoardingScreenState();
-}
+class _OnBoardingScreenView
+    extends WidgetView<OnBoardingPage, _OnBoardingPageState> {
+  _OnBoardingScreenView(_OnBoardingPageState state) : super(state);
 
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+      ),
       body: Container(
+        decoration: BoxDecoration(),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('ON BOARDING SCREEN'),
-              ElevatedButton(
-                onPressed: () {
-                  AppRouteDelegate delegate = Router.of(context).routerDelegate;
-                },
-                child: Text('BACK'),
-              ),
+              Text('Mounae'),
+              ElevatedButton(onPressed: () {}, child: Text('Button'))
             ],
           ),
         ),
