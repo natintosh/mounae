@@ -18,4 +18,6 @@ class MounaeColors {
   static final actionIconButtonColor = Color(0xFF979797);
   static final errorColor = Color(0xFFB00020);
   static final errorTextColor = Color(0xFFFFFFFF);
+  static final borderColor = Color(0xFF707070);
+  static final hintTextColor = Color(0xFFC1C1C1);
 }

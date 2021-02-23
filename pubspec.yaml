@@ -30,7 +30,7 @@ dependencies:
   cupertino_icons: ^1.0.0
 
   flutter_screenutil: ^4.0.3+2
-  flutter_svg: ^0.19.1
+  flutter_svg: ^0.20.0-nullsafety
   google_fonts: ^1.1.2
   provider: ^4.3.3
   sized_context: ^0.2.1+1
@@ -56,10 +56,19 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
-    - assets/svg/logo_chevron_north.svg
-    - assets/svg/logo_chevron_south.svg
-    - assets/svg/logo_circle.svg
-    - assets/svg/logo_text.svg
+  # Svg folder root
+    - assets/svg/nigeria_flag.svg
+
+  # Logo Screen
+    - assets/svg/logo/chevron_north.svg
+    - assets/svg/logo/chevron_south.svg
+    - assets/svg/logo/circle.svg
+    - assets/svg/logo/text.svg
+
+  # OnBoarding screen
+    - assets/svg/onboarding/finance.svg
+    - assets/svg/onboarding/freedom.svg
+    - assets/svg/onboarding/goal.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

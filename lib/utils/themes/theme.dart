@@ -49,6 +49,10 @@ class MounaeThemeData {
           onError: MounaeColors.errorTextColor,
           brightness: Brightness.light,
         ),
+        scaffoldBackgroundColor: MounaeColors.backgroundColor,
+        textTheme: getTextTheme(MounaeColors.writingColor),
+        primaryTextTheme: getTextTheme(MounaeColors.primaryColor),
+        accentTextTheme: getTextTheme(MounaeColors.accentTextColor),
         appBarTheme: AppBarTheme(
           brightness: Brightness.light,
           color: MounaeColors.appBarColor,
@@ -69,6 +73,38 @@ class MounaeThemeData {
         inputDecorationTheme: InputDecorationTheme(
           focusColor: MounaeColors.inputFocusColor,
           hoverColor: MounaeColors.inputHoverColor,
+          floatingLabelBehavior: FloatingLabelBehavior.always,
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: MounaeColors.borderColor),
+          ),
+          hintStyle: TextStyle(
+            inherit: true,
+            fontSize: 18.sp,
+            color: MounaeColors.hintTextColor,
+            letterSpacing: 0.36.sp,
+            height: 0.22.sp,
+          ),
+          suffixStyle: TextStyle(
+            inherit: true,
+            fontSize: 18.sp,
+            color: MounaeColors.writingColor,
+            letterSpacing: 0.36.sp,
+            height: 0.22.sp,
+          ),
+          prefixStyle: TextStyle(
+            inherit: true,
+            fontSize: 18.sp,
+            color: MounaeColors.writingColor,
+            letterSpacing: 0.36.sp,
+            height: 0.22.sp,
+          ),
+          labelStyle: TextStyle(
+            inherit: true,
+            fontSize: 16.sp,
+            color: MounaeColors.primaryColor,
+            letterSpacing: 0.18.sp,
+            height: 0.18.sp,
+          ),
         ),
       );
 

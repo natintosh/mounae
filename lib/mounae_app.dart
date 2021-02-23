@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/pages/onboarding/onboarding_page.dart';
+import 'package:mounae/pages/signup/signup_page.dart';
 import 'package:mounae/pages/splash/splash_page.dart';
 import 'package:mounae/providers/preference_provider.dart';
 import 'package:mounae/utils/themes/theme.dart';
@@ -62,6 +63,9 @@ class _MounaeAppState extends State<MounaeApp> {
         break;
       case OnBoardingPage.path:
         builder = OnBoardingPage();
+        break;
+      case SignUpPage.path:
+        builder = SignUpPage();
         break;
       default:
         throw new Exception("MounaeApp: Invalid Page Route ${settings.name}");

@@ -27,7 +27,7 @@ class _SplashPageState extends State<SplashPage>
       duration: Duration(milliseconds: 2000),
     )..addListener(() {
         if (controller.isCompleted) {
-          Navigator.of(context).pushNamed(OnBoardingPage.path);
+          Navigator.of(context).pushReplacementNamed(OnBoardingPage.path);
         }
       });
     circleVisibilityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -120,7 +120,7 @@ class _SplashScreenView extends WidgetView<SplashPage, _SplashPageState> {
                                   alignment: Alignment(0.0,
                                       -state.northVisibilityAnimation.value),
                                   child: SvgPicture.asset(
-                                      'assets/svg/logo_chevron_north.svg'),
+                                      'assets/svg/logo/chevron_north.svg'),
                                 ),
                               ),
                               Opacity(
@@ -128,7 +128,7 @@ class _SplashScreenView extends WidgetView<SplashPage, _SplashPageState> {
                                 child: Align(
                                   alignment: Alignment.center,
                                   child: SvgPicture.asset(
-                                      'assets/svg/logo_circle.svg'),
+                                      'assets/svg/logo/circle.svg'),
                                 ),
                               ),
                               Opacity(
@@ -138,7 +138,7 @@ class _SplashScreenView extends WidgetView<SplashPage, _SplashPageState> {
                                       state.southVisibilityAnimation.value),
                                   child: Container(
                                     child: SvgPicture.asset(
-                                        'assets/svg/logo_chevron_south.svg'),
+                                        'assets/svg/logo/chevron_south.svg'),
                                   ),
                                 ),
                               ),
