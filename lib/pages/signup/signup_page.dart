@@ -1,8 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:mounae/pages/otp_send/otp_send_page.dart';
+import 'package:mounae/providers/auth_provider.dart';
+import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
+import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
   static const String path = '/signup';
@@ -46,6 +50,25 @@ class _SignUpPageState extends State<SignUpPage> {
 
   TextEditingController controller;
   FocusNode focusNode;
+
+  MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(
+    mask: '###-###-####',
+    filter: {
+      "#": RegExp(r'[0-9]'),
+    },
+  );
+
+  void onContinueButtonPressed() {
+    FocusScope.of(context).unfocus();
+    String phoneNumber =
+        '+234' + controller.text.replaceAll(RegExp(r'[^\d]+'), '');
+    context.read<AuthProvider>()..phoneNumber = phoneNumber;
+    _openOtpSendPage();
+  }
+
+  void _openOtpSendPage() {
+    Navigator.of(context).pushNamed(OtpSendPage.path);
+  }
 }
 
 class _SignUpView extends WidgetView<SignUpPage, _SignUpPageState> {
@@ -54,9 +77,6 @@ class _SignUpView extends WidgetView<SignUpPage, _SignUpPageState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        state.focusNode.unfocus();
-      }),
       appBar: AppBar(
         leading: IconButton(
           icon: Icon(
@@ -74,49 +94,75 @@ class _SignUpView extends WidgetView<SignUpPage, _SignUpPageState> {
         padding: EdgeInsets.symmetric(vertical: 24.sp, horizontal: 24.sp),
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(right: 92.sp),
-              child: Text.rich(
-                TextSpan(
-                  text: 'Your ',
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
                   children: [
-                    TextSpan(
-                      text: 'phone number ',
-                      style: Theme.of(context).primaryTextTheme.headline5,
+                    Padding(
+                      padding: EdgeInsets.only(right: 92.sp),
+                      child: Text.rich(
+                        TextSpan(
+                          text: 'Your ',
+                          children: [
+                            TextSpan(
+                              text: 'phone number ',
+                              style:
+                                  Theme.of(context).primaryTextTheme.headline5,
+                            ),
+                            TextSpan(
+                              text:
+                                  'Begins your journey to achieve your financial goal',
+                            )
+                          ],
+                        ),
+                        style: Theme.of(context).textTheme.headline5,
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                    TextSpan(
-                      text:
-                          'Begins your journey to achieve your financial goal',
-                    )
+                    SizedBox(height: 86.sp),
+                    ListTile(
+                      contentPadding: EdgeInsets.zero,
+                      title: Text(
+                        'Phone Number',
+                        style: MounaeThemeData.labelTextStyle,
+                      ),
+                      subtitle: TextFormField(
+                        controller: state.controller,
+                        focusNode: state.focusNode,
+                        style: MounaeThemeData.textFieldTextStyle,
+                        keyboardType: TextInputType.phone,
+                        inputFormatters: [
+                          state.maskFormatter,
+                        ],
+                        decoration: InputDecoration(
+                          prefixIcon: Padding(
+                            padding: EdgeInsets.only(top: 12.0, bottom: 12.0),
+                            child: SizedBox(
+                              width: 4.sp,
+                              height: 4.sp,
+                              child: SvgPicture.asset(
+                                'assets/svg/nigeria_flag.svg',
+                                height: 4.sp,
+                                width: 4.sp,
+                              ),
+                            ),
+                          ),
+                          prefixText: state.showPrefixText ? '+234-' : null,
+                          hintText:
+                              '${!state.showPrefixText ? '+234-' : ''}700-123-1234',
+                        ),
+                      ),
+                    ),
                   ],
                 ),
-                style: Theme.of(context).textTheme.headline5,
-                textAlign: TextAlign.left,
               ),
             ),
-            SizedBox(height: 86.sp),
-            TextFormField(
-              controller: state.controller,
-              focusNode: state.focusNode,
-              decoration: InputDecoration(
-                prefixIcon: Padding(
-                  padding: EdgeInsets.only(top: 16.0, bottom: 6.0),
-                  child: SizedBox(
-                    width: 4.sp,
-                    height: 4.sp,
-                    child: SvgPicture.asset(
-                      'assets/svg/nigeria_flag.svg',
-                      height: 4.sp,
-                      width: 4.sp,
-                    ),
-                  ),
-                ),
-                prefixText: state.showPrefixText ? '+234-' : null,
-                labelText: 'Phone Number',
-                hintText: '${!state.showPrefixText ? '+234-' : ''}700-123-1234',
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-              ),
-            ),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: state.onContinueButtonPressed,
+                  child: Text('Continue')),
+            )
           ],
         ),
       ),

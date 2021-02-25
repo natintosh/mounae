@@ -5,8 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/pages/onboarding/onboarding_page.dart';
+import 'package:mounae/pages/otp_send/otp_send_page.dart';
+import 'package:mounae/pages/otp_verification/otp_verification_page.dart';
 import 'package:mounae/pages/signup/signup_page.dart';
 import 'package:mounae/pages/splash/splash_page.dart';
+import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/providers/preference_provider.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:provider/provider.dart';
@@ -43,9 +46,16 @@ class _MounaeAppState extends State<MounaeApp> {
           initialRoute: '/',
           onGenerateRoute: onGenerateRoute,
           builder: (context, child) {
-            return Scaffold(
-              key: globalScaffoldKey,
-              body: child,
+            return MultiProvider(
+              providers: [
+                ChangeNotifierProvider(create: (context) {
+                  return AuthProvider();
+                }),
+              ],
+              child: Scaffold(
+                key: globalScaffoldKey,
+                body: child,
+              ),
             );
           },
         );
@@ -66,6 +76,12 @@ class _MounaeAppState extends State<MounaeApp> {
         break;
       case SignUpPage.path:
         builder = SignUpPage();
+        break;
+      case OtpSendPage.path:
+        builder = OtpSendPage();
+        break;
+      case OtpVerificationPage.path:
+        builder = OtpVerificationPage();
         break;
       default:
         throw new Exception("MounaeApp: Invalid Page Route ${settings.name}");

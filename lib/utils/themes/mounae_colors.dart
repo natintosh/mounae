@@ -20,4 +20,5 @@ class MounaeColors {
   static final errorTextColor = Color(0xFFFFFFFF);
   static final borderColor = Color(0xFF707070);
   static final hintTextColor = Color(0xFFC1C1C1);
+  static final dividerColor = Color(0xFFE7E7E7);
 }

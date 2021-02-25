@@ -1,0 +1,19 @@
+<svg version="1.1" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+    <g shape-rendering="auto">
+        <path
+            d="m0 26 1.8-6.6c-5.2-8.8 1.2-20 11-20 7.3 0.0072 13 5.8 13 13-0.065 7.3-5.9 13-13 13-2.3-0.05-4.5-0.68-6.4-1.8z"
+            color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#d0cee5"
+            image-rendering="auto" solid-color="#000000" stop-color="#000000"
+            style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal" />
+        <path transform="translate(-42 -42)"
+            d="m49 64 0.41 0.23c1.7 1.1 3.7 1.7 5.7 1.7 6-0.061 11-5 11-11-0.081-6-4.9-11-11-11s-11 4.8-11 11c-0.0027 2.1 0.58 4.1 1.7 5.9l0.27 0.41-1 3.8z"
+            color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#b0aed3"
+            image-rendering="auto" solid-color="#000000" stop-color="#000000"
+            style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal" />
+        <path transform="translate(-123 -128)"
+            d="m133 135-0.86-0.046c-0.27-7e-3 -0.53 0.091-0.73 0.27-0.62 0.5-1.1 1.2-1.3 2-0.23 1.7 0.27 3.4 1.4 4.6 1.8 2.6 4.4 4.5 7.5 5.4 1 0.34 2.2 0.21 3.1-0.36 0.61-0.39 1-1 1.2-1.7l0.14-0.64c0.044-0.2-0.049-0.4-0.23-0.5l-2.9-1.3c-0.19-0.095-0.42-0.037-0.55 0.14l-1.1 1.5c-0.094 0.097-0.24 0.13-0.36 0.091-2-0.73-3.7-2.2-4.8-4.1-0.056-0.12-0.038-0.26 0.046-0.36l1.1-1.2c0.095-0.13 0.13-0.3 0.091-0.46l-1.3-3c-0.053-0.16-0.2-0.27-0.36-0.27"
+            color="#000000" color-rendering="auto" dominant-baseline="auto" fill="#fefefe"
+            image-rendering="auto" solid-color="#000000" stop-color="#000000"
+            style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal" />
+    </g>
+</svg>

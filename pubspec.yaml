@@ -31,6 +31,7 @@ dependencies:
 
   flutter_screenutil: ^4.0.3+2
   flutter_svg: ^0.20.0-nullsafety
+  mask_text_input_formatter: ^2.0.0-nullsafety.2
   google_fonts: ^1.1.2
   provider: ^4.3.3
   sized_context: ^0.2.1+1
@@ -58,6 +59,9 @@ flutter:
   assets:
   # Svg folder root
     - assets/svg/nigeria_flag.svg
+    - assets/svg/chat_bubble.svg
+    - assets/svg/phone_dial.svg
+    - assets/svg/whatsapp.svg
 
   # Logo Screen
     - assets/svg/logo/chevron_north.svg

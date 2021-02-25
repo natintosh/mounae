@@ -27,6 +27,30 @@ class MounaeThemeData {
             : ThemeMode.system;
   }
 
+  static ThemeData get darkTheme => ThemeData.dark().copyWith(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        pageTransitionsTheme: const PageTransitionsTheme(
+          builders: <TargetPlatform, PageTransitionsBuilder>{
+            TargetPlatform.android: ZoomPageTransitionsBuilder(),
+          },
+        ),
+        accentColor: const Color(0xFF2196F3),
+        accentColorBrightness: Brightness.dark,
+        accentIconTheme: IconThemeData(color: const Color(0xFFFFFFFF)),
+        textTheme: getTextTheme(const Color(0xFFFFFFFF)),
+        primaryTextTheme: getTextTheme(const Color(0xFFFFFFFF)),
+        accentTextTheme: getTextTheme(const Color(0xFFF0F0F0)),
+        appBarTheme: AppBarTheme(
+          textTheme: getTextTheme(const Color(0xFFFFFFFF)),
+        ),
+        buttonTheme: ButtonThemeData(
+          padding: EdgeInsets.all(20.0),
+          textTheme: ButtonTextTheme.primary,
+          buttonColor: const Color(0xFF2196F3),
+          disabledColor: const Color(0xFFBBDDFB),
+        ),
+      );
+
   static ThemeData get lightTheme => ThemeData.light().copyWith(
         visualDensity: VisualDensity.adaptivePlatformDensity,
         pageTransitionsTheme: const PageTransitionsTheme(
@@ -61,7 +85,50 @@ class MounaeThemeData {
               IconThemeData(color: MounaeColors.actionIconButtonColor),
           textTheme: getTextTheme(MounaeColors.writingColor),
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            padding: EdgeInsets.all(16.sp),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(7.sp),
+            ),
+            textStyle: GoogleFonts.montserrat(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+              color: MounaeColors.primaryTextColor,
+              letterSpacing: 0.38.sp,
+            ),
+          ),
+        ),
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            padding: EdgeInsets.all(16.sp),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(7.sp),
+            ),
+            textStyle: GoogleFonts.montserrat(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+              color: MounaeColors.primaryTextColor,
+              letterSpacing: 0.38.sp,
+            ),
+          ),
+        ),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(
+            padding: EdgeInsets.all(16.sp),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(7.sp),
+            ),
+            textStyle: GoogleFonts.montserrat(
+              fontSize: 16.sp,
+              fontWeight: FontWeight.w500,
+              color: MounaeColors.primaryTextColor,
+              letterSpacing: 0.38.sp,
+            ),
+          ),
+        ),
         buttonTheme: ButtonThemeData(
+            height: 52.sp,
             padding: EdgeInsets.all(20.0.sp),
             colorScheme: ColorScheme.light(),
             textTheme: ButtonTextTheme.primary,
@@ -108,108 +175,98 @@ class MounaeThemeData {
         ),
       );
 
-  static ThemeData get darkTheme => ThemeData.dark().copyWith(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        pageTransitionsTheme: const PageTransitionsTheme(
-          builders: <TargetPlatform, PageTransitionsBuilder>{
-            TargetPlatform.android: ZoomPageTransitionsBuilder(),
-          },
-        ),
-        accentColor: const Color(0xFF2196F3),
-        accentColorBrightness: Brightness.dark,
-        accentIconTheme: IconThemeData(color: const Color(0xFFFFFFFF)),
-        textTheme: getTextTheme(const Color(0xFFFFFFFF)),
-        primaryTextTheme: getTextTheme(const Color(0xFFFFFFFF)),
-        accentTextTheme: getTextTheme(const Color(0xFFF0F0F0)),
-        appBarTheme: AppBarTheme(
-          textTheme: getTextTheme(const Color(0xFFFFFFFF)),
-        ),
-        buttonTheme: ButtonThemeData(
-          padding: EdgeInsets.all(20.0),
-          textTheme: ButtonTextTheme.primary,
-          buttonColor: const Color(0xFF2196F3),
-          disabledColor: const Color(0xFFBBDDFB),
-        ),
-      );
-
   static TextTheme getTextTheme(Color color) {
     return TextTheme(
       headline1: GoogleFonts.montserrat(
-        fontSize: 96.sp,
-        fontWeight: FontWeight.w300,
-        letterSpacing: -1.5.sp,
         color: color,
+        fontSize: 97,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -1.5,
       ),
       headline2: GoogleFonts.montserrat(
-        fontSize: 60.sp,
-        fontWeight: FontWeight.w300,
-        letterSpacing: -0.5.sp,
         color: color,
+        fontSize: 61,
+        fontWeight: FontWeight.w300,
+        letterSpacing: -0.5,
       ),
       headline3: GoogleFonts.montserrat(
-        fontSize: 48.sp,
-        fontWeight: FontWeight.w400,
         color: color,
+        fontSize: 48,
+        fontWeight: FontWeight.w400,
       ),
       headline4: GoogleFonts.montserrat(
-        fontSize: 34.sp,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 0.25.sp,
         color: color,
+        fontSize: 34,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
       ),
       headline5: GoogleFonts.montserrat(
-        fontSize: 24.sp,
-        fontWeight: FontWeight.w400,
         color: color,
+        fontSize: 24,
+        fontWeight: FontWeight.w400,
       ),
       headline6: GoogleFonts.montserrat(
-        fontSize: 20.sp,
-        fontWeight: FontWeight.w500,
-        letterSpacing: 0.15.sp,
         color: color,
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.15,
       ),
       subtitle1: GoogleFonts.montserrat(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 0.15.sp,
         color: color,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.15,
       ),
       subtitle2: GoogleFonts.montserrat(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
-        letterSpacing: 0.1.sp,
         color: color,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 0.1,
       ),
       bodyText1: GoogleFonts.montserrat(
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 0.5.sp,
         color: color,
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.5,
       ),
       bodyText2: GoogleFonts.montserrat(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 0.25.sp,
         color: color,
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.25,
       ),
       button: GoogleFonts.montserrat(
-        fontSize: 14.sp,
-        fontWeight: FontWeight.w500,
-        letterSpacing: 1.25.sp,
         color: color,
+        fontSize: 14,
+        fontWeight: FontWeight.w500,
+        letterSpacing: 1.25,
       ),
       caption: GoogleFonts.montserrat(
-        fontSize: 12.sp,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 0.4.sp,
         color: color,
+        fontSize: 12,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 0.4,
       ),
       overline: GoogleFonts.montserrat(
-        fontSize: 10.sp,
-        fontWeight: FontWeight.w400,
-        letterSpacing: 1.5.sp,
         color: color,
+        fontSize: 10,
+        fontWeight: FontWeight.w400,
+        letterSpacing: 1.5,
       ),
     );
   }
+
+  static final TextStyle labelTextStyle = TextStyle(
+    inherit: true,
+    fontSize: 12.sp,
+    color: MounaeColors.primaryColor,
+    letterSpacing: 0.18.sp,
+    height: 0.18.sp,
+  );
+  static final TextStyle textFieldTextStyle = TextStyle(
+    inherit: true,
+    fontSize: 18.sp,
+    color: MounaeColors.writingColor,
+    letterSpacing: 0.36.sp,
+  );
 }

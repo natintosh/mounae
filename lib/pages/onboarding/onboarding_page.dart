@@ -150,7 +150,7 @@ class OnBoardingDetails extends StatelessWidget {
               child: Text(
                 title,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).primaryTextTheme.headline5,
+                style: Theme.of(context).primaryTextTheme.headline6,
               ),
             ),
             SizedBox(
@@ -163,7 +163,7 @@ class OnBoardingDetails extends StatelessWidget {
               child: Text(
                 content,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyText2,
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             )
           ],
