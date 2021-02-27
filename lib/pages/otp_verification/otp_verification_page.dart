@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mounae/pages/set_username/set_username.dart';
 import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
@@ -29,7 +30,14 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
   TextEditingController controller;
   FocusNode focusNode;
 
-  void onContinueButtonPressed() {}
+  void onContinueButtonPressed() {
+    FocusScope.of(context).unfocus();
+    _openSetUsernamePage();
+  }
+
+  void _openSetUsernamePage() {
+    Navigator.of(context).pushNamed(SetUsername.path);
+  }
 }
 
 class _OtpVerificationView

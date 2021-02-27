@@ -7,6 +7,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/pages/onboarding/onboarding_page.dart';
 import 'package:mounae/pages/otp_send/otp_send_page.dart';
 import 'package:mounae/pages/otp_verification/otp_verification_page.dart';
+import 'package:mounae/pages/set_passcode/set_passcode_page.dart';
+import 'package:mounae/pages/set_passcode_confirmation/set_passcode_confirmation_page.dart';
+import 'package:mounae/pages/set_username/set_username.dart';
 import 'package:mounae/pages/signup/signup_page.dart';
 import 'package:mounae/pages/splash/splash_page.dart';
 import 'package:mounae/providers/auth_provider.dart';
@@ -82,6 +85,15 @@ class _MounaeAppState extends State<MounaeApp> {
         break;
       case OtpVerificationPage.path:
         builder = OtpVerificationPage();
+        break;
+      case SetUsername.path:
+        builder = SetUsername();
+        break;
+      case SetPassCodePage.path:
+        builder = SetPassCodePage();
+        break;
+      case SetPassCodeConfirmationPage.path:
+        builder = SetPassCodeConfirmationPage();
         break;
       default:
         throw new Exception("MounaeApp: Invalid Page Route ${settings.name}");
