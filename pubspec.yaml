@@ -29,6 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
 
+  flutter_local_auth_invisible: ^1.1.0
   flutter_screenutil: ^4.0.3+2
   flutter_svg: ^0.20.0-nullsafety
   mask_text_input_formatter: ^2.0.0-nullsafety.2
@@ -62,6 +63,7 @@ flutter:
     - assets/svg/chat_bubble.svg
     - assets/svg/phone_dial.svg
     - assets/svg/whatsapp.svg
+    - assets/svg/fingerprint.svg
 
   # Logo Screen
     - assets/svg/logo/chevron_north.svg

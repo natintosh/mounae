@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mounae/pages/fingerprint_option/fingerprint_option_page.dart';
 import 'package:mounae/pages/onboarding/onboarding_page.dart';
 import 'package:mounae/pages/otp_send/otp_send_page.dart';
 import 'package:mounae/pages/otp_verification/otp_verification_page.dart';
@@ -94,6 +95,9 @@ class _MounaeAppState extends State<MounaeApp> {
         break;
       case SetPassCodeConfirmationPage.path:
         builder = SetPassCodeConfirmationPage();
+        break;
+      case FingerPrintOptionPage.path:
+        builder = FingerPrintOptionPage();
         break;
       default:
         throw new Exception("MounaeApp: Invalid Page Route ${settings.name}");

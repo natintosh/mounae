@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import 'package:mounae/pages/fingerprint_option/fingerprint_option_page.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -32,7 +33,14 @@ class _SetPassCodeConfirmationPageState
   MaskTextInputFormatter digitCodeMaskFormatter = MaskTextInputFormatter(
       mask: '# - # - # - # - # - #', filter: {"#": RegExp(r'[0-9]')});
 
-  void onContinueButtonPressed() {}
+  void onContinueButtonPressed() {
+    FocusScope.of(context).unfocus();
+    _openingFingerPrintOptionPage();
+  }
+
+  void _openingFingerPrintOptionPage() {
+    Navigator.of(context).pushNamed(FingerPrintOptionPage.path);
+  }
 }
 
 class _SetPassCodeConfirmationView extends WidgetView<
