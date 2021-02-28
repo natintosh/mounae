@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:mounae/pages/fingerprint_option/fingerprint_option_page.dart';
+import 'package:mounae/pages/fingerprint_option/biometrics_option_page.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -39,7 +39,7 @@ class _SetPassCodeConfirmationPageState
   }
 
   void _openingFingerPrintOptionPage() {
-    Navigator.of(context).pushNamed(FingerPrintOptionPage.path);
+    Navigator.of(context).pushNamed(BiometricsOptionPage.path);
   }
 }
 

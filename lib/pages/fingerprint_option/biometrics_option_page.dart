@@ -9,17 +9,17 @@ import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:system_settings/system_settings.dart';
 
-class FingerPrintOptionPage extends StatefulWidget {
-  static const String path = '/fingerprint-option';
+class BiometricsOptionPage extends StatefulWidget {
+  static const String path = '/biometrics-option';
 
   @override
-  _FingerPrintOptionPageState createState() => _FingerPrintOptionPageState();
+  _BiometricsOptionPageState createState() => _BiometricsOptionPageState();
 }
 
-class _FingerPrintOptionPageState extends State<FingerPrintOptionPage> {
+class _BiometricsOptionPageState extends State<BiometricsOptionPage> {
   @override
   Widget build(BuildContext context) {
-    return _FingerPrintOptionView(this);
+    return _BiometricsOptionView(this);
   }
 
   LocalAuthentication localAuthentication = LocalAuthentication();
@@ -100,9 +100,9 @@ class _FingerPrintOptionPageState extends State<FingerPrintOptionPage> {
   }
 }
 
-class _FingerPrintOptionView
-    extends WidgetView<FingerPrintOptionPage, _FingerPrintOptionPageState> {
-  _FingerPrintOptionView(_FingerPrintOptionPageState state) : super(state);
+class _BiometricsOptionView
+    extends WidgetView<BiometricsOptionPage, _BiometricsOptionPageState> {
+  _BiometricsOptionView(_BiometricsOptionPageState state) : super(state);
 
   @override
   Widget build(BuildContext context) {
