@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/pages/signup/signup_page.dart';
+import 'package:mounae/pages/authentication/signup/signup_page.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class OnBoardingPage extends StatefulWidget {
-  static const String path = '/onboarding';
+  static const String path = '/authentication/onboarding';
 
   @override
   _OnBoardingPageState createState() => _OnBoardingPageState();

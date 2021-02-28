@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:mounae/pages/set_passcode_confirmation/set_passcode_confirmation_page.dart';
+import 'package:mounae/pages/authentication/set_passcode/set_passcode_page.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
-class SetPassCodePage extends StatefulWidget {
-  static const String path = '/set-passcode';
+class SetUsername extends StatefulWidget {
+  static const String path = '/authentication/set-username';
 
   @override
-  _SetPassCodePageState createState() => _SetPassCodePageState();
+  _SetUsernameState createState() => _SetUsernameState();
 }
 
-class _SetPassCodePageState extends State<SetPassCodePage> {
+class _SetUsernameState extends State<SetUsername> {
   @override
   Widget build(BuildContext context) {
-    return _SetPassCodeView(this);
+    return _SetUsernameView(this);
   }
 
   @override
@@ -28,22 +27,18 @@ class _SetPassCodePageState extends State<SetPassCodePage> {
   TextEditingController controller;
   FocusNode focusNode;
 
-  MaskTextInputFormatter digitCodeMaskFormatter = MaskTextInputFormatter(
-      mask: '# - # - # - # - # - #', filter: {"#": RegExp(r'[0-9]')});
-
   void onContinueButtonPressed() {
     FocusScope.of(context).unfocus();
-    _openSetPassCodeConfirmationPage();
+    _openSetPassCodePage();
   }
 
-  void _openSetPassCodeConfirmationPage() {
-    Navigator.of(context).pushNamed(SetPassCodeConfirmationPage.path);
+  void _openSetPassCodePage() {
+    Navigator.of(context).pushNamed(SetPassCodePage.path);
   }
 }
 
-class _SetPassCodeView
-    extends WidgetView<SetPassCodePage, _SetPassCodePageState> {
-  _SetPassCodeView(_SetPassCodePageState state) : super(state);
+class _SetUsernameView extends WidgetView<SetUsername, _SetUsernameState> {
+  _SetUsernameView(_SetUsernameState state) : super(state);
 
   @override
   Widget build(BuildContext context) {
@@ -69,23 +64,23 @@ class _SetPassCodeView
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Container(
+                    Padding(
                       padding: EdgeInsets.only(right: 98.sp, bottom: 16.sp),
-                      alignment: Alignment.centerLeft,
                       child: Text.rich(
                         TextSpan(
-                          text: "Set a 6 digit device passcode",
+                          text: "Welcome, What ",
+                          children: [
+                            TextSpan(
+                              text: 'Name ',
+                              style:
+                                  Theme.of(context).primaryTextTheme.headline5,
+                            ),
+                            TextSpan(
+                              text: 'would you like us to call you ',
+                            ),
+                          ],
                         ),
                         style: Theme.of(context).textTheme.headline5,
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(right: 72.sp, bottom: 16.sp),
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'This Passcode would be used to sign in to your account',
-                        style: Theme.of(context).textTheme.bodyText2,
                         textAlign: TextAlign.left,
                       ),
                     ),
@@ -93,17 +88,16 @@ class _SetPassCodeView
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       title: Text(
-                        '6 Digit Code',
+                        'First Name/Nickname',
                         style: MounaeThemeData.labelTextStyle,
                       ),
                       subtitle: TextFormField(
                         controller: state.controller,
                         focusNode: state.focusNode,
                         style: MounaeThemeData.textFieldTextStyle,
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [state.digitCodeMaskFormatter],
+                        keyboardType: TextInputType.name,
                         decoration: InputDecoration(
-                          hintText: '0 - 0 - 0 - 0 - 0 - 0',
+                          hintText: 'Example: Ade, Emeka, Umaru',
                         ),
                       ),
                     ),

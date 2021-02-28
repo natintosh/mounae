@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/pages/otp_verification/otp_verification_page.dart';
+import 'package:mounae/pages/authentication/otp_verification/otp_verification_page.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class OtpSendPage extends StatefulWidget {
-  static const String path = '/otp-send';
+  static const String path = '/authentication/otp-send';
 
   @override
   _OtpSendPageState createState() => _OtpSendPageState();

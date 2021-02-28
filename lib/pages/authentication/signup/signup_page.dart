@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:mounae/pages/otp_send/otp_send_page.dart';
+import 'package:mounae/pages/authentication/otp_send/otp_send_page.dart';
 import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 
 class SignUpPage extends StatefulWidget {
-  static const String path = '/signup';
+  static const String path = '/authentication/signup';
 
   @override
   _SignUpPageState createState() => _SignUpPageState();

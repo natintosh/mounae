@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/pages/set_username/set_username.dart';
+import 'package:mounae/pages/authentication/set_username/set_username.dart';
 import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 
 class OtpVerificationPage extends StatefulWidget {
-  static const String path = '/otp-verification';
+  static const String path = '/authentication/otp-verification';
 
   @override
   _OtpVerificationPageState createState() => _OtpVerificationPageState();

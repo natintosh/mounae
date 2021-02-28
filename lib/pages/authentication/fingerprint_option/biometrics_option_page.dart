@@ -10,7 +10,7 @@ import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:system_settings/system_settings.dart';
 
 class BiometricsOptionPage extends StatefulWidget {
-  static const String path = '/biometrics-option';
+  static const String path = '/authentication/biometrics-option';
 
   @override
   _BiometricsOptionPageState createState() => _BiometricsOptionPageState();

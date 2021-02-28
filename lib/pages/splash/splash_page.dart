@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/pages/onboarding/onboarding_page.dart';
+import 'package:mounae/pages/authentication/onboarding/onboarding_page.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:sized_context/sized_context.dart';
 
