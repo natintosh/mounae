@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:local_auth/error_codes.dart' as authError;
+import 'package:local_auth/local_auth.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
+import 'package:system_settings/system_settings.dart';
 
 class FingerPrintOptionPage extends StatefulWidget {
   static const String path = '/fingerprint-option';
@@ -18,7 +22,82 @@ class _FingerPrintOptionPageState extends State<FingerPrintOptionPage> {
     return _FingerPrintOptionView(this);
   }
 
+  LocalAuthentication localAuthentication = LocalAuthentication();
+
   void onContinueButtonPressed() {}
+
+  void onAuthoriseButtonPressed() async {
+    try {
+      if (await localAuthentication.canCheckBiometrics) {
+        bool didAuthenticate = await localAuthentication.authenticate(
+          localizedReason:
+              'Please authenticate to allow fingerprint as a sign-in option',
+          biometricOnly: true,
+        );
+
+        if (didAuthenticate) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Authentication Successful')));
+        }
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Device does not support biometrics')));
+      }
+    } on PlatformException catch (e) {
+      print(e);
+      switch (e.code) {
+        case authError.notAvailable:
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Security features not enabled'),
+              action: SnackBarAction(
+                  label: 'Enable', onPressed: _onOpenSecuritySettings),
+            ),
+          );
+          break;
+        case authError.notEnrolled:
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('No biometrics enrolled on this device'),
+              action: SnackBarAction(
+                  label: 'Enroll', onPressed: _onOpenSecuritySettings),
+            ),
+          );
+          break;
+        case authError.passcodeNotSet:
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Screen lock not enabled on this device'),
+              action: SnackBarAction(
+                  label: 'Enable', onPressed: _onOpenSecuritySettings),
+            ),
+          );
+          break;
+        case authError.lockedOut:
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Device locked due to too may attempts'),
+            ),
+          );
+          break;
+        case authError.permanentlyLockedOut:
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Device locked due to too may attempts'),
+            ),
+          );
+          break;
+        default:
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text('Authorisation Failed')));
+          break;
+      }
+    }
+  }
+
+  void _onOpenSecuritySettings() {
+    SystemSettings.security();
+  }
 }
 
 class _FingerPrintOptionView
@@ -61,8 +140,9 @@ class _FingerPrintOptionView
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: state.onContinueButtonPressed,
-                    child: Text('Continue')),
+                  onPressed: state.onAuthoriseButtonPressed,
+                  child: Text('Authorise'),
+                ),
               ),
               SizedBox(
                 height: 16.sp,
