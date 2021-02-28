@@ -36,7 +36,7 @@ class _OtpVerificationPageState extends State<OtpVerificationPage> {
   }
 
   void _openSetUsernamePage() {
-    Navigator.of(context).pushNamed(SetUsername.path);
+    Navigator.of(context).pushNamed(SetUsernamePage.path);
   }
 }
 

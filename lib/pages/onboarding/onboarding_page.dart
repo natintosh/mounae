@@ -6,7 +6,7 @@ import 'package:mounae/pages/authentication/signup/signup_page.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class OnBoardingPage extends StatefulWidget {
-  static const String path = '/authentication/onboarding';
+  static const String path = '/onboarding';
 
   @override
   _OnBoardingPageState createState() => _OnBoardingPageState();

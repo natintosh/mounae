@@ -65,6 +65,7 @@ flutter:
     - assets/svg/phone_dial.svg
     - assets/svg/whatsapp.svg
     - assets/svg/fingerprint.svg
+    - assets/svg/bank.svg
 
   # Logo Screen
     - assets/svg/logo/chevron_north.svg

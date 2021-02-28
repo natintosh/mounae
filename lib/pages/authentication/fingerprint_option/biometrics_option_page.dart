@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local_auth/error_codes.dart' as authError;
 import 'package:local_auth/local_auth.dart';
+import 'package:mounae/pages/connect_bank_onboarding/connect_bank_onboarding.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:system_settings/system_settings.dart';
@@ -24,8 +25,6 @@ class _BiometricsOptionPageState extends State<BiometricsOptionPage> {
 
   LocalAuthentication localAuthentication = LocalAuthentication();
 
-  void onContinueButtonPressed() {}
-
   void onAuthoriseButtonPressed() async {
     try {
       if (await localAuthentication.canCheckBiometrics) {
@@ -36,8 +35,7 @@ class _BiometricsOptionPageState extends State<BiometricsOptionPage> {
         );
 
         if (didAuthenticate) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Authentication Successful')));
+          _openConnectBankOnboardingPage();
         }
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -98,6 +96,14 @@ class _BiometricsOptionPageState extends State<BiometricsOptionPage> {
   void _onOpenSecuritySettings() {
     SystemSettings.security();
   }
+
+  void onCancelButtonPressed() {
+    _openConnectBankOnboardingPage();
+  }
+
+  void _openConnectBankOnboardingPage() {
+    Navigator.of(context).pushNamed(ConnectBankOnboardingPage.path);
+  }
 }
 
 class _BiometricsOptionView
@@ -148,7 +154,7 @@ class _BiometricsOptionView
                 height: 16.sp,
               ),
               TextButton.icon(
-                onPressed: () {},
+                onPressed: state.onCancelButtonPressed,
                 icon: Icon(Icons.cancel),
                 label: Text('Cancel'),
                 style: Theme.of(context).textButtonTheme.style.copyWith(

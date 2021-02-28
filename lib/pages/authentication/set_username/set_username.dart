@@ -4,14 +4,14 @@ import 'package:mounae/pages/authentication/set_passcode/set_passcode_page.dart'
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
-class SetUsername extends StatefulWidget {
+class SetUsernamePage extends StatefulWidget {
   static const String path = '/authentication/set-username';
 
   @override
-  _SetUsernameState createState() => _SetUsernameState();
+  _SetUsernamePageState createState() => _SetUsernamePageState();
 }
 
-class _SetUsernameState extends State<SetUsername> {
+class _SetUsernamePageState extends State<SetUsernamePage> {
   @override
   Widget build(BuildContext context) {
     return _SetUsernameView(this);
@@ -37,8 +37,9 @@ class _SetUsernameState extends State<SetUsername> {
   }
 }
 
-class _SetUsernameView extends WidgetView<SetUsername, _SetUsernameState> {
-  _SetUsernameView(_SetUsernameState state) : super(state);
+class _SetUsernameView
+    extends WidgetView<SetUsernamePage, _SetUsernamePageState> {
+  _SetUsernameView(_SetUsernamePageState state) : super(state);
 
   @override
   Widget build(BuildContext context) {
