@@ -22,4 +22,6 @@ class MounaeColors {
   static final hintTextColor = Color(0xFFC1C1C1);
   static final dividerColor = Color(0xFFE7E7E7);
   static final debitReductionAlertColor = Color(0xFFFFC9A8);
+  static final greyBorderColor = Color(0xFFF7F7F7);
+  static final greySurfaceColor = Color(0xFFF7F7F7);
 }

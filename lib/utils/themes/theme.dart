@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
@@ -78,6 +79,8 @@ class MounaeThemeData {
         primaryTextTheme: getTextTheme(MounaeColors.primaryColor),
         accentTextTheme: getTextTheme(MounaeColors.accentTextColor),
         appBarTheme: AppBarTheme(
+          centerTitle: true,
+          elevation: 0.sp,
           brightness: Brightness.light,
           color: MounaeColors.appBarColor,
           iconTheme: IconThemeData(color: MounaeColors.writingColor),

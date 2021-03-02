@@ -9,18 +9,17 @@ import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
 
-class ConnectBankOnboardingPage extends StatefulWidget {
-  static const String path = '/connect-bank-onboarding';
+class AccountBankFeaturePage extends StatefulWidget {
+  static const String path = '/index/account/bank-feature';
 
   @override
-  _ConnectBankOnboardingPageState createState() =>
-      _ConnectBankOnboardingPageState();
+  _AccountBankFeaturePageState createState() => _AccountBankFeaturePageState();
 }
 
-class _ConnectBankOnboardingPageState extends State<ConnectBankOnboardingPage> {
+class _AccountBankFeaturePageState extends State<AccountBankFeaturePage> {
   @override
   Widget build(BuildContext context) {
-    return _ConnectBankOnboardingView(this);
+    return _AccountBankFeatureView(this);
   }
 
   void onAddBankAccountButtonPressed() {
@@ -30,15 +29,36 @@ class _ConnectBankOnboardingPageState extends State<ConnectBankOnboardingPage> {
   void onSkipButtonPressed() {}
 }
 
-class _ConnectBankOnboardingView extends WidgetView<ConnectBankOnboardingPage,
-    _ConnectBankOnboardingPageState> {
-  _ConnectBankOnboardingView(_ConnectBankOnboardingPageState state)
-      : super(state);
+class _AccountBankFeatureView
+    extends WidgetView<AccountBankFeaturePage, _AccountBankFeaturePageState> {
+  _AccountBankFeatureView(_AccountBankFeaturePageState state) : super(state);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MounaeColors.primaryColor,
+      appBar: AppBar(
+        title: Text(
+          'Accounts',
+          style: Theme.of(context)
+              .appBarTheme
+              .textTheme
+              .headline6
+              .copyWith(color: MounaeColors.primaryTextColor),
+        ),
+        leading: IconButton(
+          icon: Icon(
+            Icons.chevron_left,
+            size: 40.sp,
+            color: MounaeColors.primaryTextColor,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+        backgroundColor: MounaeColors.primaryColor,
+        automaticallyImplyLeading: false,
+      ),
       body: Container(
         child: Stack(
           children: [
@@ -59,23 +79,7 @@ class _ConnectBankOnboardingView extends WidgetView<ConnectBankOnboardingPage,
               padding: EdgeInsets.symmetric(horizontal: 16.sp),
               child: Column(
                 children: [
-                  SizedBox(height: 52.sp),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: state.onSkipButtonPressed,
-                      child: Text('Skip>>'),
-                      style: Theme.of(context).textButtonTheme.style.copyWith(
-                            overlayColor: MaterialStateProperty.all<Color>(
-                              Color(0xFFFFFFFF).withOpacity(0.2),
-                            ),
-                            foregroundColor: MaterialStateProperty.all<Color>(
-                              Color(0xFFFFFFFF),
-                            ),
-                          ),
-                    ),
-                  ),
-                  SizedBox(height: 72.sp),
+                  SizedBox(height: 84.sp),
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
