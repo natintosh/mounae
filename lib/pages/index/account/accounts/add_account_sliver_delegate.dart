@@ -74,15 +74,13 @@ class AddAccountSliverDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  // TODO: implement maxExtent
   double get maxExtent => height;
 
   @override
-  // TODO: implement minExtent
   double get minExtent => height;
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
-    return true;
+    return false;
   }
 }

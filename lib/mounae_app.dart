@@ -13,6 +13,7 @@ import 'package:mounae/pages/authentication/set_username/set_username.dart';
 import 'package:mounae/pages/authentication/signup/signup_page.dart';
 import 'package:mounae/pages/connect_bank_onboarding/connect_bank_onboarding.dart';
 import 'package:mounae/pages/index/account/accounts/accounts_page.dart';
+import 'package:mounae/pages/index/account/bank_account/bank_account_page.dart';
 import 'package:mounae/pages/index/account/bank_feature/bank_feature_page.dart';
 import 'package:mounae/pages/index/account/choose_bank/choose_bank_page.dart';
 import 'package:mounae/pages/index/account/information/information_page.dart';
@@ -118,6 +119,9 @@ class _MounaeAppState extends State<MounaeApp> {
         break;
       case AccountBankFeaturePage.path:
         builder = AccountBankFeaturePage();
+        break;
+      case AccountBankAccountPage.path:
+        builder = AccountBankAccountPage();
         break;
       default:
         throw new Exception("MounaeApp: Invalid Page Route ${settings.name}");
