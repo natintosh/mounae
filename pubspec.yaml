@@ -67,7 +67,11 @@ flutter:
     - assets/svg/fingerprint.svg
     - assets/svg/bank.svg
     - assets/svg/bank_building.svg
+    - assets/svg/bank_building_right.svg
     - assets/svg/contained_add.svg
+    - assets/svg/assets_buildings.svg
+    - assets/svg/investment_portfolio.svg
+    - assets/svg/savings_people_right.svg
 
   # Logo Screen
     - assets/svg/logo/chevron_north.svg

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mounae/pages/index/account/choose_bank/choose_bank_page.dart';
+import 'package:mounae/pages/index/overview/overview_page.dart';
 import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
@@ -27,7 +28,9 @@ class _ConnectBankOnboardingPageState extends State<ConnectBankOnboardingPage> {
     Navigator.of(context).pushNamed(AccountChooseBankPage.path);
   }
 
-  void onSkipButtonPressed() {}
+  void onSkipButtonPressed() {
+    Navigator.of(context).pushNamed(OverviewPage.path);
+  }
 }
 
 class _ConnectBankOnboardingView extends WidgetView<ConnectBankOnboardingPage,

@@ -25,4 +25,12 @@ class MounaeColors {
   static final greyBorderColor = Color(0xFFF7F7F7);
   static final greySurfaceColor = Color(0xFFF7F7F7);
   static final greyDescriptionColor = Color(0xFFC1C1C1);
+  static final investmentPortfolioColor = Color(0xFF70A867);
+  static final assetsColor = Color(0xFFFFC9A8);
+  static final savingsColor = Color(0xFFB2DF8A);
+  static final debtTextColor = Color(0xFFB2DF8A);
+  static final expensesTextColor = Color(0xFFA6CEE3);
+  static final incomeTextColor = Color(0xFF635EA8);
+  static final balanceCaptionTextColor = Color(0xFFD3D0F9);
+  static final expenseCaptionTextColor = Color(0xFF635EA8);
 }
