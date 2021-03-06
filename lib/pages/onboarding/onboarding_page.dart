@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mounae/pages/authentication/signin/signin_page.dart';
 import 'package:mounae/pages/authentication/signup/signup_page.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -41,8 +42,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     });
   }
 
-  void signUpButtonPressed() {
+  void onSignUpButtonPressed() {
     Navigator.of(context).pushNamed(SignUpPage.path);
+  }
+
+  void onSignInButtonPressed() {
+    Navigator.of(context).pushNamed(SignInPage.path);
   }
 }
 
@@ -91,7 +96,7 @@ class _OnBoardingScreenView
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextButton(
-                    onPressed: () {},
+                    onPressed: state.onSignInButtonPressed,
                     child: Text('Sign In'),
                   ),
                   DotIndicator(
@@ -99,7 +104,7 @@ class _OnBoardingScreenView
                     count: 3,
                   ),
                   TextButton(
-                    onPressed: state.signUpButtonPressed,
+                    onPressed: state.onSignUpButtonPressed,
                     child: Text('Sign Up'),
                   ),
                 ],
@@ -150,7 +155,9 @@ class OnBoardingDetails extends StatelessWidget {
               child: Text(
                 title,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).primaryTextTheme.headline6,
+                style: Theme.of(context).primaryTextTheme.subtitle1.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
               ),
             ),
             SizedBox(

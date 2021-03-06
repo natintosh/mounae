@@ -7,9 +7,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/pages/authentication/fingerprint_option/biometrics_option_page.dart';
 import 'package:mounae/pages/authentication/otp_send/otp_send_page.dart';
 import 'package:mounae/pages/authentication/otp_verification/otp_verification_page.dart';
+import 'package:mounae/pages/authentication/passcode/passcode_page.dart';
 import 'package:mounae/pages/authentication/set_passcode/set_passcode_page.dart';
 import 'package:mounae/pages/authentication/set_passcode_confirmation/set_passcode_confirmation_page.dart';
 import 'package:mounae/pages/authentication/set_username/set_username.dart';
+import 'package:mounae/pages/authentication/signin/signin_page.dart';
 import 'package:mounae/pages/authentication/signup/signup_page.dart';
 import 'package:mounae/pages/connect_bank_onboarding/connect_bank_onboarding.dart';
 import 'package:mounae/pages/index/account/accounts/accounts_page.dart';
@@ -85,6 +87,12 @@ class _MounaeAppState extends State<MounaeApp> {
         break;
       case OnBoardingPage.path:
         builder = OnBoardingPage();
+        break;
+      case SignInPage.path:
+        builder = SignInPage();
+        break;
+      case PassCodePage.path:
+        builder = PassCodePage();
         break;
       case SignUpPage.path:
         builder = SignUpPage();
