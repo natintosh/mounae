@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
+import 'package:mounae/pages/index/account/accounts/accounts_page.dart';
 import 'package:mounae/pages/index/finance/finance/finance_page.dart';
 import 'package:mounae/pages/index/overview/widgets/assets_card.dart';
 import 'package:mounae/pages/index/overview/widgets/bank_balance_card.dart';
@@ -31,6 +32,10 @@ class _OverviewPageState extends State<OverviewPage> {
 
   void onFinancialHealthCardTapped() {
     Navigator.of(context).pushNamed(FinancePage.path);
+  }
+
+  void onBankBalanceCardTapped() {
+    Navigator.of(context).pushNamed(AccountsPage.path);
   }
 }
 
@@ -101,7 +106,9 @@ class _OverPageView extends WidgetView<OverviewPage, _OverviewPageState> {
                       onTap: state.onFinancialHealthCardTapped,
                     ),
                     SizedBox(height: 16.sp),
-                    BankBalanceCard(),
+                    BankBalanceCard(
+                      onTap: state.onBankBalanceCardTapped,
+                    ),
                     SizedBox(height: 16.sp),
                     SavingsCard(),
                     SizedBox(height: 16.sp),
