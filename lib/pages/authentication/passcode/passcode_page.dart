@@ -145,14 +145,15 @@ class _PassCodeView extends WidgetView<PassCodePage, _PassCodePageState> {
         automaticallyImplyLeading: false,
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 24.sp, horizontal: 24.sp),
         child: Column(
           children: [
             Expanded(
               child: SingleChildScrollView(
+                padding:
+                    EdgeInsets.symmetric(vertical: 24.sp, horizontal: 24.sp),
                 child: Column(
                   children: [
-                    SizedBox(height: 48.sp),
+                    SizedBox(height: 24.sp),
                     Row(
                       children: [
                         Expanded(
@@ -219,38 +220,41 @@ class _PassCodeView extends WidgetView<PassCodePage, _PassCodePageState> {
                         ),
                       ),
                     ),
+                    SizedBox(height: 36.sp),
+                    Container(
+                      alignment: Alignment.center,
+                      child: Text(
+                        'Use Fingerprint',
+                        style: Theme.of(context).primaryTextTheme.bodyText2,
+                      ),
+                    ),
+                    SizedBox(height: 8.sp),
+                    Container(
+                      padding: EdgeInsets.all(4.sp),
+                      clipBehavior: Clip.antiAlias,
+                      decoration: ShapeDecoration(shape: CircleBorder()),
+                      child: InkWell(
+                        onTap: state.onAuthoriseButtonPressed,
+                        child: SvgPicture.asset(
+                          'assets/svg/fingerprint.svg',
+                          clipBehavior: Clip.antiAlias,
+                          width: 48.sp,
+                          height: 48.sp,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 36.sp),
                   ],
                 ),
               ),
             ),
-            SizedBox(
+            Container(
               width: double.infinity,
+              padding: EdgeInsets.symmetric(horizontal: 24.sp) +
+                  EdgeInsets.only(bottom: 14.sp),
               child: ElevatedButton(
                 onPressed: state.onContinueButtonPressed,
                 child: Text('Continue'),
-              ),
-            ),
-            SizedBox(height: 36.sp),
-            Container(
-              alignment: Alignment.center,
-              child: Text(
-                'Use Fingerprint',
-                style: Theme.of(context).primaryTextTheme.bodyText2,
-              ),
-            ),
-            SizedBox(height: 8.sp),
-            Container(
-              padding: EdgeInsets.all(4.sp),
-              clipBehavior: Clip.antiAlias,
-              decoration: ShapeDecoration(shape: CircleBorder()),
-              child: InkWell(
-                onTap: state.onAuthoriseButtonPressed,
-                child: SvgPicture.asset(
-                  'assets/svg/fingerprint.svg',
-                  clipBehavior: Clip.antiAlias,
-                  width: 48.sp,
-                  height: 48.sp,
-                ),
               ),
             ),
           ],
