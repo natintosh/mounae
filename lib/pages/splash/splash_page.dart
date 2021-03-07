@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/pages/onboarding/onboarding_page.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:sized_context/sized_context.dart';
 
@@ -27,7 +28,10 @@ class _SplashPageState extends State<SplashPage>
       duration: Duration(milliseconds: 2000),
     )..addListener(() {
         if (controller.isCompleted) {
-          Navigator.of(context).pushReplacementNamed(OnBoardingPage.path);
+          AppRouterDelegate delegate = AppRouterDelegate.of(context);
+          delegate.push(
+            OnboardingRouteConfiguration(),
+          );
         }
       });
     circleVisibilityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(

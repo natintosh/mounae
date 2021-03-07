@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mounae/routes/page_configuration.dart';
@@ -38,6 +41,10 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     return SynchronousFuture(false);
   }
 
+  static AppRouterDelegate of(BuildContext context) {
+    return Router.of(context).routerDelegate as AppRouterDelegate;
+  }
+
   bool _onPopPage(Route route, result) {
     final bool didPop = route.didPop(result);
     if (!didPop) {
@@ -56,11 +63,20 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     notifyListeners();
   }
 
-  MaterialPage _createPage(PageConfiguration config) {
+  Page _createPage(PageConfiguration config) {
+    if (Platform.isIOS) {
+      return CupertinoPage(
+        child: config.child,
+        key: ValueKey(config.name),
+        name: config.name,
+        arguments: config,
+      );
+    }
+
     return MaterialPage(
       child: config.child,
-      key: ValueKey(config.path),
-      name: config.path,
+      key: ValueKey(config.name),
+      name: config.name,
       arguments: config,
     );
   }
@@ -71,7 +87,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
 
   void addPage(PageConfiguration config) {
     final shouldAddPage = _pages.isEmpty ||
-        (_pages.last.arguments as PageConfiguration).path != config.path;
+        (_pages.last.arguments as PageConfiguration).name != config.name;
 
     if (shouldAddPage) {
       _addPageData(config);
