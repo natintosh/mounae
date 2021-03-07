@@ -25,6 +25,7 @@ import 'package:mounae/pages/onboarding/onboarding_page.dart';
 import 'package:mounae/pages/splash/splash_page.dart';
 import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/providers/preference_provider.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -53,12 +54,13 @@ class _MounaeAppState extends State<MounaeApp> {
     return ScreenUtilInit(
       designSize: Size(360, 760),
       builder: () {
-        return MaterialApp(
+        return MaterialApp.router(
           title: 'Mounae',
           debugShowCheckedModeBanner: false,
           theme: MounaeThemeData.lightTheme,
-          initialRoute: '/',
-          onGenerateRoute: onGenerateRoute,
+          // initialRoute: '/',
+          routerDelegate: AppRouterDelegate(),
+          routeInformationParser: null,
           builder: (context, child) {
             return MultiProvider(
               providers: [
