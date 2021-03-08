@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/routes/Page_configuration.dart';
 
 class AppRouteInformationParser
     extends RouteInformationParser<PageConfiguration> {
@@ -32,6 +32,18 @@ class AppRouteInformationParser
         return SynchronousFuture(PassCodeConfiguration());
       case IndexConfiguration.path:
         return SynchronousFuture(IndexConfiguration());
+      case FinanceConfiguration.path:
+        return SynchronousFuture(FinanceConfiguration());
+      case AccountConfiguration.path:
+        return SynchronousFuture(AccountConfiguration());
+      case AccountBankAccountConfiguration.path:
+        return SynchronousFuture(AccountBankAccountConfiguration());
+      case AccountBankFeatureConfiguration.path:
+        return SynchronousFuture(AccountBankFeatureConfiguration());
+      case AccountChooseBankConfiguration.path:
+        return SynchronousFuture(AccountChooseBankConfiguration());
+      case AccountBankInformationConfiguration.path:
+        return SynchronousFuture(AccountBankInformationConfiguration());
       default:
         return SynchronousFuture(SplashRouteConfiguration());
     }

@@ -14,14 +14,13 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     return Navigator(
       key: navigatorKey,
       pages: List.of(_pages),
-      onPopPage: _onPopPage,
+      onPopPage: _onPopScreen,
     );
   }
 
   @override
-  PageConfiguration get currentConfiguration => _pages.isNotEmpty
-      ? _pages.last.arguments as PageConfiguration
-      : SplashRouteConfiguration();
+  PageConfiguration get currentConfiguration =>
+      _pages.isNotEmpty ? _pages.last.arguments as PageConfiguration : null;
 
   @override
   GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
@@ -29,14 +28,14 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   @override
   Future<void> setNewRoutePath(PageConfiguration configuration) {
     _pages.clear();
-    _addPage(configuration);
+    _addScreen(configuration);
     return SynchronousFuture(null);
   }
 
   @override
   Future<bool> popRoute() {
     if (_pages.length > 1) {
-      _removePage(_pages.last);
+      _removeScreen(_pages.last);
       return SynchronousFuture(true);
     }
     return SynchronousFuture(false);
@@ -46,7 +45,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     return Router.of(context).routerDelegate as AppRouterDelegate;
   }
 
-  bool _onPopPage(Route route, result) {
+  bool _onPopScreen(Route route, result) {
     final didPop = route.didPop(result);
     if (!didPop) {
       return false;
@@ -57,14 +56,14 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     return true;
   }
 
-  void _removePage(Page page) {
+  void _removeScreen(Page page) {
     if (page != null) {
       _pages.remove(page);
     }
     notifyListeners();
   }
 
-  Page _createPage(PageConfiguration config) {
+  Page _createScreen(PageConfiguration config) {
     if (kIsWeb) {
       return MaterialPage(
         child: config.child,
@@ -90,16 +89,16 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     );
   }
 
-  void _addPageData(PageConfiguration config) {
-    _pages.add(_createPage(config));
+  void _addScreenData(PageConfiguration config) {
+    _pages.add(_createScreen(config));
   }
 
-  void _addPage(PageConfiguration config) {
-    final shouldAddPage = _pages.isEmpty ||
+  void _addScreen(PageConfiguration config) {
+    final shouldAddScreen = _pages.isEmpty ||
         (_pages.last.arguments as PageConfiguration).name != config.name;
 
-    if (shouldAddPage) {
-      _addPageData(config);
+    if (shouldAddScreen) {
+      _addScreenData(config);
     }
 
     notifyListeners();
@@ -109,7 +108,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     if (_pages.isNotEmpty) {
       _pages.removeLast();
     }
-    _addPage(newRoute);
+    _addScreen(newRoute);
   }
 
   void setPath(List<MaterialPage> path) {
@@ -123,11 +122,11 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   void push(PageConfiguration newRoute) {
-    _addPage(newRoute);
+    _addScreen(newRoute);
   }
 
   void pushWidget(PageConfiguration newRoute) {
-    _addPageData(newRoute);
+    _addScreenData(newRoute);
     notifyListeners();
   }
 }
