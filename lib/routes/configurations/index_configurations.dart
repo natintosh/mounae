@@ -69,3 +69,13 @@ class AccountBankInformationConfiguration extends PageConfiguration {
   @override
   String get name => path;
 }
+
+class SettingsConfiguration extends PageConfiguration {
+  static const String path = SettingsScreen.path;
+
+  @override
+  Widget get child => SettingsScreen();
+
+  @override
+  String get name => path;
+}

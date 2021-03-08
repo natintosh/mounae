@@ -35,7 +35,7 @@ class _IndexScreenState extends State<IndexScreen> {
 }
 
 class _IndexScreenView extends WidgetView<IndexScreen, _IndexScreenState> {
-  _IndexScreenView(State<StatefulWidget> state) : super(state);
+  _IndexScreenView(_IndexScreenState state) : super(state);
 
   @override
   Widget build(BuildContext context) {
