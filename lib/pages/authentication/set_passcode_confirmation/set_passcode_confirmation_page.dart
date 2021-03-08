@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:mounae/pages/authentication/fingerprint_option/biometrics_option_page.dart';
+import 'package:mounae/pages/authentication/biometric_option/biometrics_option_page.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 

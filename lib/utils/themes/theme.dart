@@ -88,6 +88,9 @@ class MounaeThemeData {
               IconThemeData(color: MounaeColors.actionIconButtonColor),
           textTheme: getTextTheme(MounaeColors.writingColor),
         ),
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          selectedItemColor: MounaeColors.navigatorColor,
+        ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             padding: EdgeInsets.all(16.sp),

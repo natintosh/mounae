@@ -19,8 +19,9 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   @override
-  PageConfiguration get currentConfiguration =>
-      _pages.last.arguments as PageConfiguration;
+  PageConfiguration get currentConfiguration => _pages.isNotEmpty
+      ? _pages.last.arguments as PageConfiguration
+      : SplashRouteConfiguration();
 
   @override
   GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
@@ -28,7 +29,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   @override
   Future<void> setNewRoutePath(PageConfiguration configuration) {
     _pages.clear();
-    addPage(configuration);
+    _addPage(configuration);
     return SynchronousFuture(null);
   }
 
@@ -46,12 +47,12 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   bool _onPopPage(Route route, result) {
-    final bool didPop = route.didPop(result);
+    final didPop = route.didPop(result);
     if (!didPop) {
       return false;
     }
-    _pages.remove(route.settings);
 
+    _pages.removeLast();
     notifyListeners();
     return true;
   }
@@ -64,6 +65,14 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   Page _createPage(PageConfiguration config) {
+    if (kIsWeb) {
+      return MaterialPage(
+        child: config.child,
+        key: ValueKey(config.name),
+        name: config.name,
+        arguments: config,
+      );
+    }
     if (Platform.isIOS) {
       return CupertinoPage(
         child: config.child,
@@ -85,7 +94,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     _pages.add(_createPage(config));
   }
 
-  void addPage(PageConfiguration config) {
+  void _addPage(PageConfiguration config) {
     final shouldAddPage = _pages.isEmpty ||
         (_pages.last.arguments as PageConfiguration).name != config.name;
 
@@ -100,7 +109,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     if (_pages.isNotEmpty) {
       _pages.removeLast();
     }
-    addPage(newRoute);
+    _addPage(newRoute);
   }
 
   void setPath(List<MaterialPage> path) {
@@ -114,7 +123,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   void push(PageConfiguration newRoute) {
-    addPage(newRoute);
+    _addPage(newRoute);
   }
 
   void pushWidget(PageConfiguration newRoute) {

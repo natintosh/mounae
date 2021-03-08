@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:mounae/pages/authentication/passcode/passcode_page.dart';
-import 'package:mounae/pages/authentication/signup/signup_page.dart';
 import 'package:mounae/providers/auth_provider.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
@@ -69,11 +69,11 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void _openPassCodePage() {
-    Navigator.of(context).pushNamed(PassCodePage.path);
+    AppRouterDelegate.of(context).push(PassCodeConfiguration());
   }
 
   void onSignUpTextTapped() {
-    Navigator.of(context).pushNamed(SignUpPage.path);
+    AppRouterDelegate.of(context).push(SignUpRouteConfiguration());
   }
 }
 

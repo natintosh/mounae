@@ -7,8 +7,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local_auth/error_codes.dart' as authError;
 import 'package:local_auth/local_auth.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:mounae/pages/index/overview/overview_page.dart';
 import 'package:mounae/providers/auth_provider.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
@@ -122,7 +123,7 @@ class _PassCodePageState extends State<PassCodePage> {
   void onForgotPassCodeTextTapped() {}
 
   void _openIndexOverviewPage() {
-    Navigator.of(context).pushNamed(OverviewPage.path);
+    AppRouterDelegate.of(context).replaceAll(IndexConfiguration());
   }
 }
 

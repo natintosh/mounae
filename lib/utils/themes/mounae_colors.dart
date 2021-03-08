@@ -33,4 +33,5 @@ class MounaeColors {
   static final incomeTextColor = Color(0xFF635EA8);
   static final balanceCaptionTextColor = Color(0xFFD3D0F9);
   static final expenseCaptionTextColor = Color(0xFF635EA8);
+  static final navigatorColor = Color(0xFFA7A2F4);
 }

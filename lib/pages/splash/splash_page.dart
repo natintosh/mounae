@@ -28,10 +28,7 @@ class _SplashPageState extends State<SplashPage>
       duration: Duration(milliseconds: 2000),
     )..addListener(() {
         if (controller.isCompleted) {
-          AppRouterDelegate delegate = AppRouterDelegate.of(context);
-          delegate.push(
-            OnboardingRouteConfiguration(),
-          );
+          onSplashAnimationCompleted();
         }
       });
     circleVisibilityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -86,6 +83,10 @@ class _SplashPageState extends State<SplashPage>
   Animation<double> northVisibilityAnimation;
   Animation<double> southVisibilityAnimation;
   Animation<double> iconTranslationAnimation;
+
+  void onSplashAnimationCompleted() {
+    AppRouterDelegate.of(context).replace(OnboardingRouteConfiguration());
+  }
 }
 
 class _SplashScreenView extends WidgetView<SplashPage, _SplashPageState> {

@@ -18,6 +18,10 @@ class _MounaeAppState extends State<MounaeApp> {
   static final GlobalKey<ScaffoldState> globalScaffoldKey =
       GlobalKey<ScaffoldState>();
 
+  final AppRouterDelegate _routerDelegate = AppRouterDelegate();
+  final AppRouteInformationParser _informationParser =
+      AppRouteInformationParser();
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(
@@ -38,8 +42,8 @@ class _MounaeAppState extends State<MounaeApp> {
           title: 'Mounae',
           debugShowCheckedModeBanner: false,
           theme: MounaeThemeData.lightTheme,
-          routerDelegate: AppRouterDelegate(),
-          routeInformationParser: AppRouteInformationParser(),
+          routerDelegate: _routerDelegate,
+          routeInformationParser: _informationParser,
           builder: (context, child) {
             return MultiProvider(
               providers: [

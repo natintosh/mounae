@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mounae/routes/page_configuration.dart';
 
@@ -5,20 +6,34 @@ class AppRouteInformationParser
     extends RouteInformationParser<PageConfiguration> {
   @override
   Future<PageConfiguration> parseRouteInformation(
-      RouteInformation routeInformation) async {
-    final uri = Uri.parse(routeInformation.location);
-
-    switch (uri.path) {
+      RouteInformation routeInformation) {
+    switch (routeInformation.location) {
       case SplashRouteConfiguration.path:
-        return SplashRouteConfiguration();
+        return SynchronousFuture(SplashRouteConfiguration());
       case OnboardingRouteConfiguration.path:
-        return OnboardingRouteConfiguration();
+        return SynchronousFuture(OnboardingRouteConfiguration());
       case SignInRouteConfiguration.path:
-        return SignInRouteConfiguration();
+        return SynchronousFuture(SignInRouteConfiguration());
       case SignUpRouteConfiguration.path:
-        return SignUpRouteConfiguration();
+        return SynchronousFuture(SignUpRouteConfiguration());
+      case OtpSendRouteConfiguration.path:
+        return SynchronousFuture(OtpSendRouteConfiguration());
+      case OtpVerificationConfiguration.path:
+        return SynchronousFuture(OtpVerificationConfiguration());
+      case SetUsernameConfiguration.path:
+        return SynchronousFuture(SetUsernameConfiguration());
+      case SetPassCodeConfiguration.path:
+        return SynchronousFuture(SetPassCodeConfiguration());
+      case SetPassCodeConfirmationConfiguration.path:
+        return SynchronousFuture(SetPassCodeConfirmationConfiguration());
+      case BiometricsOptionConfiguration.path:
+        return SynchronousFuture(BiometricsOptionConfiguration());
+      case PassCodeConfiguration.path:
+        return SynchronousFuture(PassCodeConfiguration());
+      case IndexConfiguration.path:
+        return SynchronousFuture(IndexConfiguration());
       default:
-        return SplashRouteConfiguration();
+        return SynchronousFuture(SplashRouteConfiguration());
     }
   }
 

@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/pages/authentication/signin/signin_page.dart';
-import 'package:mounae/pages/authentication/signup/signup_page.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class OnBoardingPage extends StatefulWidget {
@@ -43,11 +43,11 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   }
 
   void onSignUpButtonPressed() {
-    Navigator.of(context).pushNamed(SignUpPage.path);
+    AppRouterDelegate.of(context).push(SignUpRouteConfiguration());
   }
 
   void onSignInButtonPressed() {
-    Navigator.of(context).pushNamed(SignInPage.path);
+    AppRouterDelegate.of(context).push(SignInRouteConfiguration());
   }
 }
 
