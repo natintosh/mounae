@@ -27,7 +27,9 @@ class _BudgetScreenState extends State<BudgetScreen> {
     AppRouterDelegate.of(context).replaceAll(IndexConfiguration());
   }
 
-  void onAddBudgetHeaderTapped() {}
+  void onAddBudgetHeaderTapped() {
+    AppRouterDelegate.of(context).push(BudgetCreateBudgetPlanConfiguration());
+  }
 }
 
 class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
@@ -38,6 +40,7 @@ class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
     return Scaffold(
       backgroundColor: MounaeColors.greySurfaceColor,
       body: NestedScrollView(
+        key: state.nestedScrollKey,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return <Widget>[
             SliverAppBar(
@@ -59,11 +62,12 @@ class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
               sliver: SliverPersistentHeader(
                 pinned: true,
                 delegate: AddBudgetSliverDelegate(
-                    title: 'Create a Budget Plan',
-                    subTitle:
-                        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
-                    height: 106.sp,
-                    onTap: state.onAddBudgetHeaderTapped),
+                  title: 'Create a Budget Plan',
+                  subTitle:
+                      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam',
+                  height: 106.sp,
+                  onTap: state.onAddBudgetHeaderTapped,
+                ),
               ),
             ),
           ];

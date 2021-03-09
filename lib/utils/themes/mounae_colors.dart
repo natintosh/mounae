@@ -38,4 +38,6 @@ class MounaeColors {
   static final purpleProgressMinorColor = Color(0xFFD0CEE5);
   static final limeProgressMajorColor = Color(0xFF33A02E);
   static final limeProgressMinorColor = Color(0xFFB2DF8A);
+  static final createBudgetIncomePlanColor = Color(0xFF9AC294);
+  static final createBudgetExpensePlanColor = Color(0xFFFFC9A8);
 }
