@@ -85,7 +85,7 @@ class _SplashScreenState extends State<SplashScreen>
   Animation<double> iconTranslationAnimation;
 
   void onSplashAnimationCompleted() {
-    AppRouterDelegate.of(context).replace(OnboardingRouteConfiguration());
+    AppRouterDelegate.of(context).replace(OnBoardingRouteConfiguration());
   }
 }
 

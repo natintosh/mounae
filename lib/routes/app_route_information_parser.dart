@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mounae/routes/Page_configuration.dart';
+import 'package:mounae/routes/page_configuration.dart';
 
 class AppRouteInformationParser
     extends RouteInformationParser<PageConfiguration> {
@@ -10,8 +10,8 @@ class AppRouteInformationParser
     switch (routeInformation.location) {
       case SplashRouteConfiguration.path:
         return SynchronousFuture(SplashRouteConfiguration());
-      case OnboardingRouteConfiguration.path:
-        return SynchronousFuture(OnboardingRouteConfiguration());
+      case OnBoardingRouteConfiguration.path:
+        return SynchronousFuture(OnBoardingRouteConfiguration());
       case SignInRouteConfiguration.path:
         return SynchronousFuture(SignInRouteConfiguration());
       case SignUpRouteConfiguration.path:

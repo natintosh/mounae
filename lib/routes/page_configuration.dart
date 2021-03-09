@@ -14,6 +14,7 @@ import 'package:mounae/screens/index/account/bank_account/bank_account_screen.da
 import 'package:mounae/screens/index/account/bank_feature/bank_feature_screen.dart';
 import 'package:mounae/screens/index/account/choose_bank/choose_bank_screen.dart';
 import 'package:mounae/screens/index/account/information/information_screen.dart';
+import 'package:mounae/screens/index/budget/budget/budget_screen.dart';
 import 'package:mounae/screens/index/finance/finance/finance_screen.dart';
 import 'package:mounae/screens/index/index/index_screen.dart';
 import 'package:mounae/screens/index/settings/settings/settings_screen.dart';

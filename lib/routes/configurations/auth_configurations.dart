@@ -10,7 +10,7 @@ class SplashRouteConfiguration extends PageConfiguration {
   Widget get child => SplashScreen();
 }
 
-class OnboardingRouteConfiguration extends PageConfiguration {
+class OnBoardingRouteConfiguration extends PageConfiguration {
   static const String path = OnBoardingScreen.path;
 
   @override

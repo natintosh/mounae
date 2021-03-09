@@ -13,6 +13,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   Widget build(BuildContext context) {
     return Navigator(
       key: navigatorKey,
+      observers: [HeroController()],
       pages: List.of(_pages),
       onPopPage: _onPopScreen,
     );

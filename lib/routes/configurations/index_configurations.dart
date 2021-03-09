@@ -79,3 +79,13 @@ class SettingsConfiguration extends PageConfiguration {
   @override
   String get name => path;
 }
+
+class BudgetConfiguration extends PageConfiguration {
+  static const String path = BudgetScreen.path;
+
+  @override
+  Widget get child => BudgetScreen();
+
+  @override
+  String get name => path;
+}

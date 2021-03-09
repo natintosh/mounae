@@ -37,6 +37,10 @@ class _OverviewScreenState extends State<OverviewScreen> {
   void onBankBalanceCardTapped() {
     AppRouterDelegate.of(context).push(AccountConfiguration());
   }
+
+  void onBudgetingCardTapped() {
+    AppRouterDelegate.of(context).push(BudgetConfiguration());
+  }
 }
 
 class _OverScreenView extends WidgetView<OverviewScreen, _OverviewScreenState> {
@@ -45,6 +49,7 @@ class _OverScreenView extends WidgetView<OverviewScreen, _OverviewScreenState> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       backgroundColor: MounaeColors.greySurfaceColor,
       body: Container(
         child: NestedScrollView(
@@ -114,7 +119,9 @@ class _OverScreenView extends WidgetView<OverviewScreen, _OverviewScreenState> {
                     SizedBox(height: 16.sp),
                     TransactionsCard(),
                     SizedBox(height: 16.sp),
-                    BudgetingCard(),
+                    BudgetingCard(
+                      onTap: state.onBudgetingCardTapped,
+                    ),
                     SizedBox(height: 16.sp),
                     AssetsCard(),
                     SizedBox(height: 16.sp),
