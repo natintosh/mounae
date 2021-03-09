@@ -226,7 +226,7 @@ class MounaeThemeData {
       subtitle2: GoogleFonts.montserrat(
         color: color,
         fontSize: 16.sp,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.w400,
         letterSpacing: 0.1,
       ),
       bodyText1: GoogleFonts.montserrat(

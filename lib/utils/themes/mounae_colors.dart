@@ -34,4 +34,8 @@ class MounaeColors {
   static final balanceCaptionTextColor = Color(0xFFD3D0F9);
   static final expenseCaptionTextColor = Color(0xFF635EA8);
   static final navigatorColor = Color(0xFFA7A2F4);
+  static final purpleProgressMajorColor = Color(0xFF635EA8);
+  static final purpleProgressMinorColor = Color(0xFFD0CEE5);
+  static final limeProgressMajorColor = Color(0xFF33A02E);
+  static final limeProgressMinorColor = Color(0xFFB2DF8A);
 }
