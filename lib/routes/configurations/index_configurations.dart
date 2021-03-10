@@ -91,10 +91,30 @@ class BudgetConfiguration extends PageConfiguration {
 }
 
 class BudgetCreateBudgetPlanConfiguration extends PageConfiguration {
-  static const String path = CreateBudgetPlanScreen.path;
+  static const String path = BudgetCreateBudgetPlanScreen.path;
 
   @override
-  Widget get child => CreateBudgetPlanScreen();
+  Widget get child => BudgetCreateBudgetPlanScreen();
+
+  @override
+  String get name => path;
+}
+
+class BudgetIncomePlanConfiguration extends PageConfiguration {
+  static const String path = BudgetIncomePlanScreen.path;
+
+  @override
+  Widget get child => BudgetIncomePlanScreen();
+
+  @override
+  String get name => path;
+}
+
+class BudgetIncomeAmountConfiguration extends PageConfiguration {
+  static const String path = BudgetIncomeAmountScreen.path;
+
+  @override
+  Widget get child => BudgetIncomeAmountScreen();
 
   @override
   String get name => path;

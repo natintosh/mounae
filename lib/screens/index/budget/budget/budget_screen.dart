@@ -39,6 +39,7 @@ class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MounaeColors.greySurfaceColor,
+      extendBody: true,
       body: NestedScrollView(
         key: state.nestedScrollKey,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
