@@ -22,18 +22,17 @@ class _BudgetIncomePeriodicPlanScreenState
   }
 
   int index;
-  int dayIndex;
 
   void onPeriodGridTapped(int value) {
     setState(() {
       index = index == value ? null : value;
     });
+    context.read<DatePickerProvider>().singleDateSelection = value != 2;
+    context.read<DatePickerProvider>().reset();
   }
 
   void onDayGridTapped(int value) {
-    setState(() {
-      dayIndex = dayIndex == value ? null : value;
-    });
+    context.read<DatePickerProvider>().dayIndex = value;
   }
 
   void onContinueButtonPressed() {
@@ -116,7 +115,9 @@ class _BudgetIncomePeriodicPlanView extends WidgetView<
                               ),
                               SizedBox(height: 24.sp),
                               PeriodGrid(
-                                index: state.dayIndex,
+                                index: context
+                                    .watch<DatePickerProvider>()
+                                    .dayIndex,
                                 items: [
                                   'Monday',
                                   'Tuesday',
@@ -130,7 +131,7 @@ class _BudgetIncomePeriodicPlanView extends WidgetView<
                               ),
                             ],
                           )
-                        : state.index == 1
+                        : state.index != null
                             ? MonthlyDatePicker(
                                 key: ValueKey('monthlyDate'),
                                 focusedDate: context

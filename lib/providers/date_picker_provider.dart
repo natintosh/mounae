@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 import 'package:in_date_utils/in_date_utils.dart';
 
@@ -7,6 +9,33 @@ class DatePickerProvider extends ChangeNotifier {
   DateTime _selectedDate = DateTime.now();
 
   DateTime get currentDate => _currentDate;
+
+  Set<DateTime> _selectedDates = LinkedHashSet(
+    equals: DateUtils.isSameDay,
+    hashCode: (DateTime E) {
+      return E.hashCode;
+    },
+  );
+
+  bool _singleDateSelection = true;
+
+  set singleDateSelection(bool value) {
+    _singleDateSelection = value;
+    notifyListeners();
+  }
+
+  bool get singleDateSelection => _singleDateSelection;
+
+  int _dayIndex;
+
+  LinkedHashSet<DateTime> get selectedDates => _selectedDates;
+
+  set dayIndex(int value) {
+    _dayIndex = value;
+    notifyListeners();
+  }
+
+  int get dayIndex => _dayIndex;
 
   DateTime get focusedDate => _focusedDate;
 
@@ -28,14 +57,38 @@ class DatePickerProvider extends ChangeNotifier {
 
   void onMonthlyDatePickerDaySelected(
       DateTime selectedDay, DateTime focusedDay) {
-    if (!DateUtils.isSameDay(selectedDate, selectedDay)) {
-      selectedDate = selectedDay;
+    if (singleDateSelection) {
+      if (!DateUtils.isSameDay(selectedDate, selectedDay)) {
+        selectedDate = selectedDay;
+      }
+    } else {
+      if (selectedDates.length < 2) {
+        if (selectedDates.contains(selectedDay)) {
+          selectedDates.remove(selectedDay);
+        } else {
+          selectedDates.add(selectedDay);
+        }
+      } else {
+        if (selectedDates.contains(selectedDay)) {
+          selectedDates.remove(selectedDay);
+        }
+      }
     }
     focusedDate = focusedDay;
     notifyListeners();
   }
 
   bool selectedDayPredicate(DateTime day) {
-    return DateUtils.isSameDay(day, selectedDate);
+    return singleDateSelection
+        ? DateUtils.isSameDay(day, selectedDate)
+        : selectedDates.contains(day);
+  }
+
+  void reset() {
+    dayIndex = null;
+    focusedDate = DateTime.now();
+    selectedDate = DateTime.now();
+
+    notifyListeners();
   }
 }
