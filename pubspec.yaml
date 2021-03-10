@@ -33,12 +33,15 @@ dependencies:
   flutter_screenutil: ^5.0.0-nullsafety.7
   flutter_svg: ^0.20.0-nullsafety
   google_fonts: ^2.0.0
+  in_date_utils: ^1.0.1-nullsafety.0
   intl: ^0.17.0
   local_auth: ^1.1.0
   mask_text_input_formatter: ^2.0.0-nullsafety.2
   provider: ^5.0.0
   system_settings: ^1.0.1
   sized_context: ^1.0.0-nullsafety
+#  table_calendar: ^2.3.3
+  table_calendar: ^3.0.0-nullsafety.1
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +77,8 @@ flutter:
     - assets/svg/assets_buildings.svg
     - assets/svg/investment_portfolio.svg
     - assets/svg/savings_people_right.svg
+    - assets/svg/one_time.svg
+    - assets/svg/periodic.svg
 
   # Logo Screen
     - assets/svg/logo/chevron_north.svg

@@ -1,0 +1,177 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/size_extension.dart';
+import 'package:mounae/providers/date_picker_provider.dart';
+import 'package:mounae/screens/index/budget/income_plan/periodic_plan/widgets/monthly_date_picker.dart';
+import 'package:mounae/screens/index/budget/income_plan/periodic_plan/widgets/period_grid.dart';
+import 'package:mounae/utils/widget_view/widget_view.dart';
+import 'package:provider/provider.dart';
+
+class BudgetIncomePeriodicPlanScreen extends StatefulWidget {
+  static const String path = '/index/budget/create-budget-plan/periodic-plan';
+
+  @override
+  _BudgetIncomePeriodicPlanScreenState createState() =>
+      _BudgetIncomePeriodicPlanScreenState();
+}
+
+class _BudgetIncomePeriodicPlanScreenState
+    extends State<BudgetIncomePeriodicPlanScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return _BudgetIncomePeriodicPlanView(this);
+  }
+
+  int index;
+  int dayIndex;
+
+  void onPeriodGridTapped(int value) {
+    setState(() {
+      index = index == value ? null : value;
+    });
+  }
+
+  void onDayGridTapped(int value) {
+    setState(() {
+      dayIndex = dayIndex == value ? null : value;
+    });
+  }
+
+  void onContinueButtonPressed() {
+    print(context.read<DatePickerProvider>().selectedDate);
+  }
+}
+
+class _BudgetIncomePeriodicPlanView extends WidgetView<
+    BudgetIncomePeriodicPlanScreen, _BudgetIncomePeriodicPlanScreenState> {
+  _BudgetIncomePeriodicPlanView(_BudgetIncomePeriodicPlanScreenState state)
+      : super(state);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.chevron_left,
+            size: 40.sp,
+          ),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(height: 20.sp),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'More Information👀',
+                        style: Theme.of(context).textTheme.headline5,
+                      ),
+                    ),
+                    SizedBox(height: 24.sp),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Budget Period?',
+                        style: Theme.of(context).primaryTextTheme.subtitle2,
+                      ),
+                    ),
+                    SizedBox(height: 24.sp),
+                    PeriodGrid(
+                      index: state.index,
+                      items: [
+                        'Weekly',
+                        'Monthly',
+                        'Bi-Monthly',
+                        'Quarterly',
+                        'Bi-Yearly',
+                        'Yearly',
+                      ],
+                      onTap: state.onPeriodGridTapped,
+                    ),
+                    SizedBox(height: 48.sp),
+                    state.index == 0
+                        ? Column(
+                            children: [
+                              Container(
+                                padding:
+                                    EdgeInsets.symmetric(horizontal: 16.sp) +
+                                        EdgeInsets.only(right: 120.sp),
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'What day of the week should your plan begin?',
+                                  style: Theme.of(context)
+                                      .primaryTextTheme
+                                      .subtitle2,
+                                ),
+                              ),
+                              SizedBox(height: 24.sp),
+                              PeriodGrid(
+                                index: state.dayIndex,
+                                items: [
+                                  'Monday',
+                                  'Tuesday',
+                                  'Wednesday',
+                                  'Thursday',
+                                  'Friday',
+                                  'Saturday',
+                                  'Sunday',
+                                ],
+                                onTap: state.onDayGridTapped,
+                              ),
+                            ],
+                          )
+                        : state.index == 1
+                            ? MonthlyDatePicker(
+                                key: ValueKey('monthlyDate'),
+                                focusedDate: context
+                                    .watch<DatePickerProvider>()
+                                    .focusedDate,
+                                selectedDate: context
+                                    .watch<DatePickerProvider>()
+                                    .selectedDate,
+                                fistDate: context
+                                    .watch<DatePickerProvider>()
+                                    .firstDayOfMonth,
+                                lastDate: context
+                                    .watch<DatePickerProvider>()
+                                    .lastDayOfMonth,
+                                onDaySelected: context
+                                    .watch<DatePickerProvider>()
+                                    .onMonthlyDatePickerDaySelected,
+                                selectedDayPredicate: context
+                                    .watch<DatePickerProvider>()
+                                    .selectedDayPredicate,
+                              )
+                            : SizedBox.shrink(),
+                  ],
+                ),
+              ),
+            ),
+            state.index != null
+                ? Container(
+                    padding: EdgeInsets.all(16.sp),
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: state.onContinueButtonPressed,
+                        child: Text('Create a Budget Plan'),
+                      ),
+                    ),
+                  )
+                : SizedBox.shrink(),
+          ],
+        ),
+      ),
+    );
+  }
+}

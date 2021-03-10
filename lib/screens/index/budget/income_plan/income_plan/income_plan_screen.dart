@@ -6,7 +6,7 @@ import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class BudgetIncomePlanScreen extends StatefulWidget {
-  static const String path = '/index/create-budget-plan/income-plan';
+  static const String path = '/index/budget/create-budget-plan/income-plan';
 
   @override
   _BudgetIncomePlanScreenState createState() => _BudgetIncomePlanScreenState();

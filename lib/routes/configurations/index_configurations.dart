@@ -119,3 +119,27 @@ class BudgetIncomeAmountConfiguration extends PageConfiguration {
   @override
   String get name => path;
 }
+
+class BudgetIncomeChoosePlanConfiguration extends PageConfiguration {
+  static const String path = BudgetIncomeChoosePlanTypeScreen.path;
+
+  @override
+  Widget get child => BudgetIncomeChoosePlanTypeScreen();
+
+  @override
+  String get name => path;
+}
+
+class BudgetIncomePeriodicPlanConfiguration extends PageConfiguration {
+  static const String path = BudgetIncomePeriodicPlanScreen.path;
+
+  @override
+  Widget get child => ChangeNotifierProvider(
+      create: (context) {
+        return DatePickerProvider();
+      },
+      child: BudgetIncomePeriodicPlanScreen());
+
+  @override
+  String get name => path;
+}

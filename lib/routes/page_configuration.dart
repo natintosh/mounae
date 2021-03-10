@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mounae/providers/date_picker_provider.dart';
 import 'package:mounae/screens/authentication/biometric_option/biometrics_option_screen.dart';
 import 'package:mounae/screens/authentication/otp_send/otp_send_screen.dart';
 import 'package:mounae/screens/authentication/otp_verification/otp_verification_screen.dart';
@@ -16,13 +17,17 @@ import 'package:mounae/screens/index/account/choose_bank/choose_bank_screen.dart
 import 'package:mounae/screens/index/account/information/information_screen.dart';
 import 'package:mounae/screens/index/budget/budget/budget_screen.dart';
 import 'package:mounae/screens/index/budget/create_budget_plan/create_budget_plan_screen.dart';
-import 'package:mounae/screens/index/budget/income_plan/income_amount_screen.dart';
-import 'package:mounae/screens/index/budget/income_plan/income_plan_screen.dart';
+import 'package:mounae/screens/index/budget/income_plan/choose_plan_type/choose_plan_type.dart';
+import 'package:mounae/screens/index/budget/income_plan/periodic_plan/periodic_plan_screen.dart';
 import 'package:mounae/screens/index/finance/finance/finance_screen.dart';
 import 'package:mounae/screens/index/index/index_screen.dart';
 import 'package:mounae/screens/index/settings/settings/settings_screen.dart';
 import 'package:mounae/screens/onboarding/onboarding_screen.dart';
 import 'package:mounae/screens/splash/splash_screen.dart';
+import 'package:provider/provider.dart';
+
+import 'file:///C:/Users/oguny/AndroidStudioProjects/mounae/lib/screens/index/budget/income_plan/income_amount/income_amount_screen.dart';
+import 'file:///C:/Users/oguny/AndroidStudioProjects/mounae/lib/screens/index/budget/income_plan/income_plan/income_plan_screen.dart';
 
 part 'configurations/auth_configurations.dart';
 part 'configurations/index_configurations.dart';

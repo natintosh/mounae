@@ -40,4 +40,9 @@ class MounaeColors {
   static final limeProgressMinorColor = Color(0xFFB2DF8A);
   static final createBudgetIncomePlanColor = Color(0xFF9AC294);
   static final createBudgetExpensePlanColor = Color(0xFFFFC9A8);
+  static final lightPurpleDescriptiveColor = Color(0xFFB0AED3);
+  static final periodPlanColor = Color(0xFF918EC2);
+  static final onTimePlanColor = Color(0xFFB0AED3);
+  static final periodCardColor = Color(0xFFF6F6FE);
+  static final selectedPeriodCardColor = Color(0xFF918EC2);
 }

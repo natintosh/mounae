@@ -2,6 +2,9 @@ import 'package:currency_text_input_formatter/currency_text_input_formatter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/size_extension.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class BudgetIncomeAmountScreen extends StatefulWidget {
@@ -48,7 +51,9 @@ class _BudgetIncomeAmountScreenState extends State<BudgetIncomeAmountScreen> {
   TextEditingController controller;
   FocusNode focusNode;
 
-  void onContinueButtonPressed() {}
+  void onContinueButtonPressed() {
+    AppRouterDelegate.of(context).push(BudgetIncomeChoosePlanConfiguration());
+  }
 }
 
 class _BudgetIncomeAmountView extends WidgetView<BudgetIncomeAmountScreen,
@@ -106,6 +111,27 @@ class _BudgetIncomeAmountView extends WidgetView<BudgetIncomeAmountScreen,
                           hintText: '${!state.showPrefixText ? 'N ' : ''}0.00',
                           labelText: 'Enter Amount',
                         ),
+                      ),
+                    ),
+                    SizedBox(height: 20.sp),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      padding: EdgeInsets.symmetric(horizontal: 16.sp),
+                      child: Text.rich(
+                        TextSpan(text: 'Click "', children: [
+                          TextSpan(
+                            text: 'Conitnue',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyText1
+                                .copyWith(color: MounaeColors.primaryColor),
+                          ),
+                          TextSpan(
+                            text: '" if you are not sure',
+                          ),
+                        ]),
+                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                            color: MounaeColors.lightPurpleDescriptiveColor),
                       ),
                     )
                   ],
