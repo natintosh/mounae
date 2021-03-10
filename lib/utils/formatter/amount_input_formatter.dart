@@ -21,8 +21,6 @@ class AmountInputFormatter extends TextInputFormatter {
 
     String newText = formatter.format(value / 100);
 
-    print(newText);
-
     return newValue.copyWith(
       text: newText,
       selection: TextSelection.collapsed(

@@ -43,7 +43,6 @@ class _BiometricsOptionScreenState extends State<BiometricsOptionScreen> {
             SnackBar(content: Text('Device does not support biometrics')));
       }
     } on PlatformException catch (e) {
-      print(e);
       switch (e.code) {
         case authError.notAvailable:
           ScaffoldMessenger.of(context).showSnackBar(

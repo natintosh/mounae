@@ -19,6 +19,15 @@ class DatePickerProvider extends ChangeNotifier {
 
   bool _singleDateSelection = true;
 
+  bool _singleMonthSelection = true;
+
+  set singleMonthSelection(bool value) {
+    _singleMonthSelection = value;
+    notifyListeners();
+  }
+
+  bool get singleMonthSelection => _singleMonthSelection;
+
   set singleDateSelection(bool value) {
     _singleDateSelection = value;
     notifyListeners();
@@ -51,9 +60,13 @@ class DatePickerProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  DateTime get firstDayOfMonth => DateUtils.firstDayOfMonth(focusedDate);
+  DateTime get firstDayOfMonth => DateUtils.firstDayOfMonth(currentDate);
 
-  DateTime get lastDayOfMonth => DateUtils.lastDayOfMonth(focusedDate);
+  DateTime get lastDayOfMonth => DateUtils.lastDayOfMonth(currentDate);
+
+  DateTime get firstDayOfYear => DateUtils.firstDayOfYear(currentDate);
+
+  DateTime get lastDayOfYear => DateUtils.lastDayOfYear(currentDate);
 
   void onMonthlyDatePickerDaySelected(
       DateTime selectedDay, DateTime focusedDay) {
@@ -88,7 +101,12 @@ class DatePickerProvider extends ChangeNotifier {
     dayIndex = null;
     focusedDate = DateTime.now();
     selectedDate = DateTime.now();
-
+    _selectedDates = LinkedHashSet(
+      equals: DateUtils.isSameDay,
+      hashCode: (DateTime E) {
+        return E.hashCode;
+      },
+    );
     notifyListeners();
   }
 }

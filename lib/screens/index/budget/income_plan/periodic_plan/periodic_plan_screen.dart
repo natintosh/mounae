@@ -27,17 +27,18 @@ class _BudgetIncomePeriodicPlanScreenState
     setState(() {
       index = index == value ? null : value;
     });
-    context.read<DatePickerProvider>().singleDateSelection = value != 2;
+
     context.read<DatePickerProvider>().reset();
+    context.read<DatePickerProvider>().singleDateSelection = (value != 2);
+    context.read<DatePickerProvider>().singleMonthSelection =
+        (value == 1 || value == 2);
   }
 
   void onDayGridTapped(int value) {
     context.read<DatePickerProvider>().dayIndex = value;
   }
 
-  void onContinueButtonPressed() {
-    print(context.read<DatePickerProvider>().selectedDate);
-  }
+  void onContinueButtonPressed() {}
 }
 
 class _BudgetIncomePeriodicPlanView extends WidgetView<
@@ -133,7 +134,12 @@ class _BudgetIncomePeriodicPlanView extends WidgetView<
                           )
                         : state.index != null
                             ? MonthlyDatePicker(
-                                key: ValueKey('monthlyDate'),
+                                key: ValueKey(state.index),
+                                title: state.index == 1
+                                    ? 'What day of the month should your plan begin?'
+                                    : state.index == 2
+                                        ? 'What two day of the month should your plan begin?'
+                                        : 'What month and day should your plan begin?',
                                 focusedDate: context
                                     .watch<DatePickerProvider>()
                                     .focusedDate,
@@ -141,17 +147,32 @@ class _BudgetIncomePeriodicPlanView extends WidgetView<
                                     .watch<DatePickerProvider>()
                                     .selectedDate,
                                 fistDate: context
-                                    .watch<DatePickerProvider>()
-                                    .firstDayOfMonth,
+                                        .watch<DatePickerProvider>()
+                                        .singleMonthSelection
+                                    ? context
+                                        .watch<DatePickerProvider>()
+                                        .firstDayOfMonth
+                                    : context
+                                        .watch<DatePickerProvider>()
+                                        .firstDayOfYear,
                                 lastDate: context
-                                    .watch<DatePickerProvider>()
-                                    .lastDayOfMonth,
+                                        .watch<DatePickerProvider>()
+                                        .singleMonthSelection
+                                    ? context
+                                        .watch<DatePickerProvider>()
+                                        .lastDayOfMonth
+                                    : context
+                                        .watch<DatePickerProvider>()
+                                        .lastDayOfYear,
                                 onDaySelected: context
                                     .watch<DatePickerProvider>()
                                     .onMonthlyDatePickerDaySelected,
                                 selectedDayPredicate: context
                                     .watch<DatePickerProvider>()
                                     .selectedDayPredicate,
+                                singleMonthSelection: context
+                                    .watch<DatePickerProvider>()
+                                    .singleMonthSelection,
                               )
                             : SizedBox.shrink(),
                   ],
