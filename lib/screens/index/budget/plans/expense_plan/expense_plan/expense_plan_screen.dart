@@ -20,7 +20,7 @@ class _BudgetExpensePlanScreenState extends State<BudgetExpensePlanScreen> {
   }
 
   void onContinueButtonPressed() {
-    AppRouterDelegate.of(context).push(BudgetIncomeAmountConfiguration());
+    AppRouterDelegate.of(context).push(BudgetExpenseAmountConfiguration());
   }
 }
 

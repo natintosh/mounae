@@ -23,7 +23,8 @@ class _BudgetExpenseChoosePlanTypeScreenState
   }
 
   void onPeriodicCardTapped() {
-    AppRouterDelegate.of(context).push(BudgetIncomePeriodicPlanConfiguration());
+    AppRouterDelegate.of(context)
+        .push(BudgetExpensePeriodicPlanConfiguration());
   }
 }
 

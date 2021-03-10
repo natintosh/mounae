@@ -26,11 +26,11 @@ class _BudgetCreateBudgetPlanScreenState
   }
 
   void onExpensePlanCardTapped() {
-    AppRouterDelegate.of(context).push(BudgetIncomePlanConfiguration());
+    AppRouterDelegate.of(context).push(BudgetExpensePlanConfiguration());
   }
 
   void onIncomePlanCardTapped() {
-    AppRouterDelegate.of(context).push(BudgetIncomePlanConfiguration());
+    AppRouterDelegate.of(context).push(BudgetExpensePlanConfiguration());
   }
 }
 

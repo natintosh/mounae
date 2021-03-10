@@ -52,7 +52,7 @@ class _BudgetIncomeAmountScreenState extends State<BudgetIncomeAmountScreen> {
   FocusNode focusNode;
 
   void onContinueButtonPressed() {
-    AppRouterDelegate.of(context).push(BudgetIncomeChoosePlanConfiguration());
+    AppRouterDelegate.of(context).push(BudgetExpenseChoosePlanConfiguration());
   }
 }
 

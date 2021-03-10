@@ -100,7 +100,7 @@ class BudgetCreateBudgetPlanConfiguration extends PageConfiguration {
   String get name => path;
 }
 
-class BudgetIncomePlanConfiguration extends PageConfiguration {
+class BudgetExpensePlanConfiguration extends PageConfiguration {
   static const String path = BudgetExpensePlanScreen.path;
 
   @override
@@ -110,7 +110,7 @@ class BudgetIncomePlanConfiguration extends PageConfiguration {
   String get name => path;
 }
 
-class BudgetIncomeAmountConfiguration extends PageConfiguration {
+class BudgetExpenseAmountConfiguration extends PageConfiguration {
   static const String path = BudgetExpenseAmountScreen.path;
 
   @override
@@ -120,7 +120,7 @@ class BudgetIncomeAmountConfiguration extends PageConfiguration {
   String get name => path;
 }
 
-class BudgetIncomeChoosePlanConfiguration extends PageConfiguration {
+class BudgetExpenseChoosePlanConfiguration extends PageConfiguration {
   static const String path = BudgetExpenseChoosePlanTypeScreen.path;
 
   @override
@@ -130,7 +130,7 @@ class BudgetIncomeChoosePlanConfiguration extends PageConfiguration {
   String get name => path;
 }
 
-class BudgetIncomePeriodicPlanConfiguration extends PageConfiguration {
+class BudgetExpensePeriodicPlanConfiguration extends PageConfiguration {
   static const String path = BudgetExpensePeriodicPlanScreen.path;
 
   @override
