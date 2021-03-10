@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
+import 'package:mounae/screens/index/budget/plans/choose_bank/choose_bank_screen.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/budget_details/add_expense_sliver_delegate.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
@@ -19,12 +20,54 @@ class _BudgetExpenseBudgetDetailsScreenState
     return _BudgetExpenseBudgetDetailsView(this);
   }
 
+  @override
+  void initState() {
+    super.initState();
+    showSelectBankAccountModalSheet();
+  }
+
   final GlobalKey<NestedScrollViewState> nestedScrollKey =
       GlobalKey<NestedScrollViewState>();
 
   void onAppBarBackButtonPressed() {}
 
   void onAddBudgetHeaderTapped() {}
+
+  void showSelectBankAccountModalSheet() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      showModalBottomSheet(
+        context: context,
+        clipBehavior: Clip.hardEdge,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (BuildContext context) {
+          return AnimatedPadding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            duration: const Duration(milliseconds: 100),
+            child: Stack(children: [
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+              ),
+              DraggableScrollableSheet(
+                builder: (BuildContext context, ScrollController controller) {
+                  return Container(
+                    decoration: ShapeDecoration(
+                      color: Theme.of(context).canvasColor,
+                      shape: RoundedRectangleBorder(),
+                    ),
+                    child: BudgetPlanChooseBankSheet(
+                      scrollController: controller,
+                    ),
+                  );
+                },
+              ),
+            ]),
+          );
+        },
+      );
+    });
+  }
 }
 
 class _BudgetExpenseBudgetDetailsView extends WidgetView<
