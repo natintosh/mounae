@@ -143,3 +143,13 @@ class BudgetExpensePeriodicPlanConfiguration extends PageConfiguration {
   @override
   String get name => path;
 }
+
+class BudgetExpenseBudgetDetailsConfiguration extends PageConfiguration {
+  static const String path = BudgetExpenseBudgetDetailsScreen.path;
+
+  @override
+  Widget get child => BudgetExpenseBudgetDetailsScreen();
+
+  @override
+  String get name => path;
+}

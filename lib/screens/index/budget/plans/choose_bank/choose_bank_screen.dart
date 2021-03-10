@@ -1,30 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
-class BudgetChooseBankScreen extends StatefulWidget {
+class BudgetPlanChooseBankScreen extends StatefulWidget {
   static const String path = '/index/budget/create-budget-plan/choose-bank';
 
   @override
-  _BudgetChooseBankScreenState createState() => _BudgetChooseBankScreenState();
+  _BudgetPlanChooseBankScreenState createState() =>
+      _BudgetPlanChooseBankScreenState();
 }
 
-class _BudgetChooseBankScreenState extends State<BudgetChooseBankScreen> {
+class _BudgetPlanChooseBankScreenState
+    extends State<BudgetPlanChooseBankScreen> {
   @override
   Widget build(BuildContext context) {
     return _BudgetChooseBankView(this);
   }
 }
 
-class _BudgetChooseBankView
-    extends WidgetView<BudgetChooseBankScreen, _BudgetChooseBankScreenState> {
-  _BudgetChooseBankView(_BudgetChooseBankScreenState state) : super(state);
+class _BudgetChooseBankView extends WidgetView<BudgetPlanChooseBankScreen,
+    _BudgetPlanChooseBankScreenState> {
+  _BudgetChooseBankView(_BudgetPlanChooseBankScreenState state) : super(state);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 200,
-      child: Card(
-        color: Colors.white,
+    return Align(
+      alignment: Alignment.center,
+      child: SizedBox(
+        height: 150.sp,
+        child: Container(
+          color: Colors.black12,
+        ),
       ),
     );
   }

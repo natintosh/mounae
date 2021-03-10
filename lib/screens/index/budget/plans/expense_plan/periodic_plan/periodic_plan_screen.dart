@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mounae/providers/date_picker_provider.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/screens/index/budget/plans/widgets/monthly_date_picker.dart';
 import 'package:mounae/screens/index/budget/plans/widgets/period_grid.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
@@ -38,7 +40,10 @@ class _BudgetExpensePeriodicPlanScreenState
     context.read<DatePickerProvider>().dayIndex = value;
   }
 
-  void onContinueButtonPressed() {}
+  void onContinueButtonPressed() {
+    AppRouterDelegate.of(context)
+        .push(BudgetExpenseBudgetDetailsConfiguration());
+  }
 }
 
 class _BudgetExpensePeriodicPlanView extends WidgetView<

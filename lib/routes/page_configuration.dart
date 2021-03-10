@@ -17,6 +17,7 @@ import 'package:mounae/screens/index/account/choose_bank/choose_bank_screen.dart
 import 'package:mounae/screens/index/account/information/information_screen.dart';
 import 'package:mounae/screens/index/budget/budget/budget_screen.dart';
 import 'package:mounae/screens/index/budget/create_budget_plan/create_budget_plan_screen.dart';
+import 'package:mounae/screens/index/budget/plans/expense_plan/budget_details/budget_details.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/choose_plan_type/choose_plan_type.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/expense_amount/expense_amount_screen.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/expense_plan/expense_plan_screen.dart';
