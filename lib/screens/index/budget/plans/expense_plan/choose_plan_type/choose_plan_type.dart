@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
-import 'package:mounae/screens/index/budget/income_plan/choose_plan_type/widgets/plan_card.dart';
+import 'package:mounae/screens/index/budget/plans/widgets/icon_plan_card.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
-class BudgetIncomeChoosePlanTypeScreen extends StatefulWidget {
+class BudgetExpenseChoosePlanTypeScreen extends StatefulWidget {
   static const String path =
-      '/index/budget/create-budget-plan/income-choose-plan';
+      '/index/budget/create-budget-plan/expense-choose-plan';
 
   @override
-  _BudgetIncomeChoosePlanTypeScreenState createState() =>
-      _BudgetIncomeChoosePlanTypeScreenState();
+  _BudgetExpenseChoosePlanTypeScreenState createState() =>
+      _BudgetExpenseChoosePlanTypeScreenState();
 }
 
-class _BudgetIncomeChoosePlanTypeScreenState
-    extends State<BudgetIncomeChoosePlanTypeScreen> {
+class _BudgetExpenseChoosePlanTypeScreenState
+    extends State<BudgetExpenseChoosePlanTypeScreen> {
   @override
   Widget build(BuildContext context) {
-    return _BudgetIncomeChoosePlanTypeView(this);
+    return _BudgetExpenseChoosePlanTypeView(this);
   }
 
   void onPeriodicCardTapped() {
@@ -27,9 +27,11 @@ class _BudgetIncomeChoosePlanTypeScreenState
   }
 }
 
-class _BudgetIncomeChoosePlanTypeView extends WidgetView<
-    BudgetIncomeChoosePlanTypeScreen, _BudgetIncomeChoosePlanTypeScreenState> {
-  _BudgetIncomeChoosePlanTypeView(_BudgetIncomeChoosePlanTypeScreenState state)
+class _BudgetExpenseChoosePlanTypeView extends WidgetView<
+    BudgetExpenseChoosePlanTypeScreen,
+    _BudgetExpenseChoosePlanTypeScreenState> {
+  _BudgetExpenseChoosePlanTypeView(
+      _BudgetExpenseChoosePlanTypeScreenState state)
       : super(state);
 
   @override
@@ -60,7 +62,7 @@ class _BudgetIncomeChoosePlanTypeView extends WidgetView<
                 ),
               ),
               SizedBox(height: 52.sp),
-              PlanCard(
+              IconPlanCard(
                 title: 'Periodic',
                 subtitle:
                     'Save a predetermined amount weekly, Bi-Monthly or Monthly till you get to your target',
@@ -69,7 +71,7 @@ class _BudgetIncomeChoosePlanTypeView extends WidgetView<
                 onTap: state.onPeriodicCardTapped,
               ),
               SizedBox(height: 24.sp),
-              PlanCard(
+              IconPlanCard(
                 title: 'One-Time',
                 subtitle:
                     'Fund amount at ones and lock for a set period of time with the ability to add more anytime ',

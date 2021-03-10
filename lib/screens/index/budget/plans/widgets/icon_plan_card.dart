@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
-class PlanCard extends StatelessWidget {
+class IconPlanCard extends StatelessWidget {
   final String title;
   final String subtitle;
   final Color color;
   final VoidCallback onTap;
   final String assetName;
 
-  const PlanCard({
+  const IconPlanCard({
     Key key,
     @required this.title,
     @required this.subtitle,

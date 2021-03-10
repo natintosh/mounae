@@ -101,44 +101,44 @@ class BudgetCreateBudgetPlanConfiguration extends PageConfiguration {
 }
 
 class BudgetIncomePlanConfiguration extends PageConfiguration {
-  static const String path = BudgetIncomePlanScreen.path;
+  static const String path = BudgetExpensePlanScreen.path;
 
   @override
-  Widget get child => BudgetIncomePlanScreen();
+  Widget get child => BudgetExpensePlanScreen();
 
   @override
   String get name => path;
 }
 
 class BudgetIncomeAmountConfiguration extends PageConfiguration {
-  static const String path = BudgetIncomeAmountScreen.path;
+  static const String path = BudgetExpenseAmountScreen.path;
 
   @override
-  Widget get child => BudgetIncomeAmountScreen();
+  Widget get child => BudgetExpenseAmountScreen();
 
   @override
   String get name => path;
 }
 
 class BudgetIncomeChoosePlanConfiguration extends PageConfiguration {
-  static const String path = BudgetIncomeChoosePlanTypeScreen.path;
+  static const String path = BudgetExpenseChoosePlanTypeScreen.path;
 
   @override
-  Widget get child => BudgetIncomeChoosePlanTypeScreen();
+  Widget get child => BudgetExpenseChoosePlanTypeScreen();
 
   @override
   String get name => path;
 }
 
 class BudgetIncomePeriodicPlanConfiguration extends PageConfiguration {
-  static const String path = BudgetIncomePeriodicPlanScreen.path;
+  static const String path = BudgetExpensePeriodicPlanScreen.path;
 
   @override
   Widget get child => ChangeNotifierProvider(
       create: (context) {
         return DatePickerProvider();
       },
-      child: BudgetIncomePeriodicPlanScreen());
+      child: BudgetExpensePeriodicPlanScreen());
 
   @override
   String get name => path;

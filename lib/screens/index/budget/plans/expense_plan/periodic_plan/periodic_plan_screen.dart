@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mounae/providers/date_picker_provider.dart';
-import 'package:mounae/screens/index/budget/income_plan/periodic_plan/widgets/monthly_date_picker.dart';
-import 'package:mounae/screens/index/budget/income_plan/periodic_plan/widgets/period_grid.dart';
+import 'package:mounae/screens/index/budget/plans/widgets/monthly_date_picker.dart';
+import 'package:mounae/screens/index/budget/plans/widgets/period_grid.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 
-class BudgetIncomePeriodicPlanScreen extends StatefulWidget {
-  static const String path = '/index/budget/create-budget-plan/periodic-plan';
+class BudgetExpensePeriodicPlanScreen extends StatefulWidget {
+  static const String path = '/index/budget/create-budget-plan/expense-plan';
 
   @override
-  _BudgetIncomePeriodicPlanScreenState createState() =>
-      _BudgetIncomePeriodicPlanScreenState();
+  _BudgetExpensePeriodicPlanScreenState createState() =>
+      _BudgetExpensePeriodicPlanScreenState();
 }
 
-class _BudgetIncomePeriodicPlanScreenState
-    extends State<BudgetIncomePeriodicPlanScreen> {
+class _BudgetExpensePeriodicPlanScreenState
+    extends State<BudgetExpensePeriodicPlanScreen> {
   @override
   Widget build(BuildContext context) {
-    return _BudgetIncomePeriodicPlanView(this);
+    return _BudgetExpensePeriodicPlanView(this);
   }
 
   int index;
@@ -41,9 +41,9 @@ class _BudgetIncomePeriodicPlanScreenState
   void onContinueButtonPressed() {}
 }
 
-class _BudgetIncomePeriodicPlanView extends WidgetView<
-    BudgetIncomePeriodicPlanScreen, _BudgetIncomePeriodicPlanScreenState> {
-  _BudgetIncomePeriodicPlanView(_BudgetIncomePeriodicPlanScreenState state)
+class _BudgetExpensePeriodicPlanView extends WidgetView<
+    BudgetExpensePeriodicPlanScreen, _BudgetExpensePeriodicPlanScreenState> {
+  _BudgetExpensePeriodicPlanView(_BudgetExpensePeriodicPlanScreenState state)
       : super(state);
 
   @override
