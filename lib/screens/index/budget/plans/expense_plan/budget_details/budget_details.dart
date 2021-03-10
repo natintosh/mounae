@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
-import 'package:mounae/screens/index/budget/plans/choose_bank/choose_bank_screen.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/budget_details/add_expense_sliver_delegate.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class BudgetExpenseBudgetDetailsScreen extends StatefulWidget {
-  static const String path = '/index/budget/create-budget-plan/expense-details';
+  static const String path = '/index/budget/expense/details';
 
   @override
   _BudgetExpenseBudgetDetailsScreenState createState() =>
@@ -23,7 +24,6 @@ class _BudgetExpenseBudgetDetailsScreenState
   @override
   void initState() {
     super.initState();
-    showSelectBankAccountModalSheet();
   }
 
   final GlobalKey<NestedScrollViewState> nestedScrollKey =
@@ -31,42 +31,9 @@ class _BudgetExpenseBudgetDetailsScreenState
 
   void onAppBarBackButtonPressed() {}
 
-  void onAddBudgetHeaderTapped() {}
-
-  void showSelectBankAccountModalSheet() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      showModalBottomSheet(
-        context: context,
-        clipBehavior: Clip.hardEdge,
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        builder: (BuildContext context) {
-          return AnimatedPadding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
-            duration: const Duration(milliseconds: 100),
-            child: Stack(children: [
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-              ),
-              DraggableScrollableSheet(
-                builder: (BuildContext context, ScrollController controller) {
-                  return Container(
-                    decoration: ShapeDecoration(
-                      color: Theme.of(context).canvasColor,
-                      shape: RoundedRectangleBorder(),
-                    ),
-                    child: BudgetPlanChooseBankSheet(
-                      scrollController: controller,
-                    ),
-                  );
-                },
-              ),
-            ]),
-          );
-        },
-      );
-    });
+  void onAddBudgetHeaderTapped() {
+    AppRouterDelegate.of(context)
+        .push(BudgetExpenseCreateBudgetConfiguration());
   }
 }
 

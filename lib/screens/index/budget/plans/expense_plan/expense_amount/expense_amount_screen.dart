@@ -8,7 +8,7 @@ import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class BudgetExpenseAmountScreen extends StatefulWidget {
-  static const String path = '/index/budget/create-budget-plan/expense-amount';
+  static const String path = '/index/budget/expense/create-plan/expense-amount';
 
   @override
   _BudgetExpenseAmountScreenState createState() =>

@@ -19,6 +19,7 @@ import 'package:mounae/screens/index/budget/budget/budget_screen.dart';
 import 'package:mounae/screens/index/budget/create_budget_plan/create_budget_plan_screen.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/budget_details/budget_details.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/choose_plan_type/choose_plan_type.dart';
+import 'package:mounae/screens/index/budget/plans/expense_plan/create_expense/create_expense_screen.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/expense_amount/expense_amount_screen.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/expense_plan/expense_plan_screen.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/periodic_plan/periodic_plan_screen.dart';

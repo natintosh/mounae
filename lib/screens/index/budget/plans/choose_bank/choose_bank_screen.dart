@@ -6,8 +6,12 @@ import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class BudgetPlanChooseBankSheet extends StatefulWidget {
   final ScrollController scrollController;
+  final VoidCallback onAddAccountButtonPressed;
 
-  const BudgetPlanChooseBankSheet({Key key, @required this.scrollController})
+  const BudgetPlanChooseBankSheet(
+      {Key key,
+      @required this.scrollController,
+      @required this.onAddAccountButtonPressed})
       : super(key: key);
 
   @override
@@ -30,7 +34,7 @@ class _BudgetPlanChooseBankSheetState extends State<BudgetPlanChooseBankSheet> {
   }
 
   void onContinueButtonPressed() {
-    Navigator.of(context).pop();
+    widget.onAddAccountButtonPressed();
   }
 }
 
@@ -140,7 +144,7 @@ class _BudgetChooseBankView extends WidgetView<BudgetPlanChooseBankSheet,
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: state.onContinueButtonPressed,
-                  child: Text('Continue')),
+                  child: Text('Add Account')),
             ),
           ),
         ],

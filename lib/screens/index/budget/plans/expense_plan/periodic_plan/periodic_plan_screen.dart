@@ -3,13 +3,14 @@ import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mounae/providers/date_picker_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/screens/index/budget/plans/choose_bank/choose_bank_screen.dart';
 import 'package:mounae/screens/index/budget/plans/widgets/monthly_date_picker.dart';
 import 'package:mounae/screens/index/budget/plans/widgets/period_grid.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 
 class BudgetExpensePeriodicPlanScreen extends StatefulWidget {
-  static const String path = '/index/budget/create-budget-plan/expense-plan';
+  static const String path = '/index/budget/expense/create-plan/period';
 
   @override
   _BudgetExpensePeriodicPlanScreenState createState() =>
@@ -40,9 +41,53 @@ class _BudgetExpensePeriodicPlanScreenState
     context.read<DatePickerProvider>().dayIndex = value;
   }
 
-  void onContinueButtonPressed() {
+  void _openExpenseDetailScreen() {
     AppRouterDelegate.of(context)
         .push(BudgetExpenseBudgetDetailsConfiguration());
+  }
+
+  void onContinueButtonPressed() {
+    showSelectBankAccountModalSheet();
+  }
+
+  void showSelectBankAccountModalSheet() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      showModalBottomSheet(
+        context: context,
+        clipBehavior: Clip.hardEdge,
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        builder: (BuildContext context) {
+          return AnimatedPadding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            duration: const Duration(milliseconds: 100),
+            child: Stack(children: [
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+              ),
+              DraggableScrollableSheet(
+                builder: (BuildContext context, ScrollController controller) {
+                  return Container(
+                    decoration: ShapeDecoration(
+                      color: Theme.of(context).canvasColor,
+                      shape: RoundedRectangleBorder(),
+                    ),
+                    child: BudgetPlanChooseBankSheet(
+                      scrollController: controller,
+                      onAddAccountButtonPressed: () {
+                        Navigator.of(context).pop();
+                        _openExpenseDetailScreen();
+                      },
+                    ),
+                  );
+                },
+              ),
+            ]),
+          );
+        },
+      );
+    });
   }
 }
 
