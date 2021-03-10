@@ -88,7 +88,7 @@ class _BudgetExpenseAmountView extends WidgetView<BudgetExpenseAmountScreen,
                           EdgeInsets.only(right: 92.sp),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'What is the total amount you plan to Earn for “Monthly Income”',
+                        'What is the total amount you plan to Earn for “Monthly Expense”',
                         style: Theme.of(context).textTheme.headline5,
                       ),
                     ),

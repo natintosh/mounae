@@ -55,7 +55,7 @@ class _BudgetExpensePlanView
                           EdgeInsets.only(right: 92.sp),
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        'What are you creating an Income plan for?',
+                        'What are you creating an Expense plan for?',
                         style: Theme.of(context).textTheme.headline5,
                       ),
                     ),

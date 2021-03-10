@@ -29,9 +29,7 @@ class _BudgetCreateBudgetPlanScreenState
     AppRouterDelegate.of(context).push(BudgetExpensePlanConfiguration());
   }
 
-  void onIncomePlanCardTapped() {
-    AppRouterDelegate.of(context).push(BudgetExpensePlanConfiguration());
-  }
+  void onIncomePlanCardTapped() {}
 }
 
 class _BudgetCreateBudgetPlanView extends WidgetView<
