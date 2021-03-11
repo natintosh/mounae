@@ -29,7 +29,9 @@ class _BudgetExpenseBudgetDetailsScreenState
   final GlobalKey<NestedScrollViewState> nestedScrollKey =
       GlobalKey<NestedScrollViewState>();
 
-  void onAppBarBackButtonPressed() {}
+  void onAppBarBackButtonPressed() {
+    Navigator.of(context).pop();
+  }
 
   void onAddBudgetHeaderTapped() {
     AppRouterDelegate.of(context)

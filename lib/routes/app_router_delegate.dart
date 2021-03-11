@@ -112,7 +112,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     _addScreen(newRoute);
   }
 
-  void setPath(List<MaterialPage> path) {
+  void setPath(List<Page> path) {
     _pages.clear();
     _pages.addAll(path);
     notifyListeners();
@@ -126,8 +126,41 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     _addScreen(newRoute);
   }
 
+  void pushPath(List<PageConfiguration> path) {
+    _pages.clear();
+    _pages.addAll(path.map<Page>((e) {
+      if (kIsWeb) {
+        return MaterialPage(
+          child: e.child,
+          key: ValueKey(e.name),
+          name: e.name,
+          arguments: e,
+        );
+      }
+      if (Platform.isIOS) {
+        return CupertinoPage(
+          child: e.child,
+          key: ValueKey(e.name),
+          name: e.name,
+          arguments: e,
+        );
+      }
+
+      return MaterialPage(
+        child: e.child,
+        key: ValueKey(e.name),
+        name: e.name,
+        arguments: e,
+      );
+    }));
+
+    notifyListeners();
+  }
+
   void pushWidget(PageConfiguration newRoute) {
     _addScreenData(newRoute);
     notifyListeners();
   }
 }
+
+typedef PageSelectionPredicate = bool Function(PageConfiguration page);

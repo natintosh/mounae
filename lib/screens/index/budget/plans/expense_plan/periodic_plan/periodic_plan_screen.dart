@@ -42,8 +42,11 @@ class _BudgetExpensePeriodicPlanScreenState
   }
 
   void _openExpenseDetailScreen() {
-    AppRouterDelegate.of(context)
-        .push(BudgetExpenseBudgetDetailsConfiguration());
+    AppRouterDelegate.of(context).pushPath([
+      IndexConfiguration(),
+      BudgetConfiguration(),
+      BudgetExpenseBudgetDetailsConfiguration(),
+    ]);
   }
 
   void onContinueButtonPressed() {

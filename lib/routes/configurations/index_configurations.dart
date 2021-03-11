@@ -163,3 +163,42 @@ class BudgetExpenseCreateBudgetConfiguration extends PageConfiguration {
   @override
   String get name => path;
 }
+
+class BudgetExpenseCreateBudgetExpenseConfiguration extends PageConfiguration {
+  static const String path = BudgetExpenseCreateBudgetExpenseScreen.path;
+
+  final Object _arguments;
+
+  BudgetExpenseCreateBudgetExpenseConfiguration(this._arguments);
+
+  @override
+  Widget get child => BudgetExpenseCreateBudgetExpenseScreen();
+
+  @override
+  String get name => path;
+
+  @override
+  Object get arguments => _arguments;
+}
+
+class BudgetExpenseCreateBudgetBillSettingsConfiguration
+    extends PageConfiguration {
+  static const String path = BudgetExpenseCreateBudgetBillSettingsScreen.path;
+
+  final Object _arguments;
+
+  BudgetExpenseCreateBudgetBillSettingsConfiguration(this._arguments);
+
+  @override
+  Widget get child => ChangeNotifierProvider(
+      create: (context) {
+        return DatePickerProvider();
+      },
+      child: BudgetExpenseCreateBudgetBillSettingsScreen());
+
+  @override
+  String get name => path;
+
+  @override
+  Object get arguments => _arguments;
+}

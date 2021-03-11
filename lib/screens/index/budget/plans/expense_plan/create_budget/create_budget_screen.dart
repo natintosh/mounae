@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
-import 'package:mounae/screens/index/budget/plans/expense_plan/create_expense/search_add_sliver_persistent_delegate.dart';
+import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/screens/index/budget/plans/expense_plan/create_budget/search_add_sliver_persistent_delegate.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -27,6 +29,11 @@ class _BudgetExpenseCreateBudgetScreenState
   }
 
   void onAddHeaderButtonPressed() {}
+
+  void onExpandedListItemPressed(Map<String, String> arguments) {
+    AppRouterDelegate.of(context)
+        .push(BudgetExpenseCreateBudgetExpenseConfiguration(arguments));
+  }
 }
 
 class _BudgetExpenseCreateBudgetView extends WidgetView<
@@ -143,6 +150,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                     children: [
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state
+                              .onExpandedListItemPressed({"Home": "Furniture"});
+                        },
                         title: Text(
                           'Furniture',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -152,6 +163,9 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed({"Home": "Rent"});
+                        },
                         title: Text(
                           'Rent',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -161,6 +175,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Home": "Electric Bill"});
+                        },
                         title: Text(
                           'Electric Bill',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -170,6 +188,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Home": "House Repairs"});
+                        },
                         title: Text(
                           'House Repairs',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -179,6 +201,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Home": "Electronic Repairs"});
+                        },
                         title: Text(
                           'Electronic Repairs',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -207,6 +233,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                     children: [
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Transportation": "Car Repairs"});
+                        },
                         title: Text(
                           'Car Repairs',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -216,6 +246,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Transportation": "Car Rent"});
+                        },
                         title: Text(
                           'Car Rent',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -225,6 +259,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Transportation": "Ride-Hailing"});
+                        },
                         title: Text(
                           'Ride-Hailing(Uber, Taxify)',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -234,6 +272,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Transportation": "BRT Bus Fare"});
+                        },
                         title: Text(
                           'BRT Bus Fare',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -243,6 +285,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Transportation": "Yello Bus Fare"});
+                        },
                         title: Text(
                           'Yellow Bus Fare',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -271,6 +317,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                     children: [
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Utilities": "Water Bill"});
+                        },
                         title: Text(
                           'Water Bill',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -280,6 +330,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Utilities": "Internet Subscription"});
+                        },
                         title: Text(
                           'Internet Subscription',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -289,6 +343,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Utilities": "Nail and Hammers"});
+                        },
                         title: Text(
                           'Nail and Hammers',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -317,6 +375,10 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                     children: [
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Family Support": "Sade(Cousin)"});
+                        },
                         title: Text(
                           'Sade(Cousin)',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
@@ -326,8 +388,12 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                       ),
                       ListTile(
                         tileColor: Colors.white,
+                        onTap: () {
+                          state.onExpandedListItemPressed(
+                              {"Family Support": "Aunt Lade"});
+                        },
                         title: Text(
-                          'Aunty Lade',
+                          'Aunt Lade',
                           style: Theme.of(context).textTheme.bodyText2.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
