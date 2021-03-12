@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mounae/models/account_model.dart';
+import 'package:mounae/models/bank_list_model.dart';
+import 'package:mounae/providers/user_provider.dart';
+import 'package:mounae/utils/formatter/converter_utils.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
+import 'package:provider/provider.dart';
 
 class BankBalanceCard extends StatelessWidget {
   const BankBalanceCard({
@@ -13,6 +18,8 @@ class BankBalanceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    BankListModel bankList = context.watch<UserProvider>().bankList;
+    String totalBalance = ConvertUtils.amount(bankList?.totalBalance ?? 0);
     return Container(
       child: Card(
         elevation: 0,
@@ -75,7 +82,7 @@ class BankBalanceCard extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'N600,000',
+                            'N $totalBalance',
                             style:
                                 Theme.of(context).textTheme.headline5.copyWith(
                                       color: MounaeColors.primaryTextColor,
@@ -87,38 +94,46 @@ class BankBalanceCard extends StatelessWidget {
                       Container(
                         height: 24.sp,
                         alignment: Alignment.centerLeft,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          primary: false,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 5,
-                          itemBuilder: (context, index) {
-                            return Row(
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.all(8.sp),
-                                  decoration: ShapeDecoration(
-                                    shape: CircleBorder(),
-                                    color: MounaeColors.primaryTextColor,
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(horizontal: 12.sp),
-                                  child: Text(
-                                    'N200,000',
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyText2
-                                        .copyWith(
+                        child: bankList == null
+                            ? Container()
+                            : ListView.builder(
+                                shrinkWrap: true,
+                                primary: false,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: bankList?.accounts?.length ?? 0,
+                                itemBuilder: (context, index) {
+                                  BankAccount account =
+                                      bankList.accounts[index];
+                                  String amount = ConvertUtils.amount(
+                                      (double.parse(
+                                          account?.availableBalance ?? '0')));
+                                  return Row(
+                                    children: [
+                                      Container(
+                                        padding: EdgeInsets.all(8.sp),
+                                        decoration: ShapeDecoration(
+                                          shape: CircleBorder(),
                                           color: MounaeColors.primaryTextColor,
                                         ),
-                                  ),
-                                )
-                              ],
-                            );
-                          },
-                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12.sp),
+                                        child: Text(
+                                          'N $amount',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyText2
+                                              .copyWith(
+                                                color: MounaeColors
+                                                    .primaryTextColor,
+                                              ),
+                                        ),
+                                      )
+                                    ],
+                                  );
+                                },
+                              ),
                       ),
                     ],
                   ),

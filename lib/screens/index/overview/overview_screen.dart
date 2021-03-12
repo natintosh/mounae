@@ -8,6 +8,7 @@ import 'package:mounae/Screens/index/overview/widgets/investment_portfolio_card.
 import 'package:mounae/Screens/index/overview/widgets/savings_card.dart';
 import 'package:mounae/Screens/index/overview/widgets/transactions_card.dart';
 import 'package:mounae/providers/auth_provider.dart';
+import 'package:mounae/providers/user_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
@@ -27,6 +28,12 @@ class _OverviewScreenState extends State<OverviewScreen> {
     return _OverScreenView(this);
   }
 
+  @override
+  void initState() {
+    super.initState();
+    loadBankAccount();
+  }
+
   final GlobalKey<NestedScrollViewState> nestedScrollKey =
       GlobalKey<NestedScrollViewState>();
 
@@ -40,6 +47,10 @@ class _OverviewScreenState extends State<OverviewScreen> {
 
   void onBudgetingCardTapped() {
     AppRouterDelegate.of(context).push(BudgetConfiguration());
+  }
+
+  void loadBankAccount() {
+    context.read<UserProvider>().getListOfBank({"username": "08139755032"});
   }
 }
 

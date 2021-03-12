@@ -1,62 +1,38 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
-import 'package:mounae/models/balance_model.dart';
+import 'package:mounae/models/bank_list_model.dart';
+import 'package:mounae/models/response_model.dart';
+import 'package:mounae/repository/server/mounea_repository.dart';
 
 class UserProvider extends ChangeNotifier {
-  List<BalanceModel> _balances = [];
+  BankListModel _bankList;
 
-  void addToBalance(BalanceModel balanceModel) {
-    _balances.add(balanceModel);
+  set bankList(BankListModel value) {
+    _bankList = value;
     notifyListeners();
   }
 
-  void addAllToBalance(List<BalanceModel> balanceModel) {
-    _balances.addAll(balanceModel);
-    notifyListeners();
-  }
+  BankListModel get bankList => _bankList;
 
-  List<BalanceModel> get balances => _balances;
+  void getListOfBank(Map<String, dynamic> payload) async {
+    try {
+      ResponseModel response =
+          await MounaeRepository.getListOfBanks(payload: payload);
 
-  Map<String, dynamic> _connectAccountString;
+      if (response != null) {
+        if (response.responseCode == '00') {
+          Object data = response.data;
 
-  set connectAccount(Map<String, dynamic> value) {
-    _connectAccountString = value;
-    notifyListeners();
-  }
+          BankListModel bankListModel =
+              BankListModel.fromJson((data is Map) ? data : json.decode(data));
 
-  Map<String, dynamic> get connectAccount => _connectAccountString;
-
-  String getCustomerID() {
-    return connectAccount['customer_id'];
-  }
-
-  double getTotalBalance() {
-    double total = 0;
-    for (var item in (connectAccount['balance']['data']['formatted'] as List)) {
-      double a = item['available_balance'] as double;
-      total += a;
+          bankList = bankListModel;
+        }
+      }
+    } on Exception catch (e) {
+      log(e.toString());
     }
-
-    return total;
-  }
-
-  List<Map<String, dynamic>> getAccounts() {
-    Map<String, dynamic> data = {};
-
-    String bankName = connectAccount['auth']['bank_details']['name'] as String;
-    String icon = connectAccount['auth']['bank_details']['icon'] as String;
-
-    for (var item in (connectAccount['balance']['data']['formatted'] as List)) {
-      double balance = item['available_balance'] as double;
-      String accountType = item['type'] as String;
-
-      data.addAll({
-        'balance': balance,
-        'type': accountType,
-        'bankName': bankName,
-        'icon': icon
-      });
-    }
-
-    return [data];
   }
 }

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="35.775" height="42.768" viewBox="0 0 35.775 42.768">
+    <g id="Group_12216"  transform="translate(-162 -499.116)">
+        <path id="Path_3099"  d="M6.432,13.823,23.879,5l17.447,8.823a.8.8,0,0,1-.358,1.51h-1.59v1.59a.8.8,0,0,1-.795.795H9.174a.8.8,0,0,1-.795-.795v-1.59H6.79A.8.8,0,0,1,6.432,13.823ZM40.968,36H6.79a.8.8,0,0,0-.795.795v3.974H41.763V36.794A.8.8,0,0,0,40.968,36ZM14.341,19.307H10.764a.375.375,0,0,0-.4.4V30.435H9.174a.8.8,0,0,0-.795.795V34.41h31V31.23a.8.8,0,0,0-.795-.795H37.391V19.7a.375.375,0,0,0-.4-.4H33.417a.375.375,0,0,0-.4.4V30.435H29.84V19.7a.375.375,0,0,0-.4-.4H25.866a.375.375,0,0,0-.4.4V30.435H22.289V19.7a.375.375,0,0,0-.4-.4H18.315a.375.375,0,0,0-.4.4V30.435H14.738V19.7A.375.375,0,0,0,14.341,19.307Z" transform="translate(156.009 501.116)" fill="#b0aed3"/>
+        <g id="Group_12215"  transform="translate(52.139 -203.366)">
+            <g id="Group_11838"  transform="translate(120.861 702.482)">
+                <circle id="Ellipse_1"  cx="6.512" cy="6.512" r="6.512" transform="translate(0 0)" fill="#ffefe5"/>
+                <g id="Group_6"  transform="translate(6.697 2.298) rotate(45)">
+                    <path id="Path_2553"  d="M0,0V6.044" transform="translate(2.901 0)" fill="none" stroke="#ffc9a8" stroke-linecap="round" stroke-width="2"/>
+                    <path id="Path_2554"  d="M0,0V5.8" transform="translate(0 3.022) rotate(-90)" fill="none" stroke="#ffc9a8" stroke-linecap="round" stroke-width="2"/>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

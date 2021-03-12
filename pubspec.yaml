@@ -85,6 +85,7 @@ flutter:
     - assets/svg/whatsapp.svg
     - assets/svg/fingerprint.svg
     - assets/svg/bank.svg
+    - assets/svg/bank_icon.svg
     - assets/svg/bank_building.svg
     - assets/svg/bank_building_right.svg
     - assets/svg/contained_add.svg
