@@ -79,7 +79,7 @@ class _BudgetExpenseCreateBudgetBillSettingsView extends WidgetView<
         AppRouterDelegate.of(context).currentConfiguration.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create Budget'),
+        title: Text('Automate Bill Settings'),
         leading: IconButton(
           icon: Icon(
             Icons.chevron_left,
@@ -172,26 +172,26 @@ class _BudgetExpenseCreateBudgetBillSettingsView extends WidgetView<
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 MonthlyDatePicker(
+                                  title: 'Payment Date',
                                   focusedDate: context
-                                      .read<DatePickerProvider>()
+                                      .watch<DatePickerProvider>()
                                       .focusedDate,
+                                  selectedDate: context
+                                      .watch<DatePickerProvider>()
+                                      .selectedDate,
+                                  fistDate: context
+                                      .watch<DatePickerProvider>()
+                                      .firstDayOfYear,
+                                  lastDate: context
+                                      .watch<DatePickerProvider>()
+                                      .lastDayOfYear,
                                   onDaySelected: context
-                                      .read<DatePickerProvider>()
+                                      .watch<DatePickerProvider>()
                                       .onMonthlyDatePickerDaySelected,
                                   selectedDayPredicate: context
-                                      .read<DatePickerProvider>()
+                                      .watch<DatePickerProvider>()
                                       .selectedDayPredicate,
-                                  selectedDate: context
-                                      .read<DatePickerProvider>()
-                                      .selectedDate,
-                                  lastDate: context
-                                      .read<DatePickerProvider>()
-                                      .lastDayOfYear,
                                   singleMonthSelection: false,
-                                  fistDate: context
-                                      .read<DatePickerProvider>()
-                                      .firstDayOfYear,
-                                  title: 'Payment Date',
                                 ),
                                 SizedBox(height: 24.sp),
                                 Container(

@@ -2,11 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 import 'package:mounae/Screens/index/account/accounts/add_account_sliver_delegate.dart';
+import 'package:mounae/providers/user_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
+import 'package:provider/provider.dart';
 
 class AccountsScreen extends StatefulWidget {
   static const String path = '/index/accounts';
@@ -43,6 +46,8 @@ class _AccountsScreenView
 
   @override
   Widget build(BuildContext context) {
+    String totalBalance = NumberFormat('#,##0.00')
+        .format(context.watch<UserProvider>().getTotalBalance());
     return Scaffold(
       backgroundColor: MounaeColors.greySurfaceColor,
       body: Container(
@@ -98,7 +103,7 @@ class _AccountsScreenView
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'N600,000.00',
+                                  'N $totalBalance',
                                   style: Theme.of(context)
                                       .textTheme
                                       .headline4
@@ -146,6 +151,10 @@ class _AccountsScreenView
                   SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
+                        Map<String, dynamic> account =
+                            context.watch<UserProvider>().getAccounts()[index];
+                        String balance =
+                            NumberFormat('#,##0.00').format(account['balance']);
                         return Container(
                           padding: EdgeInsets.all(8.sp),
                           child: Card(
@@ -164,13 +173,15 @@ class _AccountsScreenView
                                         Container(
                                           width: 17.sp,
                                           height: 17.sp,
-                                          color: Colors.black12,
+                                          child: SvgPicture.network(
+                                            account['icon'],
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 10.sp,
                                         ),
                                         Text(
-                                          'Bank Name LLC',
+                                          account['bankName'],
                                           style: Theme.of(context)
                                               .textTheme
                                               .bodyText2,
@@ -189,13 +200,15 @@ class _AccountsScreenView
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            'N600,000.00',
+                                            balance,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .headline5,
                                           ),
                                           Text(
-                                            'Current Account',
+                                            account['type'] == 'SA'
+                                                ? 'Savings Account'
+                                                : 'Current Account',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .bodyText2,
@@ -213,7 +226,8 @@ class _AccountsScreenView
                           ),
                         );
                       },
-                      childCount: 40,
+                      childCount:
+                          context.watch<UserProvider>().getAccounts().length,
                     ),
                   )
                 ],

@@ -1,0 +1,99 @@
+
+{
+  "done":true,
+  "record_id":"604a15156d58843f2e1b4c7e",
+  "record":"604a15156d58843f2e1b4c7e",
+  "bank_id":"5d6fe57a4099cc4b210bbec2",
+  "customer_id":"604a109806c496426fd9b532",
+  "balance":{
+    "data":{
+      "formatted":[
+        {
+          "currency":"NGN",
+          "type":"SA",
+          "nuban":"2250282177",
+          "status":"Active",
+          "name":"PHILIP ADEOLUWA OGUNYE",
+          "available_balance":10757.99,
+          "ledger_balance":10757.99,
+          "record":"604a15156d58843f2e1b4c7e",
+          "account":"604a109806c496426fd9b530",
+          "connected":true
+        }
+      ]
+    }
+  },
+  "transactions":{
+    "callback_url":"https://api.okra.ng/v2/callback?record=604a15156d58843f2e1b4c7e&method=TRANSACTIONS"
+  },
+  "guarantors":[
+
+  ],
+  "redirect_url":null,
+  "callback_url":null,
+  "launchAgain":true,
+  "hideExit":"",
+  "success_title":"null",
+  "success_message":"null",
+  "options":{
+
+  },
+  "directors":null,
+  "auth":{
+    "clientId":"X08ohhfdLnTbUlclAADr",
+    "type":"validate",
+    "status":true,
+    "oldBank":true,
+    "bank_details":{
+      "name":"Zenith Bank",
+      "slug":"zenith-bank",
+      "logo":"https://okra-images.s3.eu-west-3.amazonaws.com/Zenith+Bank+Logo.svg",
+      "icon":"https://okra-images.s3.eu-west-3.amazonaws.com/Zenith+Bank+Logo+Color.svg",
+      "png_logo":"http://d1f1tz87xvarxp.cloudfront.net/Nigerian+Banks/Zenith+Bank.png",
+      "v2_logo":"https://okra-images.s3.eu-west-3.amazonaws.com/Zenith+Bank+Logo.svg",
+      "v2_icon":"https://okra-images.s3.eu-west-3.amazonaws.com/Zenith+Bank+Logo+Color.svg"
+    },
+    "login_type":"mobile"
+  },
+  "identity":{
+    "id":"604a109806c496426fd9b537",
+    "bvn":"22153987942",
+    "firstname":"PHILIP",
+    "middlename":"A.",
+    "lastname":"OGUNYE",
+    "email":[
+      "ogunye4pao@gmail.com"
+    ],
+    "name":"PHILIP A. OGUNYE",
+    "fullname":"PHILIP A. OGUNYE",
+    "dob":"17-May-1994",
+    "gender":"M",
+    "marital_status":"Single",
+    "phone":[
+      "08139755032",
+      "07081401438"
+    ],
+    "address":[
+      "15, IBIYEMI STREET PALMGROVE SHOMOLU, LAGOS."
+    ],
+    "aliases":[
+      "PHILIP A. OGUNYE"
+    ],
+    "details":"https://api.okra.ng/v2/callback?record=604a15156d58843f2e1b4c7e&method=IDENTITY",
+    "customer":"604a109806c496426fd9b532",
+    "env":"production",
+    "owner":[
+      "5f74365c05805f088505daa8"
+    ]
+  },
+  "accounts":[
+    {
+      "manual":false,
+      "nuban":"2250282177",
+      "id":"604a109806c496426fd9b530",
+      "connected":true,
+      "name":"PHILIP ADEOLUWA OGUNYE",
+      "type":"SA"
+    }
+  ]
+}

@@ -1,32 +1,93 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:loading_indicator/loading_indicator.dart';
+import 'package:mounae/models/response_model.dart';
 import 'package:mounae/providers/auth_provider.dart';
+import 'package:mounae/repository/server/mounea_repository.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/utils/http/okra_widget.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
+import 'package:okra_widget/okra_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
 
-class ConnectBankOnboardingScreen extends StatefulWidget {
+class ConnectBankOnBoardingScreen extends StatefulWidget {
   static const String path = '/connect-bank-onboarding';
 
   @override
-  _ConnectBankOnboardingScreenState createState() =>
-      _ConnectBankOnboardingScreenState();
+  _ConnectBankOnBoardingScreenState createState() =>
+      _ConnectBankOnBoardingScreenState();
 }
 
-class _ConnectBankOnboardingScreenState
-    extends State<ConnectBankOnboardingScreen> {
+class _ConnectBankOnBoardingScreenState
+    extends State<ConnectBankOnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
-    return _ConnectBankOnboardingView(this);
+    return _ConnectBankOnBoardingView(this);
   }
 
+  bool isLoading = false;
+
   void onAddBankAccountButtonPressed() {
-    AppRouterDelegate.of(context).push(AccountChooseBankConfiguration());
+    initOkraWidget();
+  }
+
+  void initOkraWidget() async {
+    setState(() {
+      isLoading = true;
+    });
+    OkraHandler handler = await OkraWidget.launch(context);
+
+    if (handler.isDone) {
+      if (handler.isSuccessful) {
+        String data = handler.data;
+        Map<String, dynamic> payload = json.decode(data);
+
+        log(data);
+
+        log(payload.toString());
+
+        try {
+          ResponseModel response =
+              await MounaeRepository.addBankAccountAuth(payload: payload);
+
+          if (response != null) {
+            if (response.responseCode == '00') {
+              AppRouterDelegate.of(context).push(AccountConfiguration());
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(
+                      response?.responseMessage ?? 'Unable to connect to bank'),
+                ),
+              );
+            }
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Unable to connect to bank'),
+              ),
+            );
+          }
+        } on Exception catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Unable to connect to bank'),
+            ),
+          );
+        }
+      }
+    }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   void onSkipButtonPressed() {
@@ -34,9 +95,9 @@ class _ConnectBankOnboardingScreenState
   }
 }
 
-class _ConnectBankOnboardingView extends WidgetView<ConnectBankOnboardingScreen,
-    _ConnectBankOnboardingScreenState> {
-  _ConnectBankOnboardingView(_ConnectBankOnboardingScreenState state)
+class _ConnectBankOnBoardingView extends WidgetView<ConnectBankOnBoardingScreen,
+    _ConnectBankOnBoardingScreenState> {
+  _ConnectBankOnBoardingView(_ConnectBankOnBoardingScreenState state)
       : super(state);
 
   @override
@@ -67,7 +128,8 @@ class _ConnectBankOnboardingView extends WidgetView<ConnectBankOnboardingScreen,
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: state.onSkipButtonPressed,
+                      onPressed:
+                          state.isLoading ? null : state.onSkipButtonPressed,
                       child: Text('Skip>>'),
                       style: Theme.of(context).textButtonTheme.style.copyWith(
                             overlayColor: MaterialStateProperty.all<Color>(
@@ -149,10 +211,21 @@ class _ConnectBankOnboardingView extends WidgetView<ConnectBankOnboardingScreen,
                     child: SizedBox(
                       width: context.widthPx,
                       child: TextButton(
-                        onPressed: state.onAddBankAccountButtonPressed,
-                        child: Text(
-                          'Add Bank Account(s)',
-                        ),
+                        onPressed: state.isLoading
+                            ? null
+                            : state.onAddBankAccountButtonPressed,
+                        child: state.isLoading
+                            ? SizedBox(
+                                height: 24.sp,
+                                width: 24.sp,
+                                child: LoadingIndicator(
+                                  indicatorType: Indicator.ballSpinFadeLoader,
+                                  color: MounaeColors.primaryColor,
+                                ),
+                              )
+                            : Text(
+                                'Add Bank Account(s)',
+                              ),
                         style: Theme.of(context).textButtonTheme.style.copyWith(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 MounaeColors.backgroundColor,

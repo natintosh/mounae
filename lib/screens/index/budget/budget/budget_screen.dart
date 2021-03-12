@@ -30,6 +30,11 @@ class _BudgetScreenState extends State<BudgetScreen> {
   void onAddBudgetHeaderTapped() {
     AppRouterDelegate.of(context).push(BudgetCreateBudgetPlanConfiguration());
   }
+
+  void onBudgetCardTapped() {
+    AppRouterDelegate.of(context)
+        .push(BudgetExpenseBudgetDetailsConfiguration());
+  }
 }
 
 class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
@@ -80,12 +85,14 @@ class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
               title: 'Monthly Expense',
               primaryColor: MounaeColors.purpleProgressMajorColor,
               secondaryColor: MounaeColors.purpleProgressMinorColor,
+              onTapped: state.onBudgetCardTapped,
             ),
             SizedBox(height: 8.sp),
             BudgetItemCard(
               title: 'Home Construction',
               primaryColor: MounaeColors.limeProgressMajorColor,
               secondaryColor: MounaeColors.limeProgressMinorColor,
+              onTapped: state.onBudgetCardTapped,
             ),
           ],
         ),

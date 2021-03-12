@@ -40,8 +40,22 @@ dependencies:
   provider: ^5.0.0
   system_settings: ^1.0.1
   sized_context: ^1.0.0-nullsafety
-#  table_calendar: ^2.3.3
+  #  table_calendar: ^2.3.3
   table_calendar: ^3.0.0-nullsafety.1
+
+  logger: ^1.0.0-nullsafety.0
+
+  flutter_secure_storage: ^4.1.0
+
+  dio: ^4.0.0-beta7
+  pretty_dio_logger: ^1.2.0-beta
+
+  get_storage: ^2.0.1
+
+  okra_widget: ^2.0.2-beta
+
+  loading_indicator: ^1.2.0
+
 
 dev_dependencies:
   flutter_test:
@@ -64,7 +78,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
 
   assets:
-  # Svg folder root
+    # Svg folder root
     - assets/svg/nigeria_flag.svg
     - assets/svg/chat_bubble.svg
     - assets/svg/phone_dial.svg
@@ -80,13 +94,13 @@ flutter:
     - assets/svg/one_time.svg
     - assets/svg/periodic.svg
 
-  # Logo Screen
+    # Logo Screen
     - assets/svg/logo/chevron_north.svg
     - assets/svg/logo/chevron_south.svg
     - assets/svg/logo/circle.svg
     - assets/svg/logo/text.svg
 
-  # OnBoarding screen
+    # OnBoarding screen
     - assets/svg/onboarding/finance.svg
     - assets/svg/onboarding/freedom.svg
     - assets/svg/onboarding/goal.svg

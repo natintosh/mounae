@@ -111,10 +111,10 @@ class PassCodeConfiguration extends PageConfiguration {
 }
 
 class ConnectBankOnboardingConfiguration extends PageConfiguration {
-  static const String path = ConnectBankOnboardingScreen.path;
+  static const String path = ConnectBankOnBoardingScreen.path;
 
   @override
-  Widget get child => ConnectBankOnboardingScreen();
+  Widget get child => ConnectBankOnBoardingScreen();
 
   @override
   String get name => path;
