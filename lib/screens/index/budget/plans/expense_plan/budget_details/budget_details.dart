@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:mounae/models/budget_model.dart';
+import 'package:mounae/models/expense_model.dart';
 import 'package:mounae/providers/budget_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
@@ -28,6 +29,7 @@ class _BudgetExpenseBudgetDetailsScreenState
   @override
   void initState() {
     super.initState();
+    initCustomerExpense();
   }
 
   final GlobalKey<NestedScrollViewState> nestedScrollKey =
@@ -41,6 +43,10 @@ class _BudgetExpenseBudgetDetailsScreenState
     AppRouterDelegate.of(context)
         .push(BudgetExpenseCreateBudgetConfiguration());
   }
+
+  void initCustomerExpense() {
+    context.read<BudgetProvider>().getCustomerExpense();
+  }
 }
 
 class _BudgetExpenseBudgetDetailsView extends WidgetView<
@@ -51,6 +57,8 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
   @override
   Widget build(BuildContext context) {
     BudgetModel budget = context.watch<BudgetProvider>().selectedBudget;
+
+    List<ExpenseModel> expenses = context.watch<BudgetProvider>().expenseList;
     return Scaffold(
       backgroundColor: MounaeColors.greySurfaceColor,
       extendBody: true,
@@ -245,11 +253,12 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
           margin: EdgeInsets.zero,
           child: ListView.separated(
             padding: EdgeInsets.only(top: 1.sp, bottom: 42.sp),
-            itemCount: 10,
+            itemCount: expenses?.length ?? 0,
             separatorBuilder: (context, index) {
               return Divider();
             },
             itemBuilder: (context, index) {
+              ExpenseModel expense = expenses[index];
               return Container(
                 padding:
                     EdgeInsets.symmetric(vertical: 16.sp, horizontal: 16.sp),
@@ -257,26 +266,55 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                   children: [
                     Container(
                       alignment: Alignment.centerLeft,
-                      child: Text('Transportation: 70%'),
+                      child: Text('${expense.expenseTitle}: 70%'),
                     ),
                     SizedBox(height: 5.sp),
-                    Container(
-                      height: 16.sp,
-                      width: double.infinity,
-                      color: Colors.black12,
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 70,
+                          child: Container(
+                            height: 16.sp,
+                            decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(32.sp),
+                                      bottomLeft: Radius.circular(
+                                        32.sp,
+                                      ))),
+                              color: MounaeColors.purpleProgressMajorColor,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 100,
+                          child: Container(
+                            height: 16.sp,
+                            decoration: ShapeDecoration(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(32.sp),
+                                      bottomRight: Radius.circular(
+                                        32.sp,
+                                      ))),
+                              color: MounaeColors.purpleProgressMinorColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(height: 5.sp),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'N 150,000',
+                          'N ${ConvertUtils.amount(0.70 * double.parse(expense?.expenseAmount ?? "0"))}',
                           style: Theme.of(context).textTheme.caption.copyWith(
                                 color: MounaeColors.purpleProgressMajorColor,
                               ),
                         ),
                         Text(
-                          'N 150,000',
+                          'N ${ConvertUtils.amount(double.parse(expense?.expenseAmount ?? "0"))}',
                           style: Theme.of(context).textTheme.caption.copyWith(
                                 color: MounaeColors.purpleProgressMinorColor,
                               ),

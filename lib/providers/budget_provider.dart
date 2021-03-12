@@ -65,7 +65,7 @@ class BudgetProvider extends ChangeNotifier {
 
   void getCustomerExpense() async {
     try {
-      ResponseModel response = await MounaeRepository.getCustomerBudget(
+      ResponseModel response = await MounaeRepository.getCustomerExpenses(
           payload: {"customerId": "08139755032"});
 
       if (response != null) {
