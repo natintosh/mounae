@@ -40,7 +40,8 @@ class _BudgetScreenState extends State<BudgetScreen> {
     AppRouterDelegate.of(context).push(BudgetCreateBudgetPlanConfiguration());
   }
 
-  void onBudgetCardTapped() {
+  void onBudgetCardTapped(BudgetModel budget) {
+    context.read<BudgetProvider>().selectedBudget = budget;
     AppRouterDelegate.of(context)
         .push(BudgetExpenseBudgetDetailsConfiguration());
   }
@@ -105,7 +106,7 @@ class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
               secondaryColor: budget.budgetType == 'expense'
                   ? MounaeColors.purpleProgressMinorColor
                   : MounaeColors.limeProgressMinorColor,
-              onTapped: state.onBudgetCardTapped,
+              onTapped: () => state.onBudgetCardTapped(budget),
             );
           },
         ),

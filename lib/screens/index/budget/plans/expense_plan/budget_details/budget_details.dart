@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
+import 'package:mounae/models/budget_model.dart';
+import 'package:mounae/providers/budget_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/budget_details/add_expense_sliver_delegate.dart';
+import 'package:mounae/utils/formatter/converter_utils.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
+import 'package:provider/provider.dart';
 
 class BudgetExpenseBudgetDetailsScreen extends StatefulWidget {
   static const String path = '/index/budget/expense/details';
@@ -46,6 +50,7 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
 
   @override
   Widget build(BuildContext context) {
+    BudgetModel budget = context.watch<BudgetProvider>().selectedBudget;
     return Scaffold(
       backgroundColor: MounaeColors.greySurfaceColor,
       extendBody: true,
@@ -81,11 +86,11 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Monthly Expenses',
+                                budget.budgetTitle,
                                 style: Theme.of(context).textTheme.headline5,
                               ),
                               Text(
-                                'N 300,000',
+                                'N ${ConvertUtils.amount(double.parse(budget.bugetAmount))}',
                                 style: Theme.of(context).textTheme.headline4,
                               ),
                               SizedBox(height: 10.sp),
@@ -142,15 +147,47 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                               Container(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Budget Overview: 70%',
+                                  'Budget Overview: 0%',
                                   style: Theme.of(context).textTheme.caption,
                                 ),
                               ),
                               SizedBox(height: 8.sp),
-                              Container(
-                                height: 16.sp,
-                                width: double.infinity,
-                                color: Colors.black12,
+                              Row(
+                                children: [
+                                  Expanded(
+                                    flex: 5,
+                                    child: Container(
+                                      height: 16.sp,
+                                      decoration: ShapeDecoration(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                                topLeft: Radius.circular(32.sp),
+                                                bottomLeft: Radius.circular(
+                                                  32.sp,
+                                                ))),
+                                        color: MounaeColors
+                                            .purpleProgressMajorColor,
+                                      ),
+                                    ),
+                                  ),
+                                  Expanded(
+                                    flex: 100,
+                                    child: Container(
+                                      height: 16.sp,
+                                      decoration: ShapeDecoration(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.only(
+                                                topRight:
+                                                    Radius.circular(32.sp),
+                                                bottomRight: Radius.circular(
+                                                  32.sp,
+                                                ))),
+                                        color: MounaeColors
+                                            .purpleProgressMinorColor,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                               SizedBox(height: 5.sp),
                               Row(
@@ -158,7 +195,7 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    'N 150,000',
+                                    'N 0.00',
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText1
@@ -168,7 +205,7 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                                         ),
                                   ),
                                   Text(
-                                    'N 150,000',
+                                    'N ${ConvertUtils.amount(double.parse(budget.bugetAmount))}',
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText1
