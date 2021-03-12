@@ -82,15 +82,44 @@ class BudgetItemCard extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'Budget Overview: 70%',
+                    'Budget Overview: 0%',
                     style: Theme.of(context).textTheme.bodyText2,
                   ),
                 ),
                 SizedBox(height: 8.sp),
-                Container(
-                  height: 16.sp,
-                  width: double.infinity,
-                  color: Colors.black12,
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        height: 16.sp,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(32.sp),
+                                  bottomLeft: Radius.circular(
+                                    32.sp,
+                                  ))),
+                          color: primaryColor,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 100,
+                      child: Container(
+                        height: 16.sp,
+                        decoration: ShapeDecoration(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(32.sp),
+                                  bottomRight: Radius.circular(
+                                    32.sp,
+                                  ))),
+                          color: secondaryColor,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 16.sp),
               ],
