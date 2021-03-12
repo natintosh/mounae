@@ -43,6 +43,8 @@ android {
     }
 
     defaultConfig {
+        multiDexEnabled true
+
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "ng.mounae.mounae"
         minSdkVersion 18
@@ -70,6 +72,7 @@ android {
         }
     }
 }
+
 
 flutter {
     source '../..'

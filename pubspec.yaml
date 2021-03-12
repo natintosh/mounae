@@ -43,14 +43,10 @@ dependencies:
   #  table_calendar: ^2.3.3
   table_calendar: ^3.0.0-nullsafety.1
 
-  logger: ^1.0.0-nullsafety.0
-
-  flutter_secure_storage: ^4.1.0
 
   dio: ^4.0.0-beta7
   pretty_dio_logger: ^1.2.0-beta
 
-  get_storage: ^2.0.1
 
   okra_widget: ^2.0.2-beta
 
