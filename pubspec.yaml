@@ -48,8 +48,6 @@ dependencies:
   pretty_dio_logger: ^1.2.0-beta
 
 
-  okra_widget: ^2.0.2-beta
-
   loading_indicator: ^1.2.0
 
 

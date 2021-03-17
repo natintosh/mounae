@@ -1,20 +1,13 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/size_extension.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
-import 'package:mounae/models/response_model.dart';
 import 'package:mounae/providers/auth_provider.dart';
-import 'package:mounae/repository/server/mounea_repository.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
-import 'package:mounae/utils/http/okra_widget.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
-import 'package:okra_widget/okra_widget.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
 
@@ -43,48 +36,9 @@ class _ConnectBankOnBoardingScreenState
     setState(() {
       isLoading = true;
     });
-    OkraHandler handler = await OkraWidget.launch(context);
 
-    if (handler.isDone) {
-      if (handler.isSuccessful) {
-        String data = handler.data;
-        Map<String, dynamic> payload = json.decode(data);
+    AppRouterDelegate.of(context).push(AccountConfiguration());
 
-        log(data);
-
-        log(payload.toString());
-
-        try {
-          ResponseModel response =
-              await MounaeRepository.addBankAccountAuth(payload: payload);
-
-          if (response != null) {
-            if (response.responseCode == '00') {
-              AppRouterDelegate.of(context).push(AccountConfiguration());
-            } else {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                      response?.responseMessage ?? 'Unable to connect to bank'),
-                ),
-              );
-            }
-          } else {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text('Unable to connect to bank'),
-              ),
-            );
-          }
-        } on Exception catch (e) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text('Unable to connect to bank'),
-            ),
-          );
-        }
-      }
-    }
     setState(() {
       isLoading = false;
     });
