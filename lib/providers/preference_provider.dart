@@ -5,7 +5,6 @@ class PreferenceProvider extends ChangeNotifier {
   ThemeOption _themeOption = ThemeOption.LIGHT;
 
   set themeOption(ThemeOption option) {
-    assert(option != null);
     _themeOption = option;
     notifyListeners();
   }

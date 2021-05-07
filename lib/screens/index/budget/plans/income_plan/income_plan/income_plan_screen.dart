@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
@@ -67,7 +67,7 @@ class _BudgetIncomePlanView
                         'It Could be Monthly Expense, Car Purchase, Building Expenses, a Project Expenses or an Income Plan',
                         style: Theme.of(context)
                             .textTheme
-                            .bodyText1
+                            .bodyText1!
                             .copyWith(color: MounaeColors.greyDescriptionColor),
                       ),
                     ),

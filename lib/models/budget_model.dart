@@ -1,14 +1,14 @@
 class BudgetModel {
-  String customerId;
-  String budgetType;
-  String budgetTitle;
-  String bugetAmount;
-  String budgetFrequency;
-  String budgetPeriod;
-  String budgetStartDate;
-  String budgetMonitoringBank;
-  String createdDate;
-  String updatedDate;
+  String? customerId;
+  String? budgetType;
+  String? budgetTitle;
+  String? bugetAmount;
+  String? budgetFrequency;
+  String? budgetPeriod;
+  String? budgetStartDate;
+  String? budgetMonitoringBank;
+  String? createdDate;
+  String? updatedDate;
 
   BudgetModel(
       {this.customerId,

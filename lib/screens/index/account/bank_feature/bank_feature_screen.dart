@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:mounae/providers/auth_provider.dart';
@@ -58,8 +58,8 @@ class _AccountBankFeatureView extends WidgetView<AccountBankFeatureScreen,
           'Accounts',
           style: Theme.of(context)
               .appBarTheme
-              .textTheme
-              .headline6
+              .textTheme!
+              .headline6!
               .copyWith(color: MounaeColors.primaryTextColor),
         ),
         leading: IconButton(
@@ -154,7 +154,7 @@ class _AccountBankFeatureView extends WidgetView<AccountBankFeatureScreen,
                       ]),
                       style: Theme.of(context)
                           .primaryTextTheme
-                          .bodyText1
+                          .bodyText1!
                           .copyWith(
                               color: MounaeColors.debitReductionAlertColor),
                     ),
@@ -180,7 +180,7 @@ class _AccountBankFeatureView extends WidgetView<AccountBankFeatureScreen,
                             : Text(
                                 'Add Bank Account(s)',
                               ),
-                        style: Theme.of(context).textButtonTheme.style.copyWith(
+                        style: Theme.of(context).textButtonTheme.style!.copyWith(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 MounaeColors.backgroundColor,
                               ),

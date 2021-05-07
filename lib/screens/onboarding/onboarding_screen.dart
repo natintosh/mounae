@@ -1,14 +1,11 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class OnBoardingScreen extends StatefulWidget {
-  static const String path = '/onboarding';
-
   @override
   _OnBoardingScreenState createState() => _OnBoardingScreenState();
 }
@@ -32,22 +29,22 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     }
   }
 
-  PageController controller;
+  PageController? controller;
 
   int index = 0;
 
   void onScreenChangeListener() {
     setState(() {
-      index = controller.page.truncate();
+      index = controller!.page!.truncate();
     });
   }
 
   void onSignUpButtonPressed() {
-    AppRouterDelegate.of(context).push(SignUpRouteConfiguration());
+    Beamer.of(context).beamToNamed('/authentication/signup');
   }
 
   void onSignInButtonPressed() {
-    AppRouterDelegate.of(context).push(SignInRouteConfiguration());
+    Beamer.of(context).beamToNamed('/authentication/signin');
   }
 }
 
@@ -122,11 +119,12 @@ class OnBoardingDetails extends StatelessWidget {
   final String title;
   final String content;
 
-  const OnBoardingDetails({Key key, this.asset, this.title, this.content})
-      : assert(asset != null),
-        assert(title != null),
-        assert(content != null),
-        super(key: key);
+  const OnBoardingDetails(
+      {Key? key,
+      required this.asset,
+      required this.title,
+      required this.content})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +153,7 @@ class OnBoardingDetails extends StatelessWidget {
               child: Text(
                 title,
                 textAlign: TextAlign.center,
-                style: Theme.of(context).primaryTextTheme.subtitle1.copyWith(
+                style: Theme.of(context).primaryTextTheme.subtitle1!.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
               ),
@@ -181,21 +179,21 @@ class OnBoardingDetails extends StatelessWidget {
 }
 
 class DotIndicator extends StatelessWidget {
-  final int index;
-  final int count;
+  final int? index;
+  final int? count;
 
-  const DotIndicator({Key key, this.index, this.count}) : super(key: key);
+  const DotIndicator({Key? key, this.index, this.count}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: builder(context, index, count)),
+          children: builder(context, index, count!)),
     );
   }
 
-  List<Widget> builder(BuildContext context, int index, int count) {
+  List<Widget> builder(BuildContext context, int? index, int count) {
     List<Widget> list = [];
 
     for (int item in List<int>.generate(count, (index) => index)) {

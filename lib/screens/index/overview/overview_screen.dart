@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
-import 'package:mounae/Screens/index/overview/widgets/assets_card.dart';
-import 'package:mounae/Screens/index/overview/widgets/bank_balance_card.dart';
-import 'package:mounae/Screens/index/overview/widgets/budgeting_card.dart';
-import 'package:mounae/Screens/index/overview/widgets/financial_health_card.dart';
-import 'package:mounae/Screens/index/overview/widgets/investment_portfolio_card.dart';
-import 'package:mounae/Screens/index/overview/widgets/savings_card.dart';
-import 'package:mounae/Screens/index/overview/widgets/transactions_card.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/providers/user_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/screens/index/overview/widgets/assets_card.dart';
+import 'package:mounae/screens/index/overview/widgets/bank_balance_card.dart';
+import 'package:mounae/screens/index/overview/widgets/budgeting_card.dart';
+import 'package:mounae/screens/index/overview/widgets/financial_health_card.dart';
+import 'package:mounae/screens/index/overview/widgets/investment_portfolio_card.dart';
+import 'package:mounae/screens/index/overview/widgets/savings_card.dart';
+import 'package:mounae/screens/index/overview/widgets/transactions_card.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
@@ -150,7 +150,7 @@ class _OverScreenView extends WidgetView<OverviewScreen, _OverviewScreenState> {
                           ),
                           Text(
                             '© Mounae 2020',
-                            style: Theme.of(context).textTheme.caption.copyWith(
+                            style: Theme.of(context).textTheme.caption!.copyWith(
                                   color: MounaeColors.greyDescriptionColor,
                                 ),
                           ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class MounaeLogoChevronPaint extends CustomPainter {
   final Color color;
 
-  MounaeLogoChevronPaint(this.color) : assert(color != null);
+  MounaeLogoChevronPaint(this.color);
 
   @override
   void paint(Canvas canvas, Size size) {

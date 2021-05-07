@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:mounae/routes/page_configuration.dart';
 
 class AppRouterDelegate extends RouterDelegate<PageConfiguration>
-    with ChangeNotifier, PopNavigatorRouterDelegateMixin<PageConfiguration> {
+    with ChangeNotifier {
   final List<Page> _pages = [];
 
   @override
@@ -20,14 +20,13 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
   }
 
   @override
-  PageConfiguration get currentConfiguration =>
-      _pages.isNotEmpty ? _pages.last.arguments as PageConfiguration : null;
+  PageConfiguration? get currentConfiguration =>
+      _pages.isNotEmpty ? _pages.last.arguments as PageConfiguration? : null;
 
-  @override
   GlobalKey<NavigatorState> get navigatorKey => GlobalKey<NavigatorState>();
 
   @override
-  Future<void> setNewRoutePath(PageConfiguration configuration) {
+  Future<void> setNewRoutePath(PageConfiguration? configuration) {
     _pages.clear();
     _addScreen(configuration);
     return SynchronousFuture(null);
@@ -57,17 +56,17 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     return true;
   }
 
-  void _removeScreen(Page page) {
+  void _removeScreen(Page? page) {
     if (page != null) {
       _pages.remove(page);
     }
     notifyListeners();
   }
 
-  Page _createScreen(PageConfiguration config) {
+  Page _createScreen(PageConfiguration? config) {
     if (kIsWeb) {
       return MaterialPage(
-        child: config.child,
+        child: config!.child,
         key: ValueKey(config.name),
         name: config.name,
         arguments: config,
@@ -75,7 +74,7 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     }
     if (Platform.isIOS) {
       return CupertinoPage(
-        child: config.child,
+        child: config!.child,
         key: ValueKey(config.name),
         name: config.name,
         arguments: config,
@@ -83,20 +82,20 @@ class AppRouterDelegate extends RouterDelegate<PageConfiguration>
     }
 
     return MaterialPage(
-      child: config.child,
+      child: config!.child,
       key: ValueKey(config.name),
       name: config.name,
       arguments: config,
     );
   }
 
-  void _addScreenData(PageConfiguration config) {
+  void _addScreenData(PageConfiguration? config) {
     _pages.add(_createScreen(config));
   }
 
-  void _addScreen(PageConfiguration config) {
+  void _addScreen(PageConfiguration? config) {
     final shouldAddScreen = _pages.isEmpty ||
-        (_pages.last.arguments as PageConfiguration).name != config.name;
+        (_pages.last.arguments as PageConfiguration).name != config!.name;
 
     if (shouldAddScreen) {
       _addScreenData(config);

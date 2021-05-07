@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/screens/index/budget/plans/widgets/icon_plan_card.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
-
-import 'file:///C:/Users/oguny/AndroidStudioProjects/mounae/lib/screens/index/budget/plans/widgets/icon_plan_card.dart';
 
 class BudgetIncomeChoosePlanTypeScreen extends StatefulWidget {
   static const String path =

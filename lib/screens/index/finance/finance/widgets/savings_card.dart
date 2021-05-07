@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class SavingsCard extends StatelessWidget {
   const SavingsCard({
-    Key key,
-    @required this.onStartSavingsButtonPressed,
+    Key? key,
+    required this.onStartSavingsButtonPressed,
   }) : super(key: key);
 
   final VoidCallback onStartSavingsButtonPressed;
@@ -35,7 +35,7 @@ class SavingsCard extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .bodyText2!
                     .copyWith(color: MounaeColors.greyDescriptionColor),
               ),
             ),
@@ -45,7 +45,7 @@ class SavingsCard extends StatelessWidget {
               child: Text(
                 'Proposed Solution:',
                 textAlign: TextAlign.left,
-                style: Theme.of(context).textTheme.bodyText2.copyWith(
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
                     fontWeight: FontWeight.bold,
                     color: MounaeColors.investmentPortfolioColor),
               ),
@@ -58,7 +58,7 @@ class SavingsCard extends StatelessWidget {
                 textAlign: TextAlign.left,
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .bodyText2!
                     .copyWith(color: MounaeColors.investmentPortfolioColor),
               ),
             ),
@@ -68,7 +68,7 @@ class SavingsCard extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: onStartSavingsButtonPressed,
                 child: Text('Start Saving'),
-                style: Theme.of(context).elevatedButtonTheme.style.copyWith(
+                style: Theme.of(context).elevatedButtonTheme.style!.copyWith(
                     backgroundColor: MaterialStateProperty.all<Color>(
                         MounaeColors.savingsColor)),
               ),

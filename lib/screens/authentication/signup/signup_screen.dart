@@ -1,17 +1,14 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mounae/providers/auth_provider.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
-  static const String path = '/authentication/signup';
-
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
 }
@@ -26,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void initState() {
     focusNode = FocusNode()
       ..addListener(() {
-        if (focusNode.hasFocus || controller.text.isNotEmpty) {
+        if (focusNode!.hasFocus || controller!.text.isNotEmpty) {
           setState(() {
             showPrefixText = true;
           });
@@ -49,8 +46,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   bool showPrefixText = false;
 
-  TextEditingController controller;
-  FocusNode focusNode;
+  TextEditingController? controller;
+  FocusNode? focusNode;
 
   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(
     mask: '###-###-####',
@@ -62,13 +59,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   void onContinueButtonPressed() {
     FocusScope.of(context).unfocus();
     String phoneNumber =
-        '+234' + controller.text.replaceAll(RegExp(r'[^\d]+'), '');
+        '+234' + controller!.text.replaceAll(RegExp(r'[^\d]+'), '');
     context.read<AuthProvider>()..phoneNumber = phoneNumber;
     _openOtpSendScreen();
   }
 
   void _openOtpSendScreen() {
-    AppRouterDelegate.of(context).push(OtpSendRouteConfiguration());
+    Beamer.of(context).beamToNamed('/authentication/send-otp');
   }
 }
 
@@ -85,7 +82,7 @@ class _SignUpView extends WidgetView<SignUpScreen, _SignUpScreenState> {
             size: 40.sp,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Beamer.of(context).beamBack();
           },
         ),
         automaticallyImplyLeading: false,

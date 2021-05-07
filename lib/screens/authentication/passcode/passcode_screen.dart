@@ -1,23 +1,20 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local_auth/error_codes.dart' as authError;
 import 'package:local_auth/local_auth.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mounae/providers/auth_provider.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 import 'package:system_settings/system_settings.dart';
 
 class PassCodeScreen extends StatefulWidget {
-  static const String path = '/authentication/passcode';
-
   @override
   _PassCodeScreenState createState() => _PassCodeScreenState();
 }
@@ -35,8 +32,8 @@ class _PassCodeScreenState extends State<PassCodeScreen> {
     super.initState();
   }
 
-  TextEditingController controller;
-  FocusNode focusNode;
+  TextEditingController? controller;
+  FocusNode? focusNode;
 
   LocalAuthentication localAuthentication = LocalAuthentication();
 
@@ -122,7 +119,8 @@ class _PassCodeScreenState extends State<PassCodeScreen> {
   void onForgotPassCodeTextTapped() {}
 
   void _openIndexOverviewScreen() {
-    AppRouterDelegate.of(context).replaceAll(IndexConfiguration());
+    Beamer.of(context).beamToNamed('/index');
+    Beamer.of(context).clearBeamLocationHistory();
   }
 }
 
@@ -139,7 +137,7 @@ class _PassCodeView extends WidgetView<PassCodeScreen, _PassCodeScreenState> {
             size: 40.sp,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Beamer.of(context).beamBack();
           },
         ),
         automaticallyImplyLeading: false,

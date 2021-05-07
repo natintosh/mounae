@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
@@ -10,11 +10,11 @@ class AddExpenseSliverDelegate extends SliverPersistentHeaderDelegate {
   final VoidCallback onTap;
 
   AddExpenseSliverDelegate({
-    @required this.title,
-    @required this.subTitle,
-    @required this.height,
-    @required this.onTap,
-  }) : assert(height != null);
+    required this.title,
+    required this.subTitle,
+    required this.height,
+    required this.onTap,
+  });
 
   @override
   Widget build(
@@ -55,7 +55,7 @@ class AddExpenseSliverDelegate extends SliverPersistentHeaderDelegate {
                         title,
                         style: Theme.of(context)
                             .textTheme
-                            .subtitle2
+                            .subtitle2!
                             .copyWith(color: MounaeColors.primaryColor),
                       ),
                       SizedBox(height: 8.sp),

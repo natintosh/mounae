@@ -1,15 +1,15 @@
 class ExpenseModel {
-  String customerId;
-  String budgetID;
-  String expenseCategory;
-  String expenseTitle;
-  String expenseAmount;
-  String expenseFrequency;
-  String expenseStartDate;
-  String expenseStartTime;
-  String customerConfirmation;
-  String createdDate;
-  String updatedDate;
+  String? customerId;
+  String? budgetID;
+  String? expenseCategory;
+  String? expenseTitle;
+  String? expenseAmount;
+  String? expenseFrequency;
+  String? expenseStartDate;
+  String? expenseStartTime;
+  String? customerConfirmation;
+  String? createdDate;
+  String? updatedDate;
 
   ExpenseModel(
       {this.customerId,

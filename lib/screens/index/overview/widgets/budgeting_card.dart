@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class BudgetingCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const BudgetingCard({
-    @required this.onTap,
-    Key key,
+    required this.onTap,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -41,7 +41,7 @@ class BudgetingCard extends StatelessWidget {
                       alignment: Alignment.centerLeft,
                       child: Text(
                         'Plan how and when you want to spend your income',
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
                               color: MounaeColors.greyDescriptionColor,
                             ),
                         textAlign: TextAlign.left,
@@ -54,7 +54,7 @@ class BudgetingCard extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'N600,000',
-                          style: Theme.of(context).textTheme.headline4.copyWith(
+                          style: Theme.of(context).textTheme.headline4!.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: MounaeColors.writingColor,
                               ),
@@ -75,7 +75,7 @@ class BudgetingCard extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 6.sp),
                           child: Text(
                             'Expense',
-                            style: Theme.of(context).textTheme.caption.copyWith(
+                            style: Theme.of(context).textTheme.caption!.copyWith(
                                   color: MounaeColors.expenseCaptionTextColor,
                                 ),
                           ),
@@ -91,7 +91,7 @@ class BudgetingCard extends StatelessWidget {
                           padding: EdgeInsets.symmetric(horizontal: 6.sp),
                           child: Text(
                             'Balance',
-                            style: Theme.of(context).textTheme.caption.copyWith(
+                            style: Theme.of(context).textTheme.caption!.copyWith(
                                   color: MounaeColors.balanceCaptionTextColor,
                                 ),
                           ),
@@ -120,7 +120,7 @@ class BudgetingCard extends StatelessWidget {
                                   textAlign: TextAlign.left,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
+                                      .bodyText2!
                                       .copyWith(
                                         color: MounaeColors
                                             .expenseCaptionTextColor,
@@ -149,7 +149,7 @@ class BudgetingCard extends StatelessWidget {
                                   textAlign: TextAlign.left,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
+                                      .bodyText2!
                                       .copyWith(
                                         color: MounaeColors
                                             .expenseCaptionTextColor,
@@ -178,7 +178,7 @@ class BudgetingCard extends StatelessWidget {
                                   textAlign: TextAlign.left,
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
+                                      .bodyText2!
                                       .copyWith(
                                         color: MounaeColors
                                             .expenseCaptionTextColor,

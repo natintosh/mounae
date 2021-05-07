@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class InvestmentPortfolioCard extends StatelessWidget {
   const InvestmentPortfolioCard({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -40,7 +40,7 @@ class InvestmentPortfolioCard extends StatelessWidget {
                           'Investment Portfolio',
                           style: Theme.of(context)
                               .textTheme
-                              .headline6
+                              .headline6!
                               .copyWith(color: MounaeColors.primaryTextColor),
                         ),
                         Icon(
@@ -54,7 +54,7 @@ class InvestmentPortfolioCard extends StatelessWidget {
                       padding: EdgeInsets.only(right: 24.sp),
                       child: Text(
                         'let your money work for you the way your mind, body and soul does.',
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
                               color: MounaeColors.primaryTextColor,
                             ),
                       ),
@@ -66,7 +66,7 @@ class InvestmentPortfolioCard extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'N600,000',
-                          style: Theme.of(context).textTheme.headline4.copyWith(
+                          style: Theme.of(context).textTheme.headline4!.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: MounaeColors.primaryTextColor,
                               ),

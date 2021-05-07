@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class TransactionHistorySliverDelegate extends SliverPersistentHeaderDelegate {
@@ -8,11 +8,9 @@ class TransactionHistorySliverDelegate extends SliverPersistentHeaderDelegate {
   final VoidCallback onFilterButtonTapped;
 
   TransactionHistorySliverDelegate(
-      {@required this.currentFilterMode,
-      @required this.height,
-      @required this.onFilterButtonTapped})
-      : assert(height != null),
-        assert(currentFilterMode != null);
+      {required this.currentFilterMode,
+      required this.height,
+      required this.onFilterButtonTapped});
 
   @override
   Widget build(
@@ -31,20 +29,20 @@ class TransactionHistorySliverDelegate extends SliverPersistentHeaderDelegate {
                 'Transaction History',
                 style: Theme.of(context)
                     .textTheme
-                    .bodyText2
+                    .bodyText2!
                     .copyWith(color: MounaeColors.greyDescriptionColor),
               ),
               TextButton.icon(
                 onPressed: () {},
                 icon: Icon(Icons.swap_vert),
                 label: Text('Weekly'),
-                style: Theme.of(context).textButtonTheme.style.copyWith(
+                style: Theme.of(context).textButtonTheme.style!.copyWith(
                       padding: MaterialStateProperty.all(EdgeInsets.all(2)),
                       overlayColor: MaterialStateProperty.all<Color>(
                           MounaeColors.greyDescriptionColor.withOpacity(0.3)),
                       foregroundColor: MaterialStateProperty.all<Color>(
                           MounaeColors.greyDescriptionColor),
-                      textStyle: MaterialStateProperty.all<TextStyle>(
+                      textStyle: MaterialStateProperty.all<TextStyle?>(
                         Theme.of(context).textTheme.bodyText2,
                       ),
                     ),

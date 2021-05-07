@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
 class AuthProvider extends ChangeNotifier {
-  String _phoneNumber;
-  String _displayName;
+  String? _phoneNumber;
+  String? _displayName;
 
-  set phoneNumber(String value) {
+  set phoneNumber(String? value) {
     _phoneNumber = value;
     notifyListeners();
   }
 
-  String get phoneNumber => _phoneNumber;
+  String? get phoneNumber => _phoneNumber;
 
-  set displayName(String value) {
+  set displayName(String? value) {
     _displayName = value;
     notifyListeners();
   }
 
-  String get displayName => _displayName;
+  String? get displayName => _displayName;
 }

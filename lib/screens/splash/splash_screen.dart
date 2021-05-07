@@ -1,14 +1,11 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:sized_context/sized_context.dart';
 
 class SplashScreen extends StatefulWidget {
-  static const String path = '/';
-
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
@@ -77,15 +74,15 @@ class _SplashScreenState extends State<SplashScreen>
     }
   }
 
-  AnimationController controller;
-  Animation<double> textVisibilityAnimation;
-  Animation<double> circleVisibilityAnimation;
-  Animation<double> northVisibilityAnimation;
-  Animation<double> southVisibilityAnimation;
-  Animation<double> iconTranslationAnimation;
+  late AnimationController controller;
+  late Animation<double> textVisibilityAnimation;
+  late Animation<double> circleVisibilityAnimation;
+  late Animation<double> northVisibilityAnimation;
+  late Animation<double> southVisibilityAnimation;
+  late Animation<double> iconTranslationAnimation;
 
   void onSplashAnimationCompleted() {
-    AppRouterDelegate.of(context).replace(OnBoardingRouteConfiguration());
+    Beamer.of(context).beamToNamed('/onboarding', replaceCurrent: true);
   }
 }
 
@@ -162,7 +159,7 @@ class _SplashScreenView extends WidgetView<SplashScreen, _SplashScreenState> {
                               'Mounae',
                               style: Theme.of(context)
                                   .primaryTextTheme
-                                  .headline4
+                                  .headline4!
                                   .copyWith(
                                     fontWeight: FontWeight.w700,
                                     letterSpacing: 3.5.sp,

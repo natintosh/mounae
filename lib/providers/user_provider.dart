@@ -7,26 +7,26 @@ import 'package:mounae/models/response_model.dart';
 import 'package:mounae/repository/server/mounea_repository.dart';
 
 class UserProvider extends ChangeNotifier {
-  BankListModel _bankList;
+  BankListModel? _bankList;
 
-  set bankList(BankListModel value) {
+  set bankList(BankListModel? value) {
     _bankList = value;
     notifyListeners();
   }
 
-  BankListModel get bankList => _bankList;
+  BankListModel? get bankList => _bankList;
 
   void getListOfBank(Map<String, dynamic> payload) async {
     try {
-      ResponseModel response =
+      ResponseModel? response =
           await MounaeRepository.getListOfBanks(payload: payload);
 
       if (response != null) {
         if (response.responseCode == '00') {
-          Object data = response.data;
+          Object? data = response.data;
 
           BankListModel bankListModel =
-              BankListModel.fromJson((data is Map) ? data : json.decode(data));
+              BankListModel.fromJson((data is Map) ? data as Map<String, dynamic> : json.decode(data as String));
 
           bankList = bankListModel;
         }

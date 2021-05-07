@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/models/budget_model.dart';
 import 'package:mounae/providers/budget_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
@@ -56,7 +56,7 @@ class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
 
   @override
   Widget build(BuildContext context) {
-    List<BudgetModel> budgets = context.watch<BudgetProvider>().budgetList;
+    List<BudgetModel>? budgets = context.watch<BudgetProvider>().budgetList;
     return Scaffold(
       backgroundColor: MounaeColors.greySurfaceColor,
       extendBody: true,
@@ -97,7 +97,7 @@ class _BudgetView extends WidgetView<BudgetScreen, _BudgetScreenState> {
           padding: EdgeInsets.only(top: 1.sp, bottom: 42.sp),
           itemCount: budgets?.length ?? 0,
           itemBuilder: (context, index) {
-            BudgetModel budget = budgets[index];
+            BudgetModel budget = budgets![index];
             return BudgetItemCard(
               title: budget.budgetTitle,
               primaryColor: budget.budgetType == 'expense'

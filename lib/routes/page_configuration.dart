@@ -9,12 +9,12 @@ import 'package:mounae/screens/authentication/set_passcode_confirmation/set_pass
 import 'package:mounae/screens/authentication/set_username/set_username_screen.dart';
 import 'package:mounae/screens/authentication/signin/signin_screen.dart';
 import 'package:mounae/screens/authentication/signup/signup_screen.dart';
-import 'package:mounae/screens/connect_bank_onboarding/connect_bank_onboarding_screen.dart';
 import 'package:mounae/screens/index/account/accounts/accounts_screen.dart';
 import 'package:mounae/screens/index/account/bank_account/bank_account_screen.dart';
 import 'package:mounae/screens/index/account/bank_feature/bank_feature_screen.dart';
-import 'package:mounae/screens/index/account/choose_bank/choose_bank_screen.dart';
-import 'package:mounae/screens/index/account/information/information_screen.dart';
+import 'package:mounae/screens/index/account/depreciated/choose_bank/choose_bank_screen.dart';
+import 'package:mounae/screens/index/account/depreciated/information/information_screen.dart';
+import 'package:mounae/screens/index/account/onboarding/onboarding_screen.dart';
 import 'package:mounae/screens/index/budget/budget/budget_screen.dart';
 import 'package:mounae/screens/index/budget/create_budget_plan/create_budget_plan_screen.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/budget_details/budget_details.dart';
@@ -40,5 +40,5 @@ abstract class PageConfiguration {
 
   Widget get child;
 
-  Object arguments;
+  late Object arguments;
 }

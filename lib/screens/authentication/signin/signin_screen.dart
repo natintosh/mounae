@@ -1,18 +1,15 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mounae/providers/auth_provider.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 
 class SignInScreen extends StatefulWidget {
-  static const String path = '/authentication/signin';
-
   @override
   _SignInScreenState createState() => _SignInScreenState();
 }
@@ -27,7 +24,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void initState() {
     focusNode = FocusNode()
       ..addListener(() {
-        if (focusNode.hasFocus || controller.text.isNotEmpty) {
+        if (focusNode!.hasFocus || controller!.text.isNotEmpty) {
           setState(() {
             showPrefixText = true;
           });
@@ -50,8 +47,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   bool showPrefixText = false;
 
-  TextEditingController controller;
-  FocusNode focusNode;
+  TextEditingController? controller;
+  FocusNode? focusNode;
 
   MaskTextInputFormatter maskFormatter = MaskTextInputFormatter(
     mask: '###-###-####',
@@ -63,17 +60,17 @@ class _SignInScreenState extends State<SignInScreen> {
   void onContinueButtonPressed() {
     FocusScope.of(context).unfocus();
     String phoneNumber =
-        '+234' + controller.text.replaceAll(RegExp(r'[^\d]+'), '');
+        '+234' + controller!.text.replaceAll(RegExp(r'[^\d]+'), '');
     context.read<AuthProvider>()..phoneNumber = phoneNumber;
     _openPassCodeScreen();
   }
 
   void _openPassCodeScreen() {
-    AppRouterDelegate.of(context).push(PassCodeConfiguration());
+    Beamer.of(context).beamToNamed('/authentication/passcode');
   }
 
   void onSignUpTextTapped() {
-    AppRouterDelegate.of(context).push(SignUpRouteConfiguration());
+    Beamer.of(context).beamToNamed('/authentication/signup');
   }
 }
 
@@ -90,7 +87,7 @@ class _SignInView extends WidgetView<SignInScreen, _SignInScreenState> {
             size: 40.sp,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Beamer.of(context).beamBack();
           },
         ),
         automaticallyImplyLeading: false,

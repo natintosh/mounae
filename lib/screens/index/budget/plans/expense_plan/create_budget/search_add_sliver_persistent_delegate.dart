@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class SearchAddSliverPersistentDelegate extends SliverPersistentHeaderDelegate {
@@ -7,7 +7,7 @@ class SearchAddSliverPersistentDelegate extends SliverPersistentHeaderDelegate {
   final VoidCallback onAddButtonPressed;
 
   SearchAddSliverPersistentDelegate(
-      {@required this.onAddButtonPressed, @required this.height});
+      {required this.onAddButtonPressed, required this.height});
 
   @override
   Widget build(
@@ -23,7 +23,7 @@ class SearchAddSliverPersistentDelegate extends SliverPersistentHeaderDelegate {
             style: Theme.of(context).textTheme.bodyText1,
             decoration: InputDecoration(
               hintText: 'Search or Create New',
-              hintStyle: Theme.of(context).textTheme.bodyText1.copyWith(
+              hintStyle: Theme.of(context).textTheme.bodyText1!.copyWith(
                     color: MounaeColors.hintTextColor,
                   ),
               suffixIcon: IconButton(

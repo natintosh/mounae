@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/providers/date_picker_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
@@ -24,7 +24,7 @@ class _BudgetExpensePeriodicPlanScreenState
     return _BudgetExpensePeriodicPlanView(this);
   }
 
-  int index;
+  int? index;
 
   void onPeriodGridTapped(int value) {
     setState(() {
@@ -54,7 +54,7 @@ class _BudgetExpensePeriodicPlanScreenState
   }
 
   void showSelectBankAccountModalSheet() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       showModalBottomSheet(
         context: context,
         clipBehavior: Clip.hardEdge,

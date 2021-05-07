@@ -1,8 +1,7 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -24,7 +23,7 @@ class _OtpSendScreenState extends State<OtpSendScreen> {
   }
 
   void _openOtpVerificationScreen() {
-    AppRouterDelegate.of(context).push(OtpVerificationConfiguration());
+    Beamer.of(context).beamToNamed('/authentication/verify-otp');
   }
 }
 
@@ -41,7 +40,7 @@ class _OtpSendView extends WidgetView<OtpSendScreen, _OtpSendScreenState> {
             size: 40.sp,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Beamer.of(context).beamBack();
           },
         ),
         automaticallyImplyLeading: false,

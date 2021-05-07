@@ -1,8 +1,7 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -26,8 +25,8 @@ class _SetPassCodeScreenState extends State<SetPassCodeScreen> {
     super.initState();
   }
 
-  TextEditingController controller;
-  FocusNode focusNode;
+  TextEditingController? controller;
+  FocusNode? focusNode;
 
   MaskTextInputFormatter digitCodeMaskFormatter = MaskTextInputFormatter(
       mask: '# - # - # - # - # - #', filter: {"#": RegExp(r'[0-9]')});
@@ -38,7 +37,7 @@ class _SetPassCodeScreenState extends State<SetPassCodeScreen> {
   }
 
   void _openSetPassCodeConfirmationScreen() {
-    AppRouterDelegate.of(context).push(SetPassCodeConfirmationConfiguration());
+    Beamer.of(context).beamToNamed('/authentication/set-passcode/confirmation');
   }
 }
 
@@ -56,7 +55,7 @@ class _SetPassCodeView
             size: 40.sp,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Beamer.of(context).beamBack();
           },
         ),
         automaticallyImplyLeading: false,

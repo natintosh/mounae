@@ -1,58 +1,58 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 import 'package:mounae/providers/auth_provider.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
 import 'package:sized_context/sized_context.dart';
 
-class ConnectBankOnBoardingScreen extends StatefulWidget {
+class AccountOnBoardingScreen extends StatefulWidget {
   static const String path = '/connect-bank-onboarding';
 
   @override
-  _ConnectBankOnBoardingScreenState createState() =>
-      _ConnectBankOnBoardingScreenState();
+  _AccountOnBoardingScreenState createState() =>
+      _AccountOnBoardingScreenState();
 }
 
-class _ConnectBankOnBoardingScreenState
-    extends State<ConnectBankOnBoardingScreen> {
+class _AccountOnBoardingScreenState extends State<AccountOnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
-    return _ConnectBankOnBoardingView(this);
+    return _AccountOnBoardingView(this);
   }
 
   bool isLoading = false;
 
   void onAddBankAccountButtonPressed() {
-    initOkraWidget();
+    initConnectAccountView();
   }
 
-  void initOkraWidget() async {
-    setState(() {
-      isLoading = true;
-    });
+  void initConnectAccountView() async {
+    // setState(() {
+    //   isLoading = true;
+    // });
 
-    AppRouterDelegate.of(context).push(AccountConfiguration());
+    Beamer.of(context).beamToNamed(
+      '/index/accounts/onboarding/connect',
+    );
 
-    setState(() {
-      isLoading = false;
-    });
+    // setState(() {
+    //   isLoading = false;
+    // });
   }
 
   void onSkipButtonPressed() {
-    AppRouterDelegate.of(context).replaceAll(IndexConfiguration());
+    Beamer.of(context).beamToNamed('/index');
+    Beamer.of(context).clearBeamLocationHistory();
   }
 }
 
-class _ConnectBankOnBoardingView extends WidgetView<ConnectBankOnBoardingScreen,
-    _ConnectBankOnBoardingScreenState> {
-  _ConnectBankOnBoardingView(_ConnectBankOnBoardingScreenState state)
-      : super(state);
+class _AccountOnBoardingView
+    extends WidgetView<AccountOnBoardingScreen, _AccountOnBoardingScreenState> {
+  _AccountOnBoardingView(_AccountOnBoardingScreenState state) : super(state);
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,7 @@ class _ConnectBankOnBoardingView extends WidgetView<ConnectBankOnBoardingScreen,
                       onPressed:
                           state.isLoading ? null : state.onSkipButtonPressed,
                       child: Text('Skip>>'),
-                      style: Theme.of(context).textButtonTheme.style.copyWith(
+                      style: Theme.of(context).textButtonTheme.style!.copyWith(
                             overlayColor: MaterialStateProperty.all<Color>(
                               Color(0xFFFFFFFF).withOpacity(0.2),
                             ),
@@ -154,7 +154,7 @@ class _ConnectBankOnBoardingView extends WidgetView<ConnectBankOnBoardingScreen,
                       ]),
                       style: Theme.of(context)
                           .primaryTextTheme
-                          .bodyText1
+                          .bodyText1!
                           .copyWith(
                               color: MounaeColors.debitReductionAlertColor),
                     ),
@@ -180,7 +180,10 @@ class _ConnectBankOnBoardingView extends WidgetView<ConnectBankOnBoardingScreen,
                             : Text(
                                 'Add Bank Account(s)',
                               ),
-                        style: Theme.of(context).textButtonTheme.style.copyWith(
+                        style: Theme.of(context)
+                            .textButtonTheme
+                            .style!
+                            .copyWith(
                               backgroundColor: MaterialStateProperty.all<Color>(
                                 MounaeColors.backgroundColor,
                               ),

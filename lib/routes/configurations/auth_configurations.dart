@@ -1,7 +1,7 @@
 part of '../page_configuration.dart';
 
 class SplashRouteConfiguration extends PageConfiguration {
-  static const String path = SplashScreen.path;
+  static const String path = '';
 
   @override
   String get name => path;
@@ -11,7 +11,7 @@ class SplashRouteConfiguration extends PageConfiguration {
 }
 
 class OnBoardingRouteConfiguration extends PageConfiguration {
-  static const String path = OnBoardingScreen.path;
+  static const String path = '';
 
   @override
   String get name => path;
@@ -21,7 +21,7 @@ class OnBoardingRouteConfiguration extends PageConfiguration {
 }
 
 class SignUpRouteConfiguration extends PageConfiguration {
-  static const String path = SignUpScreen.path;
+  static const String path = '';
 
   @override
   String get name => path;
@@ -31,7 +31,7 @@ class SignUpRouteConfiguration extends PageConfiguration {
 }
 
 class SignInRouteConfiguration extends PageConfiguration {
-  static const String path = SignInScreen.path;
+  static const String path = '';
 
   @override
   String get name => path;
@@ -41,7 +41,7 @@ class SignInRouteConfiguration extends PageConfiguration {
 }
 
 class OtpSendRouteConfiguration extends PageConfiguration {
-  static const String path = OtpSendScreen.path;
+  static const String path = '';
 
   @override
   Widget get child => OtpSendScreen();
@@ -51,7 +51,7 @@ class OtpSendRouteConfiguration extends PageConfiguration {
 }
 
 class OtpVerificationConfiguration extends PageConfiguration {
-  static const String path = OtpVerificationScreen.path;
+  static const String path = '';
 
   @override
   Widget get child => OtpVerificationScreen();
@@ -71,7 +71,7 @@ class SetUsernameConfiguration extends PageConfiguration {
 }
 
 class SetPassCodeConfiguration extends PageConfiguration {
-  static const String path = SetPassCodeScreen.path;
+  static const String path = '';
 
   @override
   Widget get child => SetPassCodeScreen();
@@ -81,7 +81,7 @@ class SetPassCodeConfiguration extends PageConfiguration {
 }
 
 class SetPassCodeConfirmationConfiguration extends PageConfiguration {
-  static const String path = SetPassCodeConfirmationScreen.path;
+  static const String path = '';
 
   @override
   Widget get child => SetPassCodeConfirmationScreen();
@@ -91,7 +91,7 @@ class SetPassCodeConfirmationConfiguration extends PageConfiguration {
 }
 
 class BiometricsOptionConfiguration extends PageConfiguration {
-  static const String path = BiometricsOptionScreen.path;
+  static const String path = '';
 
   @override
   Widget get child => BiometricsOptionScreen();
@@ -101,7 +101,7 @@ class BiometricsOptionConfiguration extends PageConfiguration {
 }
 
 class PassCodeConfiguration extends PageConfiguration {
-  static const String path = PassCodeScreen.path;
+  static const String path = '';
 
   @override
   Widget get child => PassCodeScreen();
@@ -111,10 +111,10 @@ class PassCodeConfiguration extends PageConfiguration {
 }
 
 class ConnectBankOnboardingConfiguration extends PageConfiguration {
-  static const String path = ConnectBankOnBoardingScreen.path;
+  static const String path = '';
 
   @override
-  Widget get child => ConnectBankOnBoardingScreen();
+  Widget get child => AccountOnBoardingScreen();
 
   @override
   String get name => path;

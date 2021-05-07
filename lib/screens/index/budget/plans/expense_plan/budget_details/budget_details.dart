@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/models/budget_model.dart';
 import 'package:mounae/models/expense_model.dart';
 import 'package:mounae/providers/budget_provider.dart';
@@ -56,9 +56,9 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
 
   @override
   Widget build(BuildContext context) {
-    BudgetModel budget = context.watch<BudgetProvider>().selectedBudget;
+    BudgetModel? budget = context.watch<BudgetProvider>().selectedBudget;
 
-    List<ExpenseModel> expenses = context.watch<BudgetProvider>().expenseList;
+    List<ExpenseModel>? expenses = context.watch<BudgetProvider>().expenseList;
     return Scaffold(
       backgroundColor: MounaeColors.greySurfaceColor,
       extendBody: true,
@@ -94,11 +94,11 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                budget.budgetTitle,
+                                budget!.budgetTitle!,
                                 style: Theme.of(context).textTheme.headline5,
                               ),
                               Text(
-                                'N ${ConvertUtils.amount(double.parse(budget.bugetAmount))}',
+                                'N ${ConvertUtils.amount(double.parse(budget.bugetAmount!))}',
                                 style: Theme.of(context).textTheme.headline4,
                               ),
                               SizedBox(height: 10.sp),
@@ -118,7 +118,7 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                                       'Expense',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .caption
+                                          .caption!
                                           .copyWith(
                                             color: MounaeColors
                                                 .purpleProgressMajorColor,
@@ -142,7 +142,7 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                                       'Balance',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .caption
+                                          .caption!
                                           .copyWith(
                                             color: MounaeColors
                                                 .purpleProgressMinorColor,
@@ -206,17 +206,17 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                                     'N 0.00',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .bodyText1
+                                        .bodyText1!
                                         .copyWith(
                                           color: MounaeColors
                                               .purpleProgressMajorColor,
                                         ),
                                   ),
                                   Text(
-                                    'N ${ConvertUtils.amount(double.parse(budget.bugetAmount))}',
+                                    'N ${ConvertUtils.amount(double.parse(budget.bugetAmount!))}',
                                     style: Theme.of(context)
                                         .textTheme
-                                        .bodyText1
+                                        .bodyText1!
                                         .copyWith(
                                           color: MounaeColors
                                               .purpleProgressMinorColor,
@@ -258,7 +258,7 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
               return Divider();
             },
             itemBuilder: (context, index) {
-              ExpenseModel expense = expenses[index];
+              ExpenseModel expense = expenses![index];
               return Container(
                 padding:
                     EdgeInsets.symmetric(vertical: 16.sp, horizontal: 16.sp),
@@ -308,14 +308,14 @@ class _BudgetExpenseBudgetDetailsView extends WidgetView<
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'N ${ConvertUtils.amount(0.70 * double.parse(expense?.expenseAmount ?? "0"))}',
-                          style: Theme.of(context).textTheme.caption.copyWith(
+                          'N ${ConvertUtils.amount(0.70 * double.parse(expense.expenseAmount ?? "0"))}',
+                          style: Theme.of(context).textTheme.caption!.copyWith(
                                 color: MounaeColors.purpleProgressMajorColor,
                               ),
                         ),
                         Text(
-                          'N ${ConvertUtils.amount(double.parse(expense?.expenseAmount ?? "0"))}',
-                          style: Theme.of(context).textTheme.caption.copyWith(
+                          'N ${ConvertUtils.amount(double.parse(expense.expenseAmount ?? "0"))}',
+                          style: Theme.of(context).textTheme.caption!.copyWith(
                                 color: MounaeColors.purpleProgressMinorColor,
                               ),
                         ),

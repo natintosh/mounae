@@ -1,7 +1,7 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/screens/index/budget/plans/widgets/period_grid.dart';
@@ -27,7 +27,7 @@ class _BudgetExpenseCreateBudgetExpenseScreenState
   void initState() {
     focusNode = FocusNode()
       ..addListener(() {
-        if (focusNode.hasFocus || controller.text.isNotEmpty) {
+        if (focusNode!.hasFocus || controller!.text.isNotEmpty) {
           setState(() {
             showPrefixText = true;
           });
@@ -52,8 +52,8 @@ class _BudgetExpenseCreateBudgetExpenseScreenState
 
   bool showPrefixText = false;
 
-  TextEditingController controller;
-  FocusNode focusNode;
+  TextEditingController? controller;
+  FocusNode? focusNode;
 
   int index = 0;
 
@@ -70,13 +70,13 @@ class _BudgetExpenseCreateBudgetExpenseScreenState
   }
 
   void onContinueButtonPressed() {
-    if (formKey.currentState.validate()) {
+    if (formKey.currentState!.validate()) {
       String plan = (AppRouterDelegate.of(context)
-              .currentConfiguration
+              .currentConfiguration!
               .arguments as Map<String, String>)
           .values
           .toList()[0];
-      String amount = controller.text;
+      String amount = controller!.text;
       String period = periods[index];
       AppRouterDelegate.of(context).push(
         BudgetExpenseCreateBudgetBillSettingsConfiguration(
@@ -103,7 +103,7 @@ class _BudgetExpenseCreateBudgetExpenseView extends WidgetView<
   @override
   Widget build(BuildContext context) {
     Map<String, String> arguments =
-        AppRouterDelegate.of(context).currentConfiguration.arguments;
+        AppRouterDelegate.of(context).currentConfiguration!.arguments as Map<String, String>;
     return Scaffold(
       appBar: AppBar(
         title: Text('Create Budget'),
@@ -141,7 +141,7 @@ class _BudgetExpenseCreateBudgetExpenseView extends WidgetView<
                           child: Text(
                             arguments.values.toList()[0],
                             style:
-                                Theme.of(context).textTheme.subtitle2.copyWith(
+                                Theme.of(context).textTheme.subtitle2!.copyWith(
                                       color: MounaeColors.greyDescriptionColor,
                                     ),
                           ),
@@ -163,7 +163,7 @@ class _BudgetExpenseCreateBudgetExpenseView extends WidgetView<
                                   RegExp(r'[\d\.\,]'))
                             ],
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value!.isEmpty) {
                                 return 'Amount is Empty';
                               }
                               return null;
@@ -204,7 +204,7 @@ class _BudgetExpenseCreateBudgetExpenseView extends WidgetView<
                               ],
                             ),
                             style:
-                                Theme.of(context).textTheme.bodyText1.copyWith(
+                                Theme.of(context).textTheme.bodyText1!.copyWith(
                                       color: MounaeColors.greyDescriptionColor,
                                     ),
                           ),

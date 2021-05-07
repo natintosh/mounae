@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class TransactionsCard extends StatelessWidget {
   const TransactionsCard({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -36,7 +36,7 @@ class TransactionsCard extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     child: Text(
                       'Detailed analysis of all your transactions',
-                      style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
                             color: MounaeColors.greyDescriptionColor,
                           ),
                       textAlign: TextAlign.left,
@@ -64,7 +64,7 @@ class TransactionsCard extends StatelessWidget {
                               textAlign: TextAlign.left,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .bodyText2!
                                   .copyWith(
                                     color: MounaeColors.greyDescriptionColor,
                                   ),
@@ -74,7 +74,7 @@ class TransactionsCard extends StatelessWidget {
                               textAlign: TextAlign.left,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .bodyText2!
                                   .copyWith(
                                     color: MounaeColors.incomeTextColor,
                                   ),
@@ -85,7 +85,7 @@ class TransactionsCard extends StatelessWidget {
                               textAlign: TextAlign.left,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .bodyText2!
                                   .copyWith(
                                     color: MounaeColors.greyDescriptionColor,
                                   ),
@@ -95,7 +95,7 @@ class TransactionsCard extends StatelessWidget {
                               textAlign: TextAlign.left,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .bodyText2!
                                   .copyWith(
                                     color: MounaeColors.expensesTextColor,
                                   ),
@@ -106,7 +106,7 @@ class TransactionsCard extends StatelessWidget {
                               textAlign: TextAlign.left,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .bodyText2!
                                   .copyWith(
                                     color: MounaeColors.greyDescriptionColor,
                                   ),
@@ -116,7 +116,7 @@ class TransactionsCard extends StatelessWidget {
                               textAlign: TextAlign.left,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .bodyText2!
                                   .copyWith(
                                     color: MounaeColors.debtTextColor,
                                   ),
@@ -134,7 +134,7 @@ class TransactionsCard extends StatelessWidget {
                     child: Text(
                       'Recent Transaction',
                       textAlign: TextAlign.left,
-                      style: Theme.of(context).textTheme.bodyText2.copyWith(
+                      style: Theme.of(context).textTheme.bodyText2!.copyWith(
                             color: MounaeColors.greyDescriptionColor,
                           ),
                     ),
@@ -157,7 +157,7 @@ class TransactionsCard extends StatelessWidget {
                         subtitle: Text(
                           'Category: Salary',
                           textAlign: TextAlign.left,
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -172,7 +172,7 @@ class TransactionsCard extends StatelessWidget {
                               textAlign: TextAlign.left,
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .bodyText2!
                                   .copyWith(
                                     color: MounaeColors.greyDescriptionColor,
                                   ),

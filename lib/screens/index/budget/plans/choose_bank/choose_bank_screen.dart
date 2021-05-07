@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -9,9 +9,9 @@ class BudgetPlanChooseBankSheet extends StatefulWidget {
   final VoidCallback onAddAccountButtonPressed;
 
   const BudgetPlanChooseBankSheet(
-      {Key key,
-      @required this.scrollController,
-      @required this.onAddAccountButtonPressed})
+      {Key? key,
+      required this.scrollController,
+      required this.onAddAccountButtonPressed})
       : super(key: key);
 
   @override
@@ -25,7 +25,7 @@ class _BudgetPlanChooseBankSheetState extends State<BudgetPlanChooseBankSheet> {
     return _BudgetChooseBankView(this);
   }
 
-  int index;
+  int? index;
 
   void onBackAccountSelected(int value) {
     setState(() {
@@ -106,7 +106,7 @@ class _BudgetChooseBankView extends WidgetView<BudgetPlanChooseBankSheet,
                                         'Current Account',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .caption
+                                            .caption!
                                             .copyWith(
                                               color: MounaeColors
                                                   .greyDescriptionColor,

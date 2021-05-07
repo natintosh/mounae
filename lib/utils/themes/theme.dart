@@ -11,7 +11,7 @@ class MounaeThemeData {
   static Brightness getIconBrightness(
       BuildContext context, ThemeOption optionType) {
     if (optionType == ThemeOption.SYSTEM) {
-      final brightness = WidgetsBinding.instance.window.platformBrightness;
+      final brightness = WidgetsBinding.instance!.window.platformBrightness;
       return brightness == Brightness.light
           ? Brightness.dark
           : Brightness.light;

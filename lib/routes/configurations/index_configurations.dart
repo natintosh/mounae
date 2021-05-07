@@ -1,7 +1,7 @@
 part of '../page_configuration.dart';
 
 class IndexConfiguration extends PageConfiguration {
-  static const String path = IndexScreen.path;
+  static const String path = '';
 
   @override
   Widget get child => IndexScreen();
@@ -11,7 +11,7 @@ class IndexConfiguration extends PageConfiguration {
 }
 
 class FinanceConfiguration extends PageConfiguration {
-  static const String path = FinanceScreen.path;
+  static const String path = '';
 
   @override
   Widget get child => FinanceScreen();

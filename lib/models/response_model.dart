@@ -1,8 +1,8 @@
 class ResponseModel<T> {
-  String responseCode;
-  String responseMessage;
-  String userMessage;
-  Object data;
+  String? responseCode;
+  String? responseMessage;
+  String? userMessage;
+  Object? data;
 
   ResponseModel({
     this.responseCode,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mounae/models/account_model.dart';
 import 'package:mounae/models/bank_list_model.dart';
@@ -10,15 +10,15 @@ import 'package:provider/provider.dart';
 
 class BankBalanceCard extends StatelessWidget {
   const BankBalanceCard({
-    Key key,
-    @required this.onTap,
+    Key? key,
+    required this.onTap,
   }) : super(key: key);
 
   final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    BankListModel bankList = context.watch<UserProvider>().bankList;
+    BankListModel? bankList = context.watch<UserProvider>().bankList;
     String totalBalance = ConvertUtils.amount(bankList?.totalBalance ?? 0);
     return Container(
       child: Card(
@@ -57,7 +57,7 @@ class BankBalanceCard extends StatelessWidget {
                             'Bank Balance',
                             style: Theme.of(context)
                                 .textTheme
-                                .headline6
+                                .headline6!
                                 .copyWith(color: MounaeColors.primaryTextColor),
                           ),
                           Icon(
@@ -71,9 +71,10 @@ class BankBalanceCard extends StatelessWidget {
                         padding: EdgeInsets.only(right: 84.sp),
                         child: Text(
                           'This is the available balance you have in all added ban accounts',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
-                                color: MounaeColors.primaryTextColor,
-                              ),
+                          style:
+                              Theme.of(context).textTheme.bodyText2!.copyWith(
+                                    color: MounaeColors.primaryTextColor,
+                                  ),
                         ),
                       ),
                       SizedBox(height: 10.sp),
@@ -84,7 +85,7 @@ class BankBalanceCard extends StatelessWidget {
                           child: Text(
                             'N $totalBalance',
                             style:
-                                Theme.of(context).textTheme.headline5.copyWith(
+                                Theme.of(context).textTheme.headline5!.copyWith(
                                       color: MounaeColors.primaryTextColor,
                                     ),
                           ),
@@ -100,13 +101,13 @@ class BankBalanceCard extends StatelessWidget {
                                 shrinkWrap: true,
                                 primary: false,
                                 scrollDirection: Axis.horizontal,
-                                itemCount: bankList?.accounts?.length ?? 0,
+                                itemCount: bankList.accounts?.length ?? 0,
                                 itemBuilder: (context, index) {
                                   BankAccount account =
-                                      bankList.accounts[index];
+                                      bankList.accounts![index];
                                   String amount = ConvertUtils.amount(
                                       (double.parse(
-                                          account?.availableBalance ?? '0')));
+                                          account.availableBalance ?? '0')));
                                   return Row(
                                     children: [
                                       Container(
@@ -123,7 +124,7 @@ class BankBalanceCard extends StatelessWidget {
                                           'N $amount',
                                           style: Theme.of(context)
                                               .textTheme
-                                              .bodyText2
+                                              .bodyText2!
                                               .copyWith(
                                                 color: MounaeColors
                                                     .primaryTextColor,

@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class PeriodGrid extends StatelessWidget {
-  final int index;
+  final int? index;
   final List<String> items;
   final ValueChanged<int> onTap;
 
   const PeriodGrid({
-    @required this.index,
-    @required this.items,
-    @required this.onTap,
-    Key key,
+    required this.index,
+    required this.items,
+    required this.onTap,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -48,7 +48,7 @@ class PeriodGrid extends StatelessWidget {
                 child: Center(
                   child: Text(
                     items[index],
-                    style: Theme.of(context).textTheme.bodyText1.copyWith(
+                    style: Theme.of(context).textTheme.bodyText1!.copyWith(
                           color: index == this.index
                               ? MounaeColors.primaryTextColor
                               : MounaeColors.writingColor,

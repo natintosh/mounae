@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class LargestTransactionCard extends StatelessWidget {
@@ -31,7 +31,7 @@ class LargestTransactionCard extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: Theme.of(context)
                       .textTheme
-                      .bodyText2
+                      .bodyText2!
                       .copyWith(color: MounaeColors.greyDescriptionColor),
                 ),
               ),
@@ -52,7 +52,7 @@ class LargestTransactionCard extends StatelessWidget {
                       'Debit',
                       style: Theme.of(context)
                           .textTheme
-                          .bodyText2
+                          .bodyText2!
                           .copyWith(color: MounaeColors.greyDescriptionColor),
                     ),
                     trailing: Column(
@@ -64,7 +64,7 @@ class LargestTransactionCard extends StatelessWidget {
                         SizedBox(height: 4.sp),
                         Text(
                           '20 Sept, 2020',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                               color: MounaeColors.greyDescriptionColor),
                         ),
                       ],

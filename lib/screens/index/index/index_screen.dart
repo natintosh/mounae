@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mounae/Screens/index/overview/overview_screen.dart';
+import 'package:mounae/screens/index/overview/overview_screen.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
 class IndexScreen extends StatefulWidget {
-  static const String path = '/index';
-
   @override
   _IndexScreenState createState() => _IndexScreenState();
 }

@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
-import 'package:mounae/Screens/index/account/accounts/add_account_sliver_delegate.dart';
 import 'package:mounae/models/account_model.dart';
 import 'package:mounae/models/bank_list_model.dart';
 import 'package:mounae/providers/user_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/screens/index/account/accounts/add_account_sliver_delegate.dart';
 import 'package:mounae/utils/formatter/converter_utils.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
@@ -59,7 +59,7 @@ class _AccountsScreenView
 
   @override
   Widget build(BuildContext context) {
-    BankListModel bankList = context.watch<UserProvider>().bankList;
+    BankListModel? bankList = context.watch<UserProvider>().bankList;
     String totalBalance =
         NumberFormat('#,##0.00').format(bankList?.totalBalance ?? 0);
     return Scaffold(
@@ -74,8 +74,8 @@ class _AccountsScreenView
                   'Accounts',
                   style: Theme.of(context)
                       .appBarTheme
-                      .textTheme
-                      .headline6
+                      .textTheme!
+                      .headline6!
                       .copyWith(color: MounaeColors.primaryTextColor),
                 ),
                 leading: IconButton(
@@ -120,7 +120,7 @@ class _AccountsScreenView
                                   'N $totalBalance',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .headline4
+                                      .headline4!
                                       .copyWith(
                                         color: MounaeColors.primaryTextColor,
                                         fontWeight: FontWeight.bold,
@@ -130,7 +130,7 @@ class _AccountsScreenView
                                   'Total Amount Balance',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
+                                      .bodyText2!
                                       .copyWith(
                                         color: MounaeColors.primaryTextColor,
                                       ),
@@ -144,9 +144,9 @@ class _AccountsScreenView
                   ),
                 ),
               ),
-              'null' == null
+              bankList == null
                   ? SliverToBoxAdapter(child: Container())
-                  : (bankList?.accounts?.isEmpty ?? [].isEmpty)
+                  : (bankList.accounts?.isEmpty ?? [].isEmpty)
                       ? SliverToBoxAdapter(child: Container())
                       : SliverPadding(
                           padding: EdgeInsets.symmetric(vertical: 16.sp),
@@ -168,7 +168,7 @@ class _AccountsScreenView
                 slivers: [
                   bankList == null
                       ? SliverToBoxAdapter(child: Container())
-                      : (bankList?.accounts?.isEmpty ?? [])
+                      : bankList.accounts!.isEmpty
                           ? SliverToBoxAdapter(
                               child: Container(
                                 child: Column(
@@ -222,7 +222,7 @@ class _AccountsScreenView
                               delegate: SliverChildBuilderDelegate(
                                 (context, index) {
                                   BankAccount account =
-                                      bankList?.accounts[index];
+                                      bankList.accounts![index];
                                   return Container(
                                     padding: EdgeInsets.all(8.sp),
                                     child: Card(
@@ -243,14 +243,14 @@ class _AccountsScreenView
                                                     width: 17.sp,
                                                     height: 17.sp,
                                                     child: SvgPicture.network(
-                                                      account?.logo ?? '',
+                                                      account.logo ?? '',
                                                     ),
                                                   ),
                                                   SizedBox(
                                                     width: 10.sp,
                                                   ),
                                                   Text(
-                                                    account?.bankName,
+                                                    account.bankName!,
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .bodyText2,
@@ -271,7 +271,7 @@ class _AccountsScreenView
                                                       CrossAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      'N ${ConvertUtils.amount(double.parse(account?.availableBalance ?? '0'))}',
+                                                      'N ${ConvertUtils.amount(double.parse(account.availableBalance ?? '0'))}',
                                                       style: Theme.of(context)
                                                           .textTheme
                                                           .headline5,
@@ -297,7 +297,7 @@ class _AccountsScreenView
                                     ),
                                   );
                                 },
-                                childCount: bankList?.accounts?.length ?? 0,
+                                childCount: bankList.accounts?.length ?? 0,
                               ),
                             )
                 ],

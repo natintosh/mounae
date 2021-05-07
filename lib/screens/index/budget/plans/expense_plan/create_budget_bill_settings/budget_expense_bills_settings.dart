@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/providers/date_picker_provider.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
@@ -39,7 +39,7 @@ class _BudgetExpenseCreateBudgetBillSettingsScreenState
 
   bool automatePayment = false;
 
-  int index;
+  int? index;
 
   void onAppBarBackButtonPressed() {
     Navigator.of(context).pop();
@@ -76,7 +76,7 @@ class _BudgetExpenseCreateBudgetBillSettingsView extends WidgetView<
   @override
   Widget build(BuildContext context) {
     List<String> arguments =
-        AppRouterDelegate.of(context).currentConfiguration.arguments;
+        AppRouterDelegate.of(context).currentConfiguration!.arguments as List<String>;
     return Scaffold(
       appBar: AppBar(
         title: Text('Automate Bill Settings'),
@@ -140,7 +140,7 @@ class _BudgetExpenseCreateBudgetBillSettingsView extends WidgetView<
                             arguments[2],
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyText1!
                                 .copyWith(color: MounaeColors.primaryTextColor),
                           ),
                         ),
@@ -156,7 +156,7 @@ class _BudgetExpenseCreateBudgetBillSettingsView extends WidgetView<
                           subtitle: Text(
                             'Turn this feature on if you would like to automate payment of this expense. Perfect for Airtime, Data, DSTV/GOtv Subscription, Kids Allowance, School fees ETC',
                             style:
-                                Theme.of(context).textTheme.bodyText2.copyWith(
+                                Theme.of(context).textTheme.bodyText2!.copyWith(
                                       color: MounaeColors.greyDescriptionColor,
                                     ),
                           ),

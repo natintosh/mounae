@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
-import 'package:mounae/Screens/index/finance/finance/finance_tab_bar_sliver_delegate.dart';
-import 'package:mounae/Screens/index/finance/finance/widgets/credit_score_card.dart';
-import 'package:mounae/Screens/index/finance/finance/widgets/frequent_expense_card.dart';
-import 'package:mounae/Screens/index/finance/finance/widgets/frequent_income_card.dart';
-import 'package:mounae/Screens/index/finance/finance/widgets/largest_transaction_card.dart';
-import 'package:mounae/Screens/index/finance/finance/widgets/savings_card.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
+import 'package:mounae/screens/index/finance/finance/finance_tab_bar_sliver_delegate.dart';
+import 'package:mounae/screens/index/finance/finance/widgets/credit_score_card.dart';
+import 'package:mounae/screens/index/finance/finance/widgets/frequent_expense_card.dart';
+import 'package:mounae/screens/index/finance/finance/widgets/frequent_income_card.dart';
+import 'package:mounae/screens/index/finance/finance/widgets/largest_transaction_card.dart';
+import 'package:mounae/screens/index/finance/finance/widgets/savings_card.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -100,7 +100,7 @@ class _FinanceScreenView
                                       textAlign: TextAlign.left,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText2
+                                          .bodyText2!
                                           .copyWith(
                                             color: MounaeColors
                                                 .greyDescriptionColor,
@@ -117,7 +117,7 @@ class _FinanceScreenView
                                       textAlign: TextAlign.left,
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText2
+                                          .bodyText2!
                                           .copyWith(
                                             color: MounaeColors
                                                 .greyDescriptionColor,
@@ -143,10 +143,10 @@ class _FinanceScreenView
                             label: Text('23 My 2020 - Present'),
                             style: Theme.of(context)
                                 .textButtonTheme
-                                .style
+                                .style!
                                 .copyWith(
                                   textStyle:
-                                      MaterialStateProperty.all<TextStyle>(
+                                      MaterialStateProperty.all<TextStyle?>(
                                           Theme.of(context)
                                               .primaryTextTheme
                                               .bodyText2),

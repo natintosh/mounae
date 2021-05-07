@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BudgetItemCard extends StatelessWidget {
-  final String title;
+  final String? title;
   final Color primaryColor;
   final Color secondaryColor;
   final VoidCallback onTapped;
 
   const BudgetItemCard({
-    Key key,
-    @required this.title,
-    @required this.primaryColor,
-    @required this.secondaryColor,
-    @required this.onTapped,
+    Key? key,
+    required this.title,
+    required this.primaryColor,
+    required this.secondaryColor,
+    required this.onTapped,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class BudgetItemCard extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        title,
+                        title!,
                         style: Theme.of(context).textTheme.subtitle2,
                       ),
                       Icon(Icons.chevron_right),
@@ -52,7 +52,7 @@ class BudgetItemCard extends StatelessWidget {
                       padding: EdgeInsets.only(left: 6.0.sp),
                       child: Text(
                         'Expense',
-                        style: Theme.of(context).textTheme.caption.copyWith(
+                        style: Theme.of(context).textTheme.caption!.copyWith(
                               color: primaryColor,
                             ),
                       ),
@@ -71,7 +71,7 @@ class BudgetItemCard extends StatelessWidget {
                       padding: EdgeInsets.only(left: 6.0.sp),
                       child: Text(
                         'Balance',
-                        style: Theme.of(context).textTheme.caption.copyWith(
+                        style: Theme.of(context).textTheme.caption!.copyWith(
                               color: secondaryColor,
                             ),
                       ),

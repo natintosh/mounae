@@ -4,7 +4,7 @@ class MounaeLogoCirclePaint extends CustomPainter {
   final Color color;
   final double radius;
 
-  MounaeLogoCirclePaint(this.color, this.radius) : assert(radius != null);
+  MounaeLogoCirclePaint(this.color, this.radius);
 
   @override
   void paint(Canvas canvas, Size size) {

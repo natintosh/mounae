@@ -1,11 +1,11 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/providers/preference_provider.dart';
-import 'package:mounae/routes/app_route_information_parser.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
+import 'package:mounae/routes/app_routes.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:provider/provider.dart';
 
@@ -18,9 +18,17 @@ class _MounaeAppState extends State<MounaeApp> {
   static final GlobalKey<ScaffoldState> globalScaffoldKey =
       GlobalKey<ScaffoldState>();
 
-  final AppRouterDelegate _routerDelegate = AppRouterDelegate();
-  final AppRouteInformationParser _informationParser =
-      AppRouteInformationParser();
+  final BeamerRouterDelegate delegate = BeamerRouterDelegate(
+    locationBuilder: (state) {
+      if (state.uri.pathSegments.contains('authentication')) {
+        return AuthenticationLocation(state);
+      }
+      if (state.uri.pathSegments.contains('index')) {
+        return IndexLocation(state);
+      }
+      return AppLocation(state);
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +50,9 @@ class _MounaeAppState extends State<MounaeApp> {
           title: 'Mounae',
           debugShowCheckedModeBanner: false,
           theme: MounaeThemeData.lightTheme,
-          routerDelegate: _routerDelegate,
-          routeInformationParser: _informationParser,
+          backButtonDispatcher: BeamerBackButtonDispatcher(delegate: delegate),
+          routeInformationParser: BeamerRouteInformationParser(),
+          routerDelegate: delegate,
           builder: (context, child) {
             return MultiProvider(
               providers: [

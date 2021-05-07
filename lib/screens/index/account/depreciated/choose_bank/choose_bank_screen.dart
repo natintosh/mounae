@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
@@ -26,8 +26,8 @@ class _AccountChooseBankScreenState extends State<AccountChooseBankScreen> {
     super.initState();
   }
 
-  TextEditingController controller;
-  FocusNode focusNode;
+  TextEditingController? controller;
+  FocusNode? focusNode;
 
   void onBankCardTapped() {
     AppRouterDelegate.of(context).push(AccountBankInformationConfiguration());

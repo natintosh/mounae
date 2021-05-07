@@ -35,16 +35,16 @@ class DatePickerProvider extends ChangeNotifier {
 
   bool get singleDateSelection => _singleDateSelection;
 
-  int _dayIndex;
+  int? _dayIndex;
 
-  LinkedHashSet<DateTime> get selectedDates => _selectedDates;
+  LinkedHashSet<DateTime> get selectedDates => _selectedDates as LinkedHashSet<DateTime>;
 
-  set dayIndex(int value) {
+  set dayIndex(int? value) {
     _dayIndex = value;
     notifyListeners();
   }
 
-  int get dayIndex => _dayIndex;
+  int? get dayIndex => _dayIndex;
 
   DateTime get focusedDate => _focusedDate;
 

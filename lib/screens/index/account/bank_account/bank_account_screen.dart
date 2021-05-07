@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
-import 'package:mounae/Screens/index/account/bank_account/transaction_history_sliver_delegate.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:mounae/screens/index/account/bank_account/transaction_history_sliver_delegate.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 
@@ -153,7 +153,7 @@ class _AccountBankAccountView extends WidgetView<AccountBankAccountScreen,
                         ),
                         subtitle: Text(
                           'Mar 25, 2021 | Unassigned',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                               color: MounaeColors.greyDescriptionColor),
                         ),
                         trailing: Column(
@@ -168,7 +168,7 @@ class _AccountBankAccountView extends WidgetView<AccountBankAccountScreen,
                               'Debit',
                               style: Theme.of(context)
                                   .textTheme
-                                  .bodyText2
+                                  .bodyText2!
                                   .copyWith(
                                       color: MounaeColors.greyDescriptionColor),
                             ),

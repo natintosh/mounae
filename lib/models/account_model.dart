@@ -1,13 +1,13 @@
 class BankAccount {
-  String currency;
-  String nuban;
-  String status;
-  String name;
-  String availableBalance;
-  String ledgerBalance;
-  String bankName;
-  String slug;
-  String logo;
+  String? currency;
+  String? nuban;
+  String? status;
+  String? name;
+  String? availableBalance;
+  String? ledgerBalance;
+  String? bankName;
+  String? slug;
+  String? logo;
 
   BankAccount(
       {this.currency,

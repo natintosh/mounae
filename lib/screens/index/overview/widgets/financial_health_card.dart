@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class FinancialHealthCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const FinancialHealthCard({
-    Key key,
-    @required this.onTap,
+    Key? key,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -57,7 +57,7 @@ class FinancialHealthCard extends StatelessWidget {
                                 textAlign: TextAlign.left,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .bodyText2
+                                    .bodyText2!
                                     .copyWith(
                                       color: MounaeColors.greyDescriptionColor,
                                     ),
@@ -71,7 +71,7 @@ class FinancialHealthCard extends StatelessWidget {
                                 textAlign: TextAlign.left,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .bodyText2
+                                    .bodyText2!
                                     .copyWith(
                                       color: MounaeColors.greyDescriptionColor,
                                     ),

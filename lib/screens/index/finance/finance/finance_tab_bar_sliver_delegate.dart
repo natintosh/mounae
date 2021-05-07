@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class FinanceTabBarSliverDelegate extends SliverPersistentHeaderDelegate {
@@ -8,9 +8,9 @@ class FinanceTabBarSliverDelegate extends SliverPersistentHeaderDelegate {
   final ValueChanged<int> onTabSelected;
 
   FinanceTabBarSliverDelegate(
-      {@required this.selectedItem,
-      @required this.height,
-      @required this.onTabSelected});
+      {required this.selectedItem,
+      required this.height,
+      required this.onTabSelected});
 
   @override
   Widget build(
@@ -31,8 +31,8 @@ class FinanceTabBarSliverDelegate extends SliverPersistentHeaderDelegate {
                   child: AnimatedDefaultTextStyle(
                     duration: Duration(milliseconds: 200),
                     style: selectedItem == 0
-                        ? Theme.of(context).primaryTextTheme.bodyText1
-                        : Theme.of(context).textTheme.caption.copyWith(
+                        ? Theme.of(context).primaryTextTheme.bodyText1!
+                        : Theme.of(context).textTheme.caption!.copyWith(
                               color: MounaeColors.greyDescriptionColor,
                             ),
                     child: Text('Analysis'),
@@ -46,8 +46,8 @@ class FinanceTabBarSliverDelegate extends SliverPersistentHeaderDelegate {
                   child: AnimatedDefaultTextStyle(
                     duration: Duration(milliseconds: 200),
                     style: selectedItem == 1
-                        ? Theme.of(context).primaryTextTheme.bodyText1
-                        : Theme.of(context).textTheme.caption.copyWith(
+                        ? Theme.of(context).primaryTextTheme.bodyText1!
+                        : Theme.of(context).textTheme.caption!.copyWith(
                               color: MounaeColors.greyDescriptionColor,
                             ),
                     child: Text('Reports'),
@@ -61,8 +61,8 @@ class FinanceTabBarSliverDelegate extends SliverPersistentHeaderDelegate {
                   child: AnimatedDefaultTextStyle(
                     duration: Duration(milliseconds: 200),
                     style: selectedItem == 2
-                        ? Theme.of(context).primaryTextTheme.bodyText1
-                        : Theme.of(context).textTheme.caption.copyWith(
+                        ? Theme.of(context).primaryTextTheme.bodyText1!
+                        : Theme.of(context).textTheme.caption!.copyWith(
                               color: MounaeColors.greyDescriptionColor,
                             ),
                     child: Text('Category'),

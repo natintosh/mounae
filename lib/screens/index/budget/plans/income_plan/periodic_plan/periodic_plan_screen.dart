@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/providers/date_picker_provider.dart';
+import 'package:mounae/screens/index/budget/plans/widgets/monthly_date_picker.dart';
 import 'package:mounae/screens/index/budget/plans/widgets/period_grid.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
-
-import 'file:///C:/Users/oguny/AndroidStudioProjects/mounae/lib/screens/index/budget/plans/widgets/monthly_date_picker.dart';
 
 class BudgetIncomePeriodicPlanScreen extends StatefulWidget {
   static const String path = '/index/budget/create-budget-plan/periodic-plan';
@@ -22,7 +21,7 @@ class _BudgetIncomePeriodicPlanScreenState
     return _BudgetIncomePeriodicPlanView(this);
   }
 
-  int index;
+  int? index;
 
   void onPeriodGridTapped(int value) {
     setState(() {

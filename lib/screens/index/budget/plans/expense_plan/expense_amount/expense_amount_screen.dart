@@ -1,7 +1,7 @@
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
@@ -25,7 +25,7 @@ class _BudgetExpenseAmountScreenState extends State<BudgetExpenseAmountScreen> {
   void initState() {
     focusNode = FocusNode()
       ..addListener(() {
-        if (focusNode.hasFocus || controller.text.isNotEmpty) {
+        if (focusNode!.hasFocus || controller!.text.isNotEmpty) {
           setState(() {
             showPrefixText = true;
           });
@@ -48,8 +48,8 @@ class _BudgetExpenseAmountScreenState extends State<BudgetExpenseAmountScreen> {
 
   bool showPrefixText = false;
 
-  TextEditingController controller;
-  FocusNode focusNode;
+  TextEditingController? controller;
+  FocusNode? focusNode;
 
   void onContinueButtonPressed() {
     AppRouterDelegate.of(context).push(BudgetExpenseChoosePlanConfiguration());
@@ -124,14 +124,14 @@ class _BudgetExpenseAmountView extends WidgetView<BudgetExpenseAmountScreen,
                             text: 'Conitnue',
                             style: Theme.of(context)
                                 .textTheme
-                                .bodyText1
+                                .bodyText1!
                                 .copyWith(color: MounaeColors.primaryColor),
                           ),
                           TextSpan(
                             text: '" if you are not sure',
                           ),
                         ]),
-                        style: Theme.of(context).textTheme.bodyText1.copyWith(
+                        style: Theme.of(context).textTheme.bodyText1!.copyWith(
                             color: MounaeColors.lightPurpleDescriptiveColor),
                       ),
                     )

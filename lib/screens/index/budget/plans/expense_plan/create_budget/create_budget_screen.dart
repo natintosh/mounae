@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/routes/app_router_delegate.dart';
 import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/screens/index/budget/plans/expense_plan/create_budget/search_add_sliver_persistent_delegate.dart';
@@ -95,7 +95,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                                   'Choose from predetermined or create new one',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText1
+                                      .bodyText1!
                                       .copyWith(
                                         color:
                                             MounaeColors.greyDescriptionColor,
@@ -156,7 +156,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Furniture',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -168,7 +168,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Rent',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -181,7 +181,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Electric Bill',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -194,7 +194,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'House Repairs',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -207,7 +207,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Electronic Repairs',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -239,7 +239,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Car Repairs',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -252,7 +252,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Car Rent',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -265,7 +265,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Ride-Hailing(Uber, Taxify)',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -278,7 +278,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'BRT Bus Fare',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -291,7 +291,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Yellow Bus Fare',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -323,7 +323,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Water Bill',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -336,7 +336,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Internet Subscription',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -349,7 +349,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Nail and Hammers',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -381,7 +381,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Sade(Cousin)',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),
@@ -394,7 +394,7 @@ class _BudgetExpenseCreateBudgetView extends WidgetView<
                         },
                         title: Text(
                           'Aunt Lade',
-                          style: Theme.of(context).textTheme.bodyText2.copyWith(
+                          style: Theme.of(context).textTheme.bodyText2!.copyWith(
                                 color: MounaeColors.greyDescriptionColor,
                               ),
                         ),

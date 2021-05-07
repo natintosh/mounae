@@ -1,12 +1,11 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:local_auth/error_codes.dart' as authError;
 import 'package:local_auth/local_auth.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:system_settings/system_settings.dart';
@@ -102,8 +101,8 @@ class _BiometricsOptionScreenState extends State<BiometricsOptionScreen> {
   }
 
   void _openConnectBankOnboardingScreen() {
-    AppRouterDelegate.of(context)
-        .replaceAll(ConnectBankOnboardingConfiguration());
+    Beamer.of(context).beamToNamed('/index/accounts/onboarding');
+    Beamer.of(context).clearBeamLocationHistory();
   }
 }
 
@@ -128,7 +127,7 @@ class _BiometricsOptionView
                   'Perfect! Would you like to use your fingerprints as a Sign-In option?',
                   style: Theme.of(context)
                       .textTheme
-                      .headline5
+                      .headline5!
                       .copyWith(fontSize: 24.sp),
                   textAlign: TextAlign.center,
                 ),
@@ -158,7 +157,7 @@ class _BiometricsOptionView
                 onPressed: state.onCancelButtonPressed,
                 icon: Icon(Icons.cancel),
                 label: Text('Cancel'),
-                style: Theme.of(context).textButtonTheme.style.copyWith(
+                style: Theme.of(context).textButtonTheme.style!.copyWith(
                     foregroundColor: MaterialStateProperty.all<Color>(
                         MounaeColors.debitReductionAlertColor),
                     overlayColor: MaterialStateProperty.all<Color>(

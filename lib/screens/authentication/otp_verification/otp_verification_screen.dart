@@ -1,9 +1,8 @@
+import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mounae/providers/auth_provider.dart';
-import 'package:mounae/routes/app_router_delegate.dart';
-import 'package:mounae/routes/page_configuration.dart';
 import 'package:mounae/utils/themes/theme.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
 import 'package:provider/provider.dart';
@@ -28,8 +27,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
     super.initState();
   }
 
-  TextEditingController controller;
-  FocusNode focusNode;
+  TextEditingController? controller;
+  FocusNode? focusNode;
 
   void onContinueButtonPressed() {
     FocusScope.of(context).unfocus();
@@ -37,7 +36,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   }
 
   void _openSetUsernameScreen() {
-    AppRouterDelegate.of(context).push(SetUsernameConfiguration());
+    Beamer.of(context).beamToNamed('/authentication/set-username');
   }
 }
 
@@ -55,7 +54,7 @@ class _OtpVerificationView
             size: 40.sp,
           ),
           onPressed: () {
-            Navigator.of(context).pop();
+            Beamer.of(context).beamBack();
           },
         ),
         automaticallyImplyLeading: false,

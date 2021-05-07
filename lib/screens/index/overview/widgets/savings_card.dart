@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
@@ -38,7 +38,7 @@ class SavingsCard extends StatelessWidget {
                           'Savings',
                           style: Theme.of(context)
                               .textTheme
-                              .headline6
+                              .headline6!
                               .copyWith(color: MounaeColors.writingColor),
                         ),
                         Icon(
@@ -52,7 +52,7 @@ class SavingsCard extends StatelessWidget {
                       padding: EdgeInsets.only(right: 78.sp),
                       child: Text(
                         'Money set aside for personal purpose or to achieve a set of goals',
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
                               color: MounaeColors.writingColor,
                             ),
                       ),
@@ -64,7 +64,7 @@ class SavingsCard extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'N600,000',
-                          style: Theme.of(context).textTheme.headline5.copyWith(
+                          style: Theme.of(context).textTheme.headline5!.copyWith(
                                 color: MounaeColors.writingColor,
                               ),
                         ),
@@ -96,7 +96,7 @@ class SavingsCard extends StatelessWidget {
                                   'N200,000',
                                   style: Theme.of(context)
                                       .textTheme
-                                      .bodyText2
+                                      .bodyText2!
                                       .copyWith(
                                         color: MounaeColors.writingColor,
                                       ),

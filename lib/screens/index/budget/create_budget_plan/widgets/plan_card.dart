@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class PlanCard extends StatelessWidget {
@@ -9,11 +9,11 @@ class PlanCard extends StatelessWidget {
   final VoidCallback onTap;
 
   const PlanCard({
-    Key key,
-    @required this.title,
-    @required this.subtitle,
-    @required this.color,
-    @required this.onTap,
+    Key? key,
+    required this.title,
+    required this.subtitle,
+    required this.color,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -37,7 +37,7 @@ class PlanCard extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     title,
-                    style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    style: Theme.of(context).textTheme.subtitle1!.copyWith(
                           color: MounaeColors.primaryTextColor,
                         ),
                   ),
@@ -48,7 +48,7 @@ class PlanCard extends StatelessWidget {
                   padding: EdgeInsets.only(right: 72.sp),
                   child: Text(
                     subtitle,
-                    style: Theme.of(context).textTheme.bodyText2.copyWith(
+                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
                           color: MounaeColors.primaryTextColor,
                         ),
                   ),

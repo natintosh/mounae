@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -19,15 +19,15 @@ class MonthlyDatePicker extends StatelessWidget {
   final bool singleMonthSelection;
 
   MonthlyDatePicker({
-    Key key,
-    @required this.title,
-    @required this.focusedDate,
-    @required this.selectedDate,
-    @required this.fistDate,
-    @required this.lastDate,
-    @required this.singleMonthSelection,
-    @required this.onDaySelected,
-    @required this.selectedDayPredicate,
+    Key? key,
+    required this.title,
+    required this.focusedDate,
+    required this.selectedDate,
+    required this.fistDate,
+    required this.lastDate,
+    required this.singleMonthSelection,
+    required this.onDaySelected,
+    required this.selectedDayPredicate,
   }) : super(key: key);
 
   @override

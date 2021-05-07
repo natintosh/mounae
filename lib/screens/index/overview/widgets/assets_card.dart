@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/size_extension.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 
 class AssetsCard extends StatelessWidget {
   const AssetsCard({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -45,7 +45,7 @@ class AssetsCard extends StatelessWidget {
                           'Asset(s)',
                           style: Theme.of(context)
                               .textTheme
-                              .headline6
+                              .headline6!
                               .copyWith(color: MounaeColors.writingColor),
                         ),
                         Icon(
@@ -59,7 +59,7 @@ class AssetsCard extends StatelessWidget {
                       padding: EdgeInsets.only(right: 24.sp),
                       child: Text(
                         'Add your owned asset like Cars, Houses, Buildings or Gold for a full overview of your net worth',
-                        style: Theme.of(context).textTheme.bodyText2.copyWith(
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
                               color: MounaeColors.writingColor,
                             ),
                       ),
@@ -71,7 +71,7 @@ class AssetsCard extends StatelessWidget {
                         alignment: Alignment.centerLeft,
                         child: Text(
                           'N600,000',
-                          style: Theme.of(context).textTheme.headline4.copyWith(
+                          style: Theme.of(context).textTheme.headline4!.copyWith(
                                 fontWeight: FontWeight.bold,
                                 color: MounaeColors.writingColor,
                               ),
