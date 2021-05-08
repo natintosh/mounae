@@ -75,7 +75,7 @@ class _ConnectAccountWidgetView
                     child: Container(
                       child: WebView(
                         key: state.webViewKey,
-                        initialUrl: 'https://v2-app.okra.ng/OSbQa8Crz/',
+                        initialUrl: 'https://v2-app.okra.ng/OSbQa8Crz',
                         javascriptMode: JavascriptMode.unrestricted,
                         gestureRecognizers: [
                           Factory(() => VerticalDragGestureRecognizer()),
@@ -99,17 +99,17 @@ class _ConnectAccountWidgetView
                           JavascriptChannel(
                               name: 'FlutterOnSuccess',
                               onMessageReceived: (JavascriptMessage message) {
-                                log(message.message);
+                                log('OnSuccess ${message.message}');
                               }),
                           JavascriptChannel(
                               name: 'FlutterOnError',
                               onMessageReceived: (JavascriptMessage message) {
-                                log(message.message);
+                                log('OnError ${message.message}');
                               }),
                           JavascriptChannel(
                               name: 'FlutterOnClose',
                               onMessageReceived: (JavascriptMessage message) {
-                                log(message.message);
+                                log('OnClose ${message.message}');
                               })
                         ]),
                       ),
