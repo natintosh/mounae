@@ -20,13 +20,16 @@ class _MounaeAppState extends State<MounaeApp> {
 
   final BeamerRouterDelegate delegate = BeamerRouterDelegate(
     locationBuilder: (state) {
-      if (state.uri.pathSegments.contains('authentication')) {
-        return AuthenticationLocation(state);
+      if (state.uri.pathSegments.contains('accounts')) {
+        return AccountsLocation(state: state);
       }
       if (state.uri.pathSegments.contains('index')) {
-        return IndexLocation(state);
+        return IndexLocation(state: state);
       }
-      return AppLocation(state);
+      if (state.uri.pathSegments.contains('authentication')) {
+        return AuthenticationLocation(state: state);
+      }
+      return AppLocation(state: state);
     },
   );
 

@@ -1,9 +1,12 @@
+import 'dart:developer';
+
 import 'package:beamer/beamer.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:loading_indicator/loading_indicator.dart';
+import 'package:mounae/global/views/connect_account/connect_account_view.dart';
+import 'package:mounae/global/views/exit_app/exit_app_view.dart';
 import 'package:mounae/providers/auth_provider.dart';
 import 'package:mounae/utils/themes/mounae_colors.dart';
 import 'package:mounae/utils/widget_view/widget_view.dart';
@@ -21,32 +24,50 @@ class AccountOnBoardingScreen extends StatefulWidget {
 class _AccountOnBoardingScreenState extends State<AccountOnBoardingScreen> {
   @override
   Widget build(BuildContext context) {
-    return _AccountOnBoardingView(this);
+    return WillPopScope(
+      onWillPop: onWillPop,
+      child: _AccountOnBoardingView(this),
+    );
   }
 
   bool isLoading = false;
+
+  Future<bool> onWillPop() async {
+    GlobalExitAppView.show(context);
+    return false;
+  }
 
   void onAddBankAccountButtonPressed() {
     initConnectAccountView();
   }
 
   void initConnectAccountView() async {
-    // setState(() {
-    //   isLoading = true;
-    // });
+    setState(() {
+      isLoading = true;
+    });
 
-    Beamer.of(context).beamToNamed(
-      '/index/accounts/onboarding/connect',
-    );
-
-    // setState(() {
-    //   isLoading = false;
-    // });
+    GlobalConnectAccountView.show(context, onError: onError);
   }
 
   void onSkipButtonPressed() {
     Beamer.of(context).beamToNamed('/index');
     Beamer.of(context).clearBeamLocationHistory();
+  }
+
+  void onError(AccountConnectionHandler? handler) {
+    if (handler != null) {
+      if (handler.isSuccessful) {
+        log(handler.data);
+        Beamer.of(context).beamToNamed(
+          '/index/accounts',
+          stacked: false,
+          popToNamed: '/index',
+        );
+      } else if (handler.hasError) {}
+    }
+    setState(() {
+      isLoading = false;
+    });
   }
 }
 

@@ -1,8 +1,6 @@
 import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mounae/global/views/connect_account/connect_account_view.dart';
-import 'package:mounae/routes/pages/modal_slide_transition_page.dart';
 import 'package:mounae/screens/authentication/biometric_option/biometrics_option_screen.dart';
 import 'package:mounae/screens/authentication/otp_send/otp_send_screen.dart';
 import 'package:mounae/screens/authentication/otp_verification/otp_verification_screen.dart';
@@ -21,7 +19,7 @@ import 'package:mounae/screens/onboarding/onboarding_screen.dart';
 import 'package:mounae/screens/splash/splash_screen.dart';
 
 class AppLocation extends BeamLocation {
-  AppLocation(BeamState state) : super(state);
+  AppLocation({BeamState? state}) : super(state);
 
   @override
   List<String> get pathBlueprints => ['/onboarding'];
@@ -44,7 +42,7 @@ class AppLocation extends BeamLocation {
 }
 
 class AuthenticationLocation extends BeamLocation {
-  AuthenticationLocation(BeamState state) : super(state);
+  AuthenticationLocation({BeamState? state}) : super(state);
 
   @override
   List<String> get pathBlueprints => [
@@ -111,15 +109,11 @@ class AuthenticationLocation extends BeamLocation {
 }
 
 class IndexLocation extends BeamLocation {
-  IndexLocation(BeamState state) : super(state);
+  IndexLocation({BeamState? state}) : super(state);
 
   @override
   List<String> get pathBlueprints => [
         '/index',
-        '/index/accounts/:accountId',
-        '/index/accounts/onboarding',
-        '/index/accounts/add',
-        '/index/accounts/connect',
         '/index/budget',
         '/index/finance',
         '/index/overview',
@@ -134,6 +128,23 @@ class IndexLocation extends BeamLocation {
           key: ValueKey('index'),
           child: IndexScreen(),
         ),
+    ];
+  }
+}
+
+class AccountsLocation extends BeamLocation {
+  AccountsLocation({BeamState? state}) : super(state);
+
+  @override
+  List<String> get pathBlueprints => [
+        '/index/accounts/:accountId',
+        '/index/accounts/onboarding',
+        '/index/accounts/add',
+      ];
+
+  @override
+  List<BeamPage> pagesBuilder(BuildContext context, BeamState state) {
+    return <BeamPage>[
       if (state.uri.pathSegments.contains('accounts'))
         BeamPage(
           key: ValueKey('accounts'),
@@ -153,11 +164,6 @@ class IndexLocation extends BeamLocation {
         BeamPage(
           key: ValueKey('account-onboarding'),
           child: AccountOnBoardingScreen(),
-        ),
-      if (state.uri.pathSegments.contains('connect'))
-        ModalSlideTransitionPage(
-          key: ValueKey('account-connect'),
-          child: GlobalConnectAccountView(),
         ),
     ];
   }

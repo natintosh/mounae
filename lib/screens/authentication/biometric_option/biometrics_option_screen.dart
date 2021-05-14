@@ -101,7 +101,10 @@ class _BiometricsOptionScreenState extends State<BiometricsOptionScreen> {
   }
 
   void _openConnectBankOnboardingScreen() {
-    Beamer.of(context).beamToNamed('/index/accounts/onboarding');
+    Beamer.of(context).beamToNamed(
+      '/index/accounts/onboarding',
+      stacked: false,
+    );
     Beamer.of(context).clearBeamLocationHistory();
   }
 }
